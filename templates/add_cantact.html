@@ -9,13 +9,13 @@
     <title>Document</title>
 </head>
 <body dir="rtl" >
-    <div class="maine">
+<div class="maine">
         <img class="imgmaine" src="{% static "img/massage2.jpg" %}" alt="addcantact">
         <p class="textobject">
             فرم ثبت نام
         </p>
+    <form action="" class="nametable" method="POST">
         <div class="regester">
-            <form action="" class="nametable" method="POST">
                   {% csrf_token %}
                 <div class="box">
                     <p class=>
@@ -51,18 +51,16 @@
                             تقویم
                         </button >
                 </div>
-
-
-            <</form>
             <button class="regesterbuttonsave">
                 ارسال
             </button>
-            <button class="regesterbuttoncancel">
+            <button class="regesterbuttoncancel" name="button_back" value="accept">
                 بازگشت
             </button>
 
         </div>
-    </div>
+    <</form>
+</div>
     
 </body>
 </html>

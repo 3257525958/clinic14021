@@ -115,7 +115,10 @@ def addcantact(request):
     button_upmounth = request.POST.get("button_upmounth")
     button_downmounth = request.POST.get("button_downmounth")
     button_calandar = request.POST.get("addcantact")
+    button_back = request.POST.get("button_back")
 
+    if button_back == "accept" :
+        return render(request,'home.html')
     if (bbtn != None) and (bbtn != '') and (calandar_array_for_show != None) and (calandar_array_for_show != '') :
         return render(request, 'add_cantact.html', context={'berthday_shamsi':calandar_array_for_shamsidate[int(bbtn)],
                                                             'berthday_miladi': datetime.datetime.date(calandar_array_for_miladidate[int(bbtn)]).strftime('%a %d %b %y'),
