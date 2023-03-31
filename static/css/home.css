@@ -13,7 +13,7 @@
         position: relative;
         border-radius: 10px;
         display: inline-block;
-        
+
     }
     .textnavbarprofile {
         margin-left: 30px;
@@ -22,7 +22,7 @@
         color: rgb(0, 0, 0);
         font-size: 90%;
         position: absolute;
-        
+
     }
     .imgnavbarprofile{
         width: 40px;
@@ -43,7 +43,7 @@
         color: rgb(0, 0, 0);
         font-size: 90%;
         position: absolute;
-        
+
     }
     .manislidermenuo {
       direction: rtl;
@@ -68,7 +68,7 @@
       width: 100%;
       height: 30px;
       background: linear-gradient( var(--vcolor),rgb(255,255,255), var(--vcolor));
-      border-radius: 5px;      
+      border-radius: 5px;
     }
     .textgap1{
       position: absolute;
@@ -78,7 +78,7 @@
       font-family: tahoma;
       font-size: 100%;
       font-style: oblique;
-      
+
       }
       .part4{
         position: relative;
@@ -86,7 +86,7 @@
         height: 300px;
         top: 40px;
         left: calc(50% - 205px);
-        
+
       }
       .doctor1 {
         width: 120px;
@@ -124,7 +124,7 @@
         top: 0x;
 
       }
-  
+
     .boxdoctormassagefisial {
         width: 100%;
         height: 15%;
@@ -139,7 +139,7 @@
         width: 100%;
         height: 82% ;
         border-radius: 10px;
-    }   
+    }
     .textdoctorficialmassge{
         position: relative;
         text-align: center;
@@ -148,7 +148,7 @@
         /* color:rgba(calc(var(--maincolo) + 100),40,226,1); */
         font-family: tahoma;
         font-size: 90%;
-        
+
     }
     #gap3 {
         position: relative;
@@ -158,7 +158,7 @@
         height: 5vw;
         background: white;
         border-radius: 5px;
-        
+
     }
 
     #gap2 {
@@ -176,8 +176,8 @@
         position: relative;
         top: 20vw;
         left: 5%;
-        display: inline-block;  
-        border-radius: 20%;      
+        display: inline-block;
+        border-radius: 20%;
     }
     .tomoraba1 {
         position: absolute;
@@ -196,8 +196,8 @@
         position: relative;
         top: 20vw;
         left: 7%;
-        display: inline-block;        
-        border-radius: 20%;      
+        display: inline-block;
+        border-radius: 20%;
     }
     .tomoraba2 {
         position: absolute;
@@ -215,8 +215,8 @@
         position: relative;
         top: 20vw;
         left: 9%;
-        display: inline-block;        
-        border-radius: 20%;      
+        display: inline-block;
+        border-radius: 20%;
     }
     .tomoraba3 {
         position: absolute;
@@ -234,8 +234,8 @@
         position: relative;
         top: 20vw;
         left: 11%;
-        display: inline-block;        
-        border-radius: 20%;      
+        display: inline-block;
+        border-radius: 20%;
     }
     .tomoraba4 {
         position: absolute;
@@ -265,7 +265,7 @@
   height: 100%;
   object-fit: fill;
   border-radius: 20%;
-}    
+}
 #gap3 {
   position: relative;
   display: inline-block;
@@ -274,7 +274,7 @@
   height: 5px;
   background: white;
   border-radius: 5px;
-  
+
 }
 
 body {
@@ -285,7 +285,7 @@ body {
     margin-top: 8px;
     visibility: hidden;
     position: absolute;
-}   
+}
 
 
 
@@ -298,7 +298,7 @@ body {
         position: relative;
         border-radius: 10px;
         display: inline-block;
-        
+
     }
     .textnavbarprofile {
         margin-left: 30px;
@@ -307,7 +307,7 @@ body {
         color: rgb(0, 0, 0);
         font-size: 90%;
         position: absolute;
-        
+
     }
     .imgnavbarprofile{
         width: 40px;
@@ -328,7 +328,7 @@ body {
         color: rgb(0, 0, 0);
         font-size: 90%;
         position: absolute;
-        
+
     }
     .manislidermenuo {
       direction: rtl;
@@ -354,7 +354,7 @@ body {
       width: 100%;
       height: 30px;
       background: linear-gradient( var(--vcolor),rgb(255,255,255), var(--vcolor));
-      border-radius: 5px;      
+      border-radius: 5px;
     }
     .textgap1{
       position: absolute;
@@ -364,7 +364,7 @@ body {
       font-family: tahoma;
       font-size: 100%;
       font-style: oblique;
-      
+
       }
       .part4{
         position: relative;
@@ -410,7 +410,7 @@ body {
         top: 0x;
 
       }
-  
+
     .boxdoctormassagefisial {
         width: 100%;
         height: 15%;
@@ -425,7 +425,7 @@ body {
         width: 100%;
         height: 82% ;
         border-radius: 10px;
-    }   
+    }
     .textdoctorficialmassge{
         position: relative;
         text-align: center;
@@ -434,7 +434,7 @@ body {
         /* color:rgba(calc(var(--maincolo) + 100),40,226,1); */
         font-family: tahoma;
         font-size: 90%;
-        
+
     }
     #gap3 {
         position: relative;
@@ -444,7 +444,7 @@ body {
         height: 20px;
         background: linear-gradient(black,white,black);
         border-radius: 5px;
-        
+
     }
 
     #gap2 {
@@ -462,8 +462,8 @@ body {
         position: relative;
         top: 20vw;
         left: 5%;
-        display: inline-block;  
-        border-radius: 20%;      
+        display: inline-block;
+        border-radius: 20%;
     }
     .tomoraba1 {
         position: absolute;
@@ -482,8 +482,8 @@ body {
         position: relative;
         top: 20vw;
         left: 7%;
-        display: inline-block;        
-        border-radius: 20%;      
+        display: inline-block;
+        border-radius: 20%;
     }
     .tomoraba2 {
         position: absolute;
@@ -501,8 +501,8 @@ body {
         position: relative;
         top: 20vw;
         left: 9%;
-        display: inline-block;        
-        border-radius: 20%;      
+        display: inline-block;
+        border-radius: 20%;
     }
     .tomoraba3 {
         position: absolute;
@@ -520,8 +520,8 @@ body {
         position: relative;
         top: 20vw;
         left: 11%;
-        display: inline-block;        
-        border-radius: 20%;      
+        display: inline-block;
+        border-radius: 20%;
     }
     .tomoraba4 {
         position: absolute;
@@ -549,7 +549,7 @@ body {
     background-color:#f2f2f2;
     font-family:tahoma;
    } */
-   
+
    /* منو */
    #cssmenu,#cssmenu ul,#cssmenu ul li,#cssmenu ul ul {
      list-style: none;
@@ -562,7 +562,7 @@ body {
      z-index: 597;
      float: right;
    }
-   
+
    #cssmenu ul li.hover,
    #cssmenu ul li:hover {
      position: relative;
@@ -578,11 +578,11 @@ body {
      z-index: 598;
      width: 100%;
    }
-   
+
    #cssmenu ul li:hover > ul {
      visibility: visible;
    }
-   
+
    #cssmenu {
      font-size: 18px;
      width: 200px;
@@ -617,7 +617,7 @@ body {
    #cssmenu > ul > li:hover {
      background: #f6f6f6;
    }
-   
+
    /* زیرمنوها - زیر آیتم ها */
    #cssmenu ul ul a:link,
    #cssmenu ul ul a:visited {
@@ -644,7 +644,7 @@ body {
    #cssmenu ul ul li:last-child > a {
      border-bottom: none;
    }
-   
+
 
 
 /* --------------------------------------------------- */
@@ -696,12 +696,12 @@ img {vertical-align: middle;} */
 }
 
 @-webkit-keyframes fade {
-  from {opacity: .4} 
+  from {opacity: .4}
   to {opacity: 1}
 }
 
 @keyframes fade {
-  from {opacity: .4} 
+  from {opacity: .4}
   to {opacity: 1}
 }
 
