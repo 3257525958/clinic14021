@@ -6,6 +6,7 @@ charset-normalizer==2.0.7
 colorama==0.4.4
 Django==4.1.7
 django-jalali==6.0.1
+django-jalali-date==1.0.1
 fire==0.4.0
 halo==0.0.31
 icon==0.0.5
