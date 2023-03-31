@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home_app.apps.HomeAppConfig',
     'cantact_app.apps.CantactAppConfig',
-    'jalali_date',
 
 ]
 JALALI_DATE_DEFAULTS = {
