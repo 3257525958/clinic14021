@@ -114,7 +114,7 @@ def addcantact(request):
         button_year = str(year[0])
     button_upmounth = request.POST.get("button_upmounth")
     button_downmounth = request.POST.get("button_downmounth")
-    button_calandar = request.POST.get("addcantact")
+    button_calandar = request.POST.get("button_calandar")
     button_back = request.POST.get("button_back")
 
     if button_back == "accept" :
