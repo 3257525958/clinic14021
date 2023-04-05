@@ -14,53 +14,52 @@
         <p class="textobject">
             فرم ثبت نام
         </p>
-    <form action="" class="nametable" method="POST">
         <div class="regester">
-                  {% csrf_token %}
+            <form action="" class="nametable" method="POST">
                 <div class="box">
                     <p class=>
                         نام:
                     </p>
-                        <input type="text" size="11">
+                    <input type="text" size="11" class="inputclass">
                 </div>
                 <div class="box">
                     <p class=>
                          نام خانوادگی:
                     </p>
-                        <input type="text" >
+                        <input type="text" class="inputclass">
                 </div>
                 <div class="box">
                     <p class=>
                          کدملی:
                     </p>
-                        <input type="number" maxlength="10">
+                        <input type="number" maxlength="10" class="inputclass">
                 </div>
-                <div class="box">
+                <div class="box" >
                     <p class=>
                          تلفن:
                     </p>
-                        <input type="number" >
+                        <input type="number" class="inputclass">
                 </div>
+
                 <div class="box">
                     <p class=>
                         تاریخ تولد:
                     </p>
-                    <input type="text" disabled placeholder="{{ berthday_shamsi }}">
-                    <input type="text" disabled placeholder="{{ berthday_miladi }}">
-                        <button class="texbutton" name="button_calandar" value="accept">
-                            تقویم
-                        </button >
+                    <input type="text" disabled class="inputclass">
+                    <button class="texbutton">
+                        تقویم
+                    </button >
                 </div>
+            </form>
             <button class="regesterbuttonsave">
                 ارسال
             </button>
-            <button class="regesterbuttoncancel" name="button_back" value="accept">
+            <button class="regesterbuttoncancel">
                 بازگشت
             </button>
 
         </div>
-    <</form>
 </div>
-    
+
 </body>
 </html>
