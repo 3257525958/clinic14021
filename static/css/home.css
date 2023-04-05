@@ -1,7 +1,9 @@
 :root{
-  --vcolor:rgb(30, 30, 30);
+  --vcolor:rgb(14, 14, 14);
   --navbarcolor : rgb(220, 220, 220);
   --wet : 30%;
+  --zel_moraba: 80px;
+  --fasele_moraba : 0px;
 }
 
 @media only screen and (max-width: 600px)
@@ -153,9 +155,9 @@
     #gap3 {
         position: relative;
         display: inline-block;
-        top:15vw;
+        top:0px;
         width: 100%;
-        height: 5vw;
+        height: 50px;
         background: white;
         border-radius: 5px;
 
@@ -170,14 +172,14 @@
         /* border: 2px blue solid; */
     }
     .moraba1{
-        width: 20%;
-        height: 20vw;
-        background-color: rgb(70, 70, 70);
-        position: relative;
-        top: 20vw;
-        left: 5%;
-        display: inline-block;
-        border-radius: 20%;
+      width: var(--zel_moraba);
+      height: var(--zel_moraba);
+      background-color: rgb(70, 70, 70);
+      position: relative;
+      top: 140px;
+      left: calc(50% - var(--zel_moraba) * 2 - var(--fasele_moraba));
+      display: inline-block;
+      border-radius: 20%;
     }
     .tomoraba1 {
         position: absolute;
@@ -190,14 +192,15 @@
 
     }
     .moraba2{
-        width: 20%;
-        height: 20vw;
-        background-color: rgb(70, 70, 70);
-        position: relative;
-        top: 20vw;
-        left: 7%;
-        display: inline-block;
-        border-radius: 20%;
+      width: var(--zel_moraba);
+      height: var(--zel_moraba);
+      background-color: rgb(70, 70, 70);
+      position: relative;
+      top: 140px;
+      /* left: calc(50% - var(--zel_moraba) - var(--fasele_moraba)/2); */
+      left: calc(50% - var(--zel_moraba)*2 - var(--fasele_moraba));
+      display: inline-block;
+      border-radius: 20%;
     }
     .tomoraba2 {
         position: absolute;
@@ -209,14 +212,14 @@
         border: 2px rgb(36, 36, 36) solid;
     }
     .moraba3{
-        width: 20%;
-        height: 20vw;
-        background-color: rgb(70, 70, 70);
-        position: relative;
-        top: 20vw;
-        left: 9%;
-        display: inline-block;
-        border-radius: 20%;
+      width: var(--zel_moraba);
+      height: var(--zel_moraba);
+      background-color: rgb(70, 70, 70);
+      position: relative;
+      top: 140px;
+      left: calc(50% - var(--zel_moraba) * 2 - var(--fasele_moraba));
+      display: inline-block;
+      border-radius: 20%;
     }
     .tomoraba3 {
         position: absolute;
@@ -228,14 +231,14 @@
         border: 2px rgb(36, 36, 36) solid;
     }
     .moraba4{
-        width: 20%;
-        height: 20vw;
-        background-color: rgb(70, 70, 70);
-        position: relative;
-        top: 20vw;
-        left: 11%;
-        display: inline-block;
-        border-radius: 20%;
+      width: var(--zel_moraba);
+      height: var(--zel_moraba);
+      background-color: rgb(70, 70, 70);
+      position: relative;
+      top: 140px;
+      left: calc(50% - var(--zel_moraba) * 2 - var(--fasele_moraba));
+      display: inline-block;
+      border-radius: 20%;
     }
     .tomoraba4 {
         position: absolute;
