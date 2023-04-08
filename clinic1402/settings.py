@@ -14,7 +14,6 @@ from pathlib import Path
 import os
 
 # import locale
-#
 # locale.setlocale(locale.LC_ALL,"fa_IR.UTF-8")
 
 

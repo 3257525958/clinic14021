@@ -46,19 +46,18 @@
                         تاریخ تولد:
                     </p>
                     <input type="text" disabled class="inputclass">
-                    <button class="texbutton">
+                    <button class="texbutton" name="button_calandar" value="accept">
                         تقویم
                     </button >
                 </div>
-
+                <button class="regesterbuttonsave">
+                    ارسال
+                </button>
+                <button class="regesterbuttoncancel" name="button_back" value="accept">
+                    بازگشت
+                </button>
                 {% csrf_token %}
             </form>
-            <button class="regesterbuttonsave">
-                ارسال
-            </button>
-            <button class="regesterbuttoncancel">
-                بازگشت
-            </button>
 
         </div>
 </div>
