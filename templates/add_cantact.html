@@ -20,32 +20,32 @@
                     <p class=>
                         نام:
                     </p>
-                    <input type="text" size="11" class="inputclass">
+                    <input type="text" size="11" class="inputclass" name="firstname" value="{{ firstname }}">
                 </div>
                 <div class="box">
                     <p class=>
                          نام خانوادگی:
                     </p>
-                        <input type="text" class="inputclass">
+                        <input type="text" class="inputclass" name="lastname" value="{{ lastname }}">
                 </div>
                 <div class="box">
                     <p class=>
                          کدملی:
                     </p>
-                        <input type="number" maxlength="10" class="inputclass">
+                        <input type="number" maxlength="10" class="inputclass" name="melicod" value="{{ melicod }}">
                 </div>
                 <div class="box" >
                     <p class=>
                          تلفن:
                     </p>
-                        <input type="number" class="inputclass">
+                        <input type="number" class="inputclass" name="phonnumber" value="{{ phonnumber }}">
                 </div>
 
                 <div class="box">
                     <p class=>
                         تاریخ تولد:
                     </p>
-                    <input type="text" disabled class="inputclass">
+                    <input type="text" disabled class="inputclass" value="{{ berthday_shamsi }}">
                     <button class="texbutton" name="button_calandar" value="accept">
                         تقویم
                     </button >

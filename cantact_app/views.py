@@ -107,6 +107,10 @@ calandar_array_for_miladidate = [datetime.datetime.now()]
 calandar_array_for_miladidate[0] = datetime.datetime.now()
 calandar_array_for_shamsidate = [stradby(t[0])]
 calandar_array_for_shamsidate [0] = stradby(t[0])
+firstname_r = ['']
+lastname_r = ['']
+melicod_r = ['']
+phonnumber_r = ['']
 def addcantact(request):
     bbtn = request.POST.get("bbtn")
     button_year = request.POST.get("button_year")
@@ -116,13 +120,43 @@ def addcantact(request):
     button_downmounth = request.POST.get("button_downmounth")
     button_calandar = request.POST.get("button_calandar")
     button_back = request.POST.get("button_back")
+# ---------- در این قسمت داده هایی که به صفحه addcontact داده میشود در آرایه هایدمربوطه ذخیره میشه تا با زدن دکمه ها اونا نپرن ----
+    firstname = request.POST.get("firstname")
+    if (firstname != '') and ( firstname != None) :
+        firstname_r[0] = firstname
+    if firstname_r[0] == None :
+        firstname_r[0] = ''
 
+    lastname = request.POST.get("lastname")
+    if (lastname != '') and ( lastname != None) :
+        lastname_r[0] = lastname
+    if lastname_r[0] == None :
+        lastname_r[0] = ''
+
+    melicod = request.POST.get("melicod")
+    if (melicod != '') and ( melicod != None) :
+        melicod_r[0] = melicod
+    if melicod_r[0] == None :
+        melicod_r[0] = ''
+
+    phonnumber = request.POST.get("phonnumber")
+    if (phonnumber != '') and ( phonnumber != None) :
+        phonnumber_r[0] = phonnumber
+    if phonnumber_r[0] == None :
+        phonnumber_r[0] = ''
+# ****************************************************کلید برگشت**********************************************
     if button_back == "accept" :
         return render(request,'home.html')
+# ---------------------------------------------------------------------------------------------------------------
     if (bbtn != None) and (bbtn != '') and (calandar_array_for_show != None) and (calandar_array_for_show != '') :
-        return render(request, 'add_cantact.html', context={'berthday_shamsi':calandar_array_for_shamsidate[int(bbtn)],
-                                                            'berthday_miladi': datetime.datetime.date(calandar_array_for_miladidate[int(bbtn)]).strftime('%a %d %b %y'),
-                                                            })
+        return render(request,'add_cantact.html',context={ "firstname":firstname_r[0],
+                                                           "lastname":lastname_r[0],
+                                                           "melicod":melicod_r[0],
+                                                           "phonnumber":phonnumber_r[0],
+                                                           "year" : year[0],
+                                                           "berthday_shamsi":calandar_array_for_shamsidate[int(bbtn)],
+                                                          })
+# ---------------------------------------------------------------------------------
     if(button_year != None) and (button_year != ''):
         if int(button_year) < 1200:
             button_year = 1402
@@ -199,7 +233,11 @@ def addcantact(request):
             t[0] += timedelta(days=1)
         t[0] -=timedelta(days=1)
 
-        return render(request,'calander.html',context={"year" : year[0],
+        return render(request,'calander.html',context={"firstname":firstname_r[0],
+                                                       "lastname":lastname_r[0],
+                                                       "melicod":melicod_r[0],
+                                                       "phonnumber":phonnumber_r[0],
+                                                        "year" : year[0],
                                                         "mounth": mounth,
                                                         "calandar_aray":calandar_array_for_show,
                                                        })
