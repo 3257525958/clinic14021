@@ -6,6 +6,9 @@ from jalali_date import date2jalali,datetime2jalali
 from datetime import timedelta
 from cantact_app.models import accuntmodel
 from cantact_app.forms import accuntform
+
+import matplotlib
+matplotlib.use('Agg')
 # Create your views here.
 def strb(tdef):
     x = str(datetime2jalali(tdef).strftime('%a %d %b %y'))
@@ -260,14 +263,9 @@ def addcantactdef(request):
                                                         "calandar_aray":calandar_array_for_show,
                                                        })
     if button_send == 'accept':
-        import os
-        import matplotlib as mpl
-        if os.environ.get("DISPLAY",'') == '' :
-            print('no display found. Using non-intractive Agg backebd')
-            mpl.use('Agg')
-        import matplotlib.pyplot as plt
 
         print("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
+
         # root = tkinter.Tk()
         # print("rrrrrrrrrr")
         # root.withdraw()
