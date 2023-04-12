@@ -268,9 +268,9 @@ def addcantactdef(request):
         import matplotlib.pyplot as plt
 
         print("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
-        root = tkinter.Tk()
-        print("rrrrrrrrrr")
-        root.withdraw()
+        # root = tkinter.Tk()
+        # print("rrrrrrrrrr")
+        # root.withdraw()
         print("eeeeeeee")
         messagebox.showerror("error","error message")
         messagebox.showwarning("warning","warning message")
