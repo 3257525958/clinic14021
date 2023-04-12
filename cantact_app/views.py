@@ -260,11 +260,6 @@ def addcantactdef(request):
                                                         "calandar_aray":calandar_array_for_show,
                                                        })
     if button_send == 'accept':
-        # print("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
-        # root = tkinter.Tk()
-        # print("rrrrrrrrrr")
-        # root.withdraw()
-        # print("eeeeeeee")
         messagebox.showerror("error","error message")
         messagebox.showwarning("warning","warning message")
         messagebox.showinfo("information","informative message")
