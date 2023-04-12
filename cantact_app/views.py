@@ -1,7 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
+import tkinter
+from tkinter import messagebox
 import datetime
 from jalali_date import date2jalali,datetime2jalali
 from datetime import timedelta
+from cantact_app.models import accuntmodel
+from cantact_app.forms import accuntform
 # Create your views here.
 def strb(tdef):
     x = str(datetime2jalali(tdef).strftime('%a %d %b %y'))
@@ -111,16 +115,29 @@ firstname_r = ['']
 lastname_r = ['']
 melicod_r = ['']
 phonnumber_r = ['']
-def addcantact(request):
+berthmiladi_r = [datetime.datetime.now()]
+berthmiladi_r[0] = datetime.datetime.now()
+def addcantactdef(request):
     bbtn = request.POST.get("bbtn")
-    button_year = request.POST.get("button_year")
-    if (button_year == None) or (button_year == ''):
-        button_year = str(year[0])
+    input_year = request.POST.get("input_year")
+    if (input_year == None) or (input_year == ''):
+        input_year = str(year[0])
     button_upmounth = request.POST.get("button_upmounth")
     button_downmounth = request.POST.get("button_downmounth")
     button_calandar = request.POST.get("button_calandar")
     button_back = request.POST.get("button_back")
-# ---------- در این قسمت داده هایی که به صفحه addcontact داده میشود در آرایه هایدمربوطه ذخیره میشه تا با زدن دکمه ها اونا نپرن ----
+    button_send = request.POST.get('button_send')
+    formuser = accuntform(request.POST, request.FILES)
+# ---------اگر دکمه تقئیم خورد سال رو به هم اکنون تغییر میده دقت شود که در مواد دیگه مثل بالا زدن-سال یا چیزی دیگه - button calandar برابر acceot میشد-----------------------------------متوجه شدم که placeholder-مقدارش داخل input خواهد بود----------------------------------------------------------------
+    if button_calandar == "accept" :
+        year[0] = int(str('14' + stry(datetime.datetime.now())))
+        input_year = year[0]
+        t[0] = datetime.datetime.now()
+        calandar_array_for_show[0] = '0'
+        calandar_array_for_miladidate[0] = datetime.datetime.now()
+        calandar_array_for_shamsidate[0] = stradby(t[0])
+        berthmiladi_r[0] = datetime.datetime.now()
+    # ---------- در این قسمت داده هایی که به صفحه addcontact داده میشود در آرایه هایدمربوطه ذخیره میشه تا با زدن دکمه ها اونا نپرن ----
     firstname = request.POST.get("firstname")
     if (firstname != '') and ( firstname != None) :
         firstname_r[0] = firstname
@@ -146,9 +163,10 @@ def addcantact(request):
         phonnumber_r[0] = ''
 # ****************************************************کلید برگشت**********************************************
     if button_back == "accept" :
-        return render(request,'home.html')
-# ---------------------------------------------------------------------------------------------------------------
+        return redirect('/')
+# -----------------------------------------------------------------انتخاب روز تولد----------------------------------------------
     if (bbtn != None) and (bbtn != '') and (calandar_array_for_show != None) and (calandar_array_for_show != '') :
+        berthmiladi_r[0] = calandar_array_for_miladidate[int(bbtn)]
         return render(request,'add_cantact.html',context={ "firstname":firstname_r[0],
                                                            "lastname":lastname_r[0],
                                                            "melicod":melicod_r[0],
@@ -157,21 +175,21 @@ def addcantact(request):
                                                            "berthday_shamsi":calandar_array_for_shamsidate[int(bbtn)],
                                                           })
 # ---------------------------------------------------------------------------------
-    if(button_year != None) and (button_year != ''):
-        if int(button_year) < 1200:
-            button_year = 1402
-        if int(button_year) > int(str('14' + stry(datetime.datetime.now()))):
-            button_year = str(year[0])
+    if(input_year != None) and (input_year != ''):
+        if int(input_year) < 1200:
+            input_year = 1402
+        if int(input_year) > int(str('14' + stry(datetime.datetime.now()))):
+            input_year = str(year[0])
         mounth_of_t = strb(t[0])
-        while int(button_year) != year[0] :
-            if int(button_year) < year[0] :
+        while int(input_year) != year[0] :
+            if int(input_year) < year[0] :
                 if (strb(t[0]) == 'فروردین') and (strd(t[0]) == '1'):
                     year[0] -= 1
                     button_calandar = "accept"
                     button_upmounth = None
                     button_downmounth = None
                 t[0] -= timedelta(days=1)
-            if int(button_year) > year[0] :
+            if int(input_year) > year[0] :
                 if (strb(t[0]) == 'فروردین') and (strd(t[0]) == '1'):
                     year[0] += 1
                     button_calandar = "accept"
@@ -185,7 +203,7 @@ def addcantact(request):
         if strb(t[0]) == 'فروردین' :
             while strb(t[0]) != mounth_of_t :
                 t[0] += timedelta(days=1)
-
+# ----------------------------------------------------------------------------------------------------------
     if button_upmounth == "accept" :
         button_calandar = "accept"
         mounth = strb(t[0])
@@ -193,7 +211,7 @@ def addcantact(request):
             t[0] += timedelta(days=1)
         if strb(t[0]) == 'فروردین' :
             year[0] += 1
-
+# -----------------------------------------------------------------------------------------------------
     if button_downmounth == "accept" :
         button_calandar = "accept"
         mounth = strb(t[0])
@@ -201,6 +219,7 @@ def addcantact(request):
             t[0] -= timedelta(days=1)
         if strb(t[0]) == 'اسفند' :
             year[0] -= 1
+# ------------------------------------------------------------------------------------------------------
     if button_calandar == "accept" :
         mounth = strb(t[0])
         day_of_mounth = strd(t[0])
@@ -232,7 +251,6 @@ def addcantact(request):
             calandar_array_for_shamsidate.append(stradby(t[0]))
             t[0] += timedelta(days=1)
         t[0] -=timedelta(days=1)
-
         return render(request,'calander.html',context={"firstname":firstname_r[0],
                                                        "lastname":lastname_r[0],
                                                        "melicod":melicod_r[0],
@@ -241,4 +259,27 @@ def addcantact(request):
                                                         "mounth": mounth,
                                                         "calandar_aray":calandar_array_for_show,
                                                        })
+    if button_send == 'accept':
+        print("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
+        root = tkinter.Tk()
+        print("rrrrrrrrrr")
+        root.withdraw()
+        print("eeeeeeee")
+        messagebox.showerror("error","error message")
+        messagebox.showwarning("warning","warning message")
+        messagebox.showinfo("information","informative message")
+
+        # accuntmodel.objects.create(firstname=firstname_r[0],
+        #                            lastname=lastname_r[0],
+        #                            melicode=melicod_r[0],
+        #                            phonnumber=phonnumber_r[0],
+        #                            berthday=berthmiladi_r[0]
+        #                            )
+        # return redirect('/')
+
     return render(request,'add_cantact.html')
+def logindef(request):
+
+    return render(request,'login_form.html')
+def ignordef(request):
+    return render(request,'ignor_cantact.html')

@@ -21,5 +21,5 @@ from . import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home_app.urls')),
-    path('addcantact/', include('cantact_app.urls')),
+    path('cantact/', include('cantact_app.urls')),
 ]

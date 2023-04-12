@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from cantact_app.models import accuntmodel
+
+admin.site.register(accuntmodel)

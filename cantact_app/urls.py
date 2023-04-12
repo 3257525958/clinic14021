@@ -3,5 +3,7 @@ from django.urls import path
 from cantact_app import views
 
 urlpatterns = [
-    path('',views.addcantact),
+    path('login/',views.logindef),
+    path('addcontact/',views.addcantactdef),
+    path('ignor/',views.ignordef),
     ]
