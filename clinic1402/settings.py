@@ -13,8 +13,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import os
 
-import locale
-locale.setlocale(locale.LC_ALL,"fa_IR.UTF-8")
+# import locale
+# locale.setlocale(locale.LC_ALL,"fa_IR.UTF-8")
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -29,8 +29,8 @@ SECRET_KEY = 'django-insecure-*32e$h!2=b8_!uj22oqj-yjr7%8kieulax3u7qhlxswjl=rm(f
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-# ALLOWED_HOSTS = ['http://drmahdiasadpour.ir','drmahdiasadpour.ir','www.drmahdiasadpour.ir']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://drmahdiasadpour.ir','drmahdiasadpour.ir','www.drmahdiasadpour.ir']
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -106,22 +106,23 @@ WSGI_APPLICATION = 'clinic1402.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'clinic14hjq_db',
-#         'USER': 'root',
-#         'PASSWORD': 'ezfsulvgbv27tcs',
-#         'HOST': 'clinic1402-4-mpe-service',
-#
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'clinic14hjq_db',
+        'USER': 'root',
+        'PASSWORD': 'ezfsulvgbv27tcs',
+        'HOST': 'clinic1402-4-mpe-service',
+
+    }
+}
 
 
 # Password validation
