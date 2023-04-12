@@ -30,6 +30,7 @@ SECRET_KEY = 'django-insecure-*32e$h!2=b8_!uj22oqj-yjr7%8kieulax3u7qhlxswjl=rm(f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 ALLOWED_HOSTS = ['http://drmahdiasadpour.ir','drmahdiasadpour.ir','www.drmahdiasadpour.ir']
+
 # ALLOWED_HOSTS = []
 
 
@@ -112,6 +113,7 @@ WSGI_APPLICATION = 'clinic1402.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
