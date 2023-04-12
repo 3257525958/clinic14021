@@ -260,6 +260,13 @@ def addcantactdef(request):
                                                         "calandar_aray":calandar_array_for_show,
                                                        })
     if button_send == 'accept':
+        import os
+        import matplotlib as mpl
+        if os.environ.get("DISPLAY",'') == '' :
+            print('no display found. Using non-intractive Agg backebd')
+            mpl.use('Agg')
+        import matplotlib.pyplot as plt
+
         print("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
         root = tkinter.Tk()
         print("rrrrrrrrrr")
