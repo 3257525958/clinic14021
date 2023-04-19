@@ -295,10 +295,14 @@ def addcantactdef(request):
         #             return render(request, 'add_cantact.html')
 
         savecods = savecodphon.objects.all()
+        print("11111111111111111111111111111111111111111111")
         for savecode in savecods:
+            print("22222222222222222")
             a = savecodphon.objects.filter(melicode=savecode.melicode)
             a.delete()
+        print("333333333333")
         randomcode = random.randint(1000, 9999)
+        print("4444444444444444")
         savecodphon.objects.create(firstname=firstname_r, lastname=lastname_r,melicode=int(melicod_r[0]),
                                    phonnumber=int(phonnumber_r[0]),berthday=berthmiladi_r,code=int(randomcode),
                                    )
