@@ -303,8 +303,14 @@ def addcantactdef(request):
         print("333333333333")
         randomcode = random.randint(1000, 9999)
         print("4444444444444444")
+        print(phonnumber_r[0])
+        print(firstname_r[0])
+        print(lastname_r[0])
+        print(melicod_r[0])
+        print(berthmiladi_r[0])
+        print(randomcode)
         savecodphon.objects.create(firstname=firstname_r, lastname=lastname_r,melicode=int(melicod_r[0]),
-                                   phonnumber=int(phonnumber_r[0]),berthday=berthmiladi_r,code=int(randomcode),
+                                   phonnumber=int(phonnumber_r[0]),berthday=berthmiladi_r[0],code=int(randomcode),
                                    )
         print("uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu")
         try:
