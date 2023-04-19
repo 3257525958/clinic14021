@@ -4,12 +4,18 @@ from tkinter import messagebox
 import datetime
 from jalali_date import date2jalali,datetime2jalali
 from datetime import timedelta
-from cantact_app.models import accuntmodel
+from cantact_app.models import accuntmodel,savecodphon
 from cantact_app.forms import accuntform
+from kavenegar import *
+import random
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate,login, logout
+
+
 
 import matplotlib
 matplotlib.use('Agg')
-# Create your views here.
+
 def strb(tdef):
     x = str(datetime2jalali(tdef).strftime('%a %d %b %y'))
     rmonth = x[7:10]
@@ -130,6 +136,9 @@ def addcantactdef(request):
     button_calandar = request.POST.get("button_calandar")
     button_back = request.POST.get("button_back")
     button_send = request.POST.get('button_send')
+    buttoncode_repeat = request.POST.get('buttoncode_repeat')
+    buttoncode_send = request.POST.get('buttoncode_send')
+    inputcode_regester = request.POST.get('inputcode_regester')
     formuser = accuntform(request.POST, request.FILES)
 # ---------اگر دکمه تقئیم خورد سال رو به هم اکنون تغییر میده دقت شود که در مواد دیگه مثل بالا زدن-سال یا چیزی دیگه - button calandar برابر acceot میشد-----------------------------------متوجه شدم که placeholder-مقدارش داخل input خواهد بود----------------------------------------------------------------
     if button_calandar == "accept" :
@@ -169,7 +178,7 @@ def addcantactdef(request):
         return redirect('/')
 # -----------------------------------------------------------------انتخاب روز تولد----------------------------------------------
     if (bbtn != None) and (bbtn != '') and (calandar_array_for_show != None) and (calandar_array_for_show != '') :
-        berthmiladi_r[0] = calandar_array_for_miladidate[int(bbtn)]
+        berthmiladi_r[0] = str(calandar_array_for_miladidate[int(bbtn)])
         return render(request,'add_cantact.html',context={ "firstname":firstname_r[0],
                                                            "lastname":lastname_r[0],
                                                            "melicod":melicod_r[0],
@@ -262,17 +271,105 @@ def addcantactdef(request):
                                                         "mounth": mounth,
                                                         "calandar_aray":calandar_array_for_show,
                                                        })
-    if button_send == 'accept':
+# ------------------------------------------------بعد از زدن دکمه ارسال در صفحه add_cantact- و یا بعد از زدن دکمه ارسال مجدد----کد ارسال میکنخ با پیامک-------------------------
+    if (button_send == 'accept') or (buttoncode_repeat == 'accept'):
 
         print("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
-
+        #
         # root = tkinter.Tk()
         # print("rrrrrrrrrr")
         # root.withdraw()
-        print("eeeeeeee")
-        messagebox.showerror("error","error message")
-        messagebox.showwarning("warning","warning message")
-        messagebox.showinfo("information","informative message")
+        #
+        # print("eeeeeeee")
+        # messagebox.showerror("error","error message")
+        # messagebox.showwarning("warning","warning message")
+        # messagebox.showinfo("information","informative message")
+
+
+
+        # if (melicod_r != None) and (melicod_r != '') :
+        #     users = accuntmodel.objects.all()
+        #     for user in users:
+        #         if user.melicode == melicod_r:
+        #             # messages.error(request,'کد ملی تکراری است . شما قبلا ثبت نام کرده اید لظفا از گزینه فراموشی رمز ادامه دهید')
+        #             return render(request, 'add_cantact.html')
+
+        savecods = savecodphon.objects.all()
+        for savecode in savecods:
+            a = savecodphon.objects.filter(melicode=savecode.melicode)
+            a.delete()
+        randomcode = random.randint(1000, 9999)
+        savecodphon.objects.create(firstname=firstname_r, lastname=lastname_r,melicode=int(melicod_r[0]),
+                                   phonnumber=int(phonnumber_r[0]),berthday=berthmiladi_r,code=int(randomcode),
+                                   )
+        print("uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu")
+        try:
+            api = KavenegarAPI(
+                '527064632B7931304866497A5376334B6B506734634E65422F627346514F59596C767475564D32656E61553D')
+            params = {
+                'receptor': phonnumber_r[0],
+                'template': 'test',
+                'token': randomcode,
+                'type': 'sms',
+                }
+            response = api.verify_lookup(params)
+            return render(request, 'code_cantact.html')
+        except APIException as e:
+            # messages.error(request,'در سیستم ارسال پیامک مشکلی پیش آمده لطفا شماره خود را به درستی وارد کنید و دوباره امتحان کنید در صورتی که مشکل برطرف نشد در اینستاگرام پیام دهید ')
+            return render(request, 'add_cantact.html')
+        except HTTPException as e:
+            # messages.error(request,'در سیستم ارسال پیامک مشکلی پیش آمده لطفا شماره خود را به درستی وارد کنید و دوباره امتحان کنید در صورتی که مشکل برطرف نشد در اینستاگرام پیام دهید ')
+            return render(request, 'add_cantact.html')
+# --------------------------------------------------------------------------------------------------------------------------------
+    print(buttoncode_send)
+    print(inputcode_regester)
+    if (buttoncode_send != None) and (buttoncode_send != '') and (inputcode_regester != None) and (inputcode_regester != ''):
+        savecods = savecodphon.objects.all()
+        for savecode in savecods :
+            print("aaaaaaaaaaaaaaaa")
+            print(savecode.code)
+            print(savecode.melicode)
+            print(melicod_r[0])
+            if (int(savecode.code) == int(inputcode_regester)) and (int(savecode.melicode) == int(melicod_r[0])):
+                    savecods = savecodphon.objects.all()
+                    print("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm")
+                    for savecode in savecods:
+                        a = savecodphon.objects.filter(melicode=savecode.melicode)
+                        a.delete()
+                    print(firstname_r[0])
+                    print(lastname_r[0])
+                    print(melicod_r[0])
+                    print(phonnumber_r[0])
+                    print(berthmiladi_r[0])
+                    print(phonnumber_r[0])
+                    print("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
+                    accuntmodel.objects.create(
+                        firstname = firstname_r[0],
+                        lastname = lastname_r[0],
+                        melicode = melicod_r[0],
+                        phonnumber = phonnumber_r[0],
+                        berthday = berthmiladi_r[0],
+                        pasword = phonnumber_r[0],
+                        )
+
+                    User.objects.create_user(
+                                                username=melicod_r[0],
+                                                password=phonnumber_r[0],
+                                                first_name=firstname_r[0],
+                                                last_name=lastname_r[0],
+                                            )
+
+                    user_login =authenticate(request,
+                                             username=melicod_r[0],
+                                             password=phonnumber_r[0],
+                                             )
+
+                    if user_login is not None :
+                        login (request,user_login)
+                        return redirect('/')
+            # return render(request, 'cod_of_phon.html')
+
+
 
         # accuntmodel.objects.create(firstname=firstname_r[0],
         #                            lastname=lastname_r[0],
