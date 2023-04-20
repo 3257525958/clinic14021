@@ -310,7 +310,7 @@ def addcantactdef(request):
         print(berthmiladi_r[0])
         print(randomcode)
         savecodphon.objects.create(firstname=firstname_r, lastname=lastname_r,melicode=str(melicod_r[0]),
-                                   phonnumber=str(phonnumber_r[0]),berthday=str(berthmiladi_r[0]),code=str(randomcode),
+                                   phonnumber=str(phonnumber_r[0]),berthday=str(berthmiladi_r[0]),code=str(randomcode),expaiercode="2",
                                    )
         print("uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu")
         try:
