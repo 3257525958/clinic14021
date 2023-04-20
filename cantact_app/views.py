@@ -309,8 +309,8 @@ def addcantactdef(request):
         print(melicod_r[0])
         print(berthmiladi_r[0])
         print(randomcode)
-        savecodphon.objects.create(firstname=firstname_r, lastname=lastname_r,melicode=int(melicod_r[0]),
-                                   phonnumber=int(phonnumber_r[0]),berthday=berthmiladi_r[0],code=int(randomcode),
+        savecodphon.objects.create(firstname=firstname_r, lastname=lastname_r,melicode=str(melicod_r[0]),
+                                   phonnumber=str(phonnumber_r[0]),berthday=str(berthmiladi_r[0]),code=str(randomcode),
                                    )
         print("uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu")
         try:
@@ -356,10 +356,10 @@ def addcantactdef(request):
                     accuntmodel.objects.create(
                         firstname = firstname_r[0],
                         lastname = lastname_r[0],
-                        melicode = melicod_r[0],
-                        phonnumber = phonnumber_r[0],
-                        berthday = berthmiladi_r[0],
-                        pasword = phonnumber_r[0],
+                        melicode = str(melicod_r[0]),
+                        phonnumber =str( phonnumber_r[0]),
+                        berthday = str(berthmiladi_r[0]),
+                        pasword = str(phonnumber_r[0]),
                         )
 
                     User.objects.create_user(
