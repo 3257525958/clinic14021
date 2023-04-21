@@ -32,7 +32,7 @@ function otp_timer() {
 function startTimer()
 {
     document.getElementById('regesterbuttonrepeat').disabled = true;
-    document.getElementById('regesterbuttonsave').disabled = false;
+    // document.getElementById('regesterbuttonsave').disabled = false;
     minutes = 0;
     seconds = 59;
     document.getElementById('seconds').innerHTML = seconds;
