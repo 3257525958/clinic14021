@@ -6,8 +6,6 @@ function otp_timer() {
         document.getElementById('seconds').innerHTML = '00';
         document.getElementById('minutes').innerHTML = '0';
         document.getElementById('regesterbuttonrepeat').disabled = false;
-        document.getElementById('regesterbuttonsave').disabled = true;
-
     } else {
         seconds -= 1;
         document.getElementById('seconds').innerHTML = seconds;
@@ -32,7 +30,6 @@ function otp_timer() {
 function startTimer()
 {
     document.getElementById('regesterbuttonrepeat').disabled = true;
-    ocument.getElementById('regesterbuttonsave').disabled = false;
     minutes = 1;
     seconds = 59;
     document.getElementById('seconds').innerHTML = seconds;
