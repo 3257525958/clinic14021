@@ -383,7 +383,7 @@ body {
         display: inline-block;
         position: absolute;
         left: 3%;
-        top: 0x;
+        top: 0px;
       }
       .doctor2 {
         width: var(--wet);
@@ -391,7 +391,7 @@ body {
         display: inline-block;
         position: absolute;
         left: calc(var(--wet) + 7%);
-        top: 0x;
+        top: 0px;
       }
       .doctor3 {
         width: var(--wet);
