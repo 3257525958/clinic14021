@@ -126,6 +126,7 @@ melicod_r = ['']
 phonnumber_r = ['']
 berthmiladi_r = [datetime.datetime.now()]
 berthmiladi_r[0] = datetime.datetime.now()
+melicod_etebar = ['true']
 def addcantactdef(request):
     bbtn = request.POST.get("bbtn")
     input_year = request.POST.get("input_year")
@@ -164,7 +165,13 @@ def addcantactdef(request):
 
     melicod = request.POST.get("melicod")
     if (melicod != '') and ( melicod != None) :
-        melicod_r[0] = melicod
+        users = accuntmodel.objects.all()
+        melicod_etebar[0] = 'true'
+        for user in users :
+            if user.melicode == melicod :
+                melicod_etebar[0] = 'false'
+        if melicod_etebar[0] == 'true' :
+            melicod_r[0] = melicod
     if melicod_r[0] == None :
         melicod_r[0] = ''
 
@@ -185,7 +192,8 @@ def addcantactdef(request):
                                                            "phonnumber":phonnumber_r[0],
                                                            "year" : year[0],
                                                            "berthday_shamsi":calandar_array_for_shamsidate[int(bbtn)],
-                                                          })
+                                                           "melicod_etebar": melicod_etebar[0],
+                                                           })
 # ---------------------------------------------------------------------------------
     if(input_year != None) and (input_year != ''):
         if int(input_year) < 1200:
@@ -273,46 +281,14 @@ def addcantactdef(request):
                                                        })
 # ------------------------------------------------بعد از زدن دکمه ارسال در صفحه add_cantact- و یا بعد از زدن دکمه ارسال مجدد----کد ارسال میکنخ با پیامک-------------------------
     if (button_send == 'accept') or (buttoncode_repeat == 'accept'):
-
-        print("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
-        #
-        # root = tkinter.Tk()
-        # print("rrrrrrrrrr")
-        # root.withdraw()
-        #
-        # print("eeeeeeee")
-        # messagebox.showerror("error","error message")
-        # messagebox.showwarning("warning","warning message")
-        # messagebox.showinfo("information","informative message")
-
-
-
-        # if (melicod_r != None) and (melicod_r != '') :
-        #     users = accuntmodel.objects.all()
-        #     for user in users:
-        #         if user.melicode == melicod_r:
-        #             # messages.error(request,'کد ملی تکراری است . شما قبلا ثبت نام کرده اید لظفا از گزینه فراموشی رمز ادامه دهید')
-        #             return render(request, 'add_cantact.html')
-
         savecods = savecodphon.objects.all()
-        print("11111111111111111111111111111111111111111111")
         for savecode in savecods:
-            print("22222222222222222")
             a = savecodphon.objects.filter(melicode=savecode.melicode)
             a.delete()
-        print("333333333333")
         randomcode = random.randint(1000, 9999)
-        print("4444444444444444")
-        print(phonnumber_r[0])
-        print(firstname_r[0])
-        print(lastname_r[0])
-        print(melicod_r[0])
-        print(berthmiladi_r[0])
-        print(randomcode)
         savecodphon.objects.create(firstname=firstname_r, lastname=lastname_r,melicode=str(melicod_r[0]),
                                    phonnumber=str(phonnumber_r[0]),berthday=str(berthmiladi_r[0]),code=str(randomcode),expaiercode="2",
                                    )
-        print("uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu")
         try:
             api = KavenegarAPI(
                 '527064632B7931304866497A5376334B6B506734634E65422F627346514F59596C767475564D32656E61553D')
@@ -331,35 +307,21 @@ def addcantactdef(request):
             # messages.error(request,'در سیستم ارسال پیامک مشکلی پیش آمده لطفا شماره خود را به درستی وارد کنید و دوباره امتحان کنید در صورتی که مشکل برطرف نشد در اینستاگرام پیام دهید ')
             return render(request, 'add_cantact.html')
 # --------------------------------------------------------------------------------------------------------------------------------
-    print(buttoncode_send)
-    print(inputcode_regester)
     if (buttoncode_send != None) and (buttoncode_send != '') and (inputcode_regester != None) and (inputcode_regester != ''):
         savecods = savecodphon.objects.all()
         for savecode in savecods :
-            print("aaaaaaaaaaaaaaaa")
-            print(savecode.code)
-            print(savecode.melicode)
-            print(melicod_r[0])
             if (int(savecode.code) == int(inputcode_regester)) and (int(savecode.melicode) == int(melicod_r[0])):
                     savecods = savecodphon.objects.all()
-                    print("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm")
                     for savecode in savecods:
                         a = savecodphon.objects.filter(melicode=savecode.melicode)
                         a.delete()
-                    print(firstname_r[0])
-                    print(lastname_r[0])
-                    print(melicod_r[0])
-                    print(phonnumber_r[0])
-                    print(berthmiladi_r[0])
-                    print(phonnumber_r[0])
-                    print("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
                     accuntmodel.objects.create(
-                        firstname = firstname_r[0],
-                        lastname = lastname_r[0],
-                        melicode = str(melicod_r[0]),
-                        phonnumber =str( phonnumber_r[0]),
-                        berthday = str(berthmiladi_r[0]),
-                        pasword = str(phonnumber_r[0]),
+                        firstname=firstname_r[0],
+                        lastname=lastname_r[0],
+                        melicode=str(melicod_r[0]),
+                        phonnumber=str( phonnumber_r[0]),
+                        berthday=str(berthmiladi_r[0]),
+                        pasword=str(phonnumber_r[0]),
                         )
 
                     User.objects.create_user(
@@ -391,7 +353,54 @@ def addcantactdef(request):
 
     return render(request,'add_cantact.html')
 def logindef(request):
+    username = request.POST.get("username")
+    password = request.POST.get("password")
+    button_back = request.POST.get("button_back")
+    button_send = request.POST.get("button_send")
+    if button_back == 'accept' :
+        return redirect('/')
+    if button_send == 'accept' :
+        users = accuntmodel.objects.all()
+        for user in users :
+            if (username == user.melicode) and (password == user.pasword) :
+                user_login = authenticate(request,
+                                          username=username,
+                                          password=password
+                                          )
 
+                if user_login is not None:
+                    login(request, user_login)
+                    return redirect('/')
     return render(request,'login_cantact.html')
 def ignordef(request):
+    melicode = request.POST.get('melicode')
+    button_send = request.POST.get('button_send')
+    button_back = request.POST.get('button_back')
+    if button_send == 'accept':
+        if (melicode != '') and (melicode != None) :
+            users = accuntmodel.objects.all()
+            for user in users :
+                if user.melicode == melicode :
+                    randomcode = random.randint(1000, 9999)
+                    message = f"رمزجدید{randomcode}"
+                    print(message)
+                    try:
+                        api = KavenegarAPI(
+                            '527064632B7931304866497A5376334B6B506734634E65422F627346514F59596C767475564D32656E61553D')
+                        params = {
+                            'receptor': user.phonnumber,
+                            'template': 'test',
+                            'token': message,
+                            'type': 'sms',
+                        }
+                        response = api.verify_lookup(params)
+                        print("oooooooo")
+                        return render(request, 'code_cantact.html')
+                    except APIException as e:
+                        # messages.error(request,'در سیستم ارسال پیامک مشکلی پیش آمده لطفا شماره خود را به درستی وارد کنید و دوباره امتحان کنید در صورتی که مشکل برطرف نشد در اینستاگرام پیام دهید ')
+                        return render(request, 'add_cantact.html')
+                    except HTTPException as e:
+                        # messages.error(request,'در سیستم ارسال پیامک مشکلی پیش آمده لطفا شماره خود را به درستی وارد کنید و دوباره امتحان کنید در صورتی که مشکل برطرف نشد در اینستاگرام پیام دهید ')
+                        return render(request, 'add_cantact.html')
+
     return render(request,'ignor_cantact.html')

@@ -1,6 +1,6 @@
 var slideIndex = 0;
 
-showSlides();
+  showSlides();
 
 function showSlides() {
   var i;
