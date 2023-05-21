@@ -9,7 +9,6 @@
               icon: 'هشدار',
               title: 'کد ملی وارد شده قبلا ثبت شده است',
               text: 'برای ورود یا بازیابی رمز از لینک زیر استفاده کنید',
-              footer: 'colo ooooooooo' +
-                  '<a href="/cantact/login/">kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</a>'
+              footer: '<a href="/cantact/login/">kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</a>'
 })
     }
