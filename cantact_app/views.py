@@ -170,8 +170,7 @@ def addcantactdef(request):
         for user in users :
             if user.melicode == melicod :
                 melicod_etebar[0] = 'false'
-        if melicod_etebar[0] == 'true' :
-            melicod_r[0] = melicod
+        melicod_r[0] = melicod
     if melicod_r[0] == None :
         melicod_r[0] = ''
 
@@ -192,7 +191,7 @@ def addcantactdef(request):
                                                            "phonnumber":phonnumber_r[0],
                                                            "year" : year[0],
                                                            "berthday_shamsi":calandar_array_for_shamsidate[int(bbtn)],
-                                                           "melicod_etebar": melicod_etebar[0],
+                                                           "melicod_etebar": 'true',
                                                            })
 # ---------------------------------------------------------------------------------
     if(input_year != None) and (input_year != ''):
@@ -281,31 +280,44 @@ def addcantactdef(request):
                                                        })
 # ------------------------------------------------بعد از زدن دکمه ارسال در صفحه add_cantact- و یا بعد از زدن دکمه ارسال مجدد----کد ارسال میکنخ با پیامک-------------------------
     if (button_send == 'accept') or (buttoncode_repeat == 'accept'):
-        savecods = savecodphon.objects.all()
-        for savecode in savecods:
-            a = savecodphon.objects.filter(melicode=savecode.melicode)
-            a.delete()
-        randomcode = random.randint(1000, 9999)
-        savecodphon.objects.create(firstname=firstname_r, lastname=lastname_r,melicode=str(melicod_r[0]),
-                                   phonnumber=str(phonnumber_r[0]),berthday=str(berthmiladi_r[0]),code=str(randomcode),expaiercode="2",
-                                   )
-        try:
-            api = KavenegarAPI(
-                '527064632B7931304866497A5376334B6B506734634E65422F627346514F59596C767475564D32656E61553D')
-            params = {
-                'receptor': phonnumber_r[0],
-                'template': 'test',
-                'token': randomcode,
-                'type': 'sms',
-                }
-            response = api.verify_lookup(params)
-            return render(request, 'code_cantact.html')
-        except APIException as e:
-            # messages.error(request,'در سیستم ارسال پیامک مشکلی پیش آمده لطفا شماره خود را به درستی وارد کنید و دوباره امتحان کنید در صورتی که مشکل برطرف نشد در اینستاگرام پیام دهید ')
-            return render(request, 'add_cantact.html')
-        except HTTPException as e:
-            # messages.error(request,'در سیستم ارسال پیامک مشکلی پیش آمده لطفا شماره خود را به درستی وارد کنید و دوباره امتحان کنید در صورتی که مشکل برطرف نشد در اینستاگرام پیام دهید ')
-            return render(request, 'add_cantact.html')
+        if melicod_etebar[0] != 'false' :
+            savecods = savecodphon.objects.all()
+            for savecode in savecods:
+                a = savecodphon.objects.filter(melicode=savecode.melicode)
+                a.delete()
+            randomcode = random.randint(1000, 9999)
+            savecodphon.objects.create(firstname=firstname_r, lastname=lastname_r,melicode=str(melicod_r[0]),
+                                       phonnumber=str(phonnumber_r[0]),berthday=str(berthmiladi_r[0]),code=str(randomcode),expaiercode="2",
+                                       )
+            try:
+                api = KavenegarAPI(
+                    '527064632B7931304866497A5376334B6B506734634E65422F627346514F59596C767475564D32656E61553D')
+                params = {
+                    'receptor': phonnumber_r[0],
+                    'template': 'test',
+                    'token': randomcode,
+                    'type': 'sms',
+                    }
+                response = api.verify_lookup(params)
+                return render(request, 'code_cantact.html')
+            except APIException as e:
+                # messages.error(request,'در سیستم ارسال پیامک مشکلی پیش آمده لطفا شماره خود را به درستی وارد کنید و دوباره امتحان کنید در صورتی که مشکل برطرف نشد در اینستاگرام پیام دهید ')
+                return render(request, 'add_cantact.html')
+            except HTTPException as e:
+                # messages.error(request,'در سیستم ارسال پیامک مشکلی پیش آمده لطفا شماره خود را به درستی وارد کنید و دوباره امتحان کنید در صورتی که مشکل برطرف نشد در اینستاگرام پیام دهید ')
+                return render(request, 'add_cantact.html')
+
+
+        else :
+            print('uuuuuuuuuuuuuuuuuuuuuuu')
+            return render(request, 'add_cantact.html', context={"firstname": firstname_r[0],
+                                                    "lastname": lastname_r[0],
+                                                    "melicod": melicod_r[0],
+                                                    "phonnumber": phonnumber_r[0],
+                                                    "year": year[0],
+                                                    # "berthday_shamsi": calandar_array_for_shamsidate[int(bbtn)],
+                                                    "melicod_etebar": melicod_etebar[0],
+                                                    })
 # --------------------------------------------------------------------------------------------------------------------------------
     if (buttoncode_send != None) and (buttoncode_send != '') and (inputcode_regester != None) and (inputcode_regester != ''):
         savecods = savecodphon.objects.all()

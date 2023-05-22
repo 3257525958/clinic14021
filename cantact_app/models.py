@@ -10,6 +10,7 @@ class accuntmodel(models.Model):
     phonnumber = models.CharField(max_length=11 , default='0')
     berthday = models.CharField(max_length=100)
     pasword = models.CharField(max_length=100)
+    level = models.CharField(max_length=50,default='دسترسی معمولی')
     def __str__(self):
         return f"{self.melicode}"
 class savecodphon(models.Model):
