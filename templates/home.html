@@ -21,7 +21,11 @@
             </p>
 {#            <img class="imgnavbarprofile" src="{%  static "/img/user.png" %}" alt="user">#}
         </a>
-        <a href="">
+        <a href="javascript:var a = document.getElementById('cssmenu').hidden;
+                                if ( a == true ) {document.getElementById('cssmenu').hidden = false;}
+                                if ( a == false ) {document.getElementById('cssmenu').hidden = true;}
+                            console.log(a)
+                                ">
             <img class="imgnavbarmenuo" src="{%  static "/img/menuo.png" %}" alt="menuo">
             <p class="textnavbarmenuo">
                 منو
@@ -57,6 +61,13 @@
 
             <div class="slideshow-container">
 
+            <div id="cssmenu" hidden>
+              <ul>
+               <li><a href="#"><span>خانه</span></a></li>
+               <li><a href="#"><span>درباره من</span></a></li>
+               <li class="tt"><a href="#"name="exit" val><span>خروج</span></a></li>
+              </ul>
+            </div>
                 <div class="mySlides fade">
                 <img class="imgslidsho" src="{%  static "/img/team1.jpg" %}" >
                 </div>
@@ -210,6 +221,8 @@
         <div id="gap2"></div>
         <div id="gap2"></div>
         <div id="gap2"></div>
+
+
 
     <script src="{% static "/js/home.js" %}">    </script>
 

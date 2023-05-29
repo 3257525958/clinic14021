@@ -8,7 +8,7 @@ def home(request):
         us = accuntmodel.objects.all()
         for u in us:
             if u.melicode == request.user.username:
-                profilestatus[0] = f"{u.level} {u.firstname} {u.lastname}"
+                profilestatus[0] = f"{u.firstname} {u.lastname} عزیز خوش آمدید "
     else:
         profilestatus[0] = 'ورود به کاربری'
 
