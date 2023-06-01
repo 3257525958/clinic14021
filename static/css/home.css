@@ -522,99 +522,99 @@ body {
    } */
 
    /* منو */
-   #cssmenu,#cssmenu ul,#cssmenu ul li,#cssmenu ul ul {
-     list-style: none;
-     margin: 0;
-     padding: 0;
-     border: 0;
-   }
-   #cssmenu ul {
-     position: relative;
-     z-index: 597;
-     float: right;
-   }
+   /*#cssmenu,#cssmenu ul,#cssmenu ul li,#cssmenu ul ul {*/
+   /*  list-style: none;*/
+   /*  margin: 0;*/
+   /*  padding: 0;*/
+   /*  border: 0;*/
+   /*}*/
+   /*#cssmenu ul {*/
+   /*  position: relative;*/
+   /*  z-index: 597;*/
+   /*  float: right;*/
+   /*}*/
 
-   #cssmenu ul li.hover,
-   #cssmenu ul li:hover {
-     position: relative;
-     z-index: 599;
-     cursor: default;
-   }
-   #cssmenu ul ul {
-     margin-top: 1px;
-     visibility: hidden;
-     position: absolute;
-     top: 1px;
-     right: 99%;
-     z-index: 598;
-     width: 100%;
-   }
+   /*#cssmenu ul li.hover,*/
+   /*#cssmenu ul li:hover {*/
+   /*  position: relative;*/
+   /*  z-index: 599;*/
+   /*  cursor: default;*/
+   /*}*/
+   /*#cssmenu ul ul {*/
+   /*  margin-top: 1px;*/
+   /*  visibility: hidden;*/
+   /*  position: absolute;*/
+   /*  top: 1px;*/
+   /*  right: 99%;*/
+   /*  z-index: 598;*/
+   /*  width: 100%;*/
+   /*}*/
 
-   #cssmenu ul li:hover > ul {
-     visibility: visible;
-   }
+   /*#cssmenu ul li:hover > ul {*/
+   /*  visibility: visible;*/
+   /*}*/
 
-   #cssmenu {
-     font-size: 18px;
-     width: 200px;
-     box-shadow: 2px 5px 30px rgba(0,0,0,.1);
-   }
-   #cssmenu ul a,
-   #cssmenu ul a:link,
-   #cssmenu ul a:visited {
-     display: block;
-     color: #848889;
-     text-decoration: none;
-     font-weight: 300;
-   }
-   #cssmenu > ul {
-     float: none;
-   }
-   #cssmenu ul {
-     background: #fff;
-   }
-   #cssmenu > ul > li {
-     border-right: 3px solid #d7d8da;
-   }
-   #cssmenu > ul > li > a {
-     padding: 10px 20px;
-   }
-   #cssmenu > ul > li:hover {
-     border-right: 3px solid #3dbd99;
-   }
-   #cssmenu ul li:hover > a {
-     color: #3dbd99;
-   }
-   #cssmenu > ul > li:hover {
-     background: #f6f6f6;
-   }
+   /*#cssmenu {*/
+   /*  font-size: 18px;*/
+   /*  width: 200px;*/
+   /*  box-shadow: 2px 5px 30px rgba(0,0,0,.1);*/
+   /*}*/
+   /*#cssmenu ul a,*/
+   /*#cssmenu ul a:link,*/
+   /*#cssmenu ul a:visited {*/
+   /*  display: block;*/
+   /*  color: #848889;*/
+   /*  text-decoration: none;*/
+   /*  font-weight: 300;*/
+   /*}*/
+   /*#cssmenu > ul {*/
+   /*  float: none;*/
+   /*}*/
+   /*#cssmenu ul {*/
+   /*  background: #fff;*/
+   /*}*/
+   /*#cssmenu > ul > li {*/
+   /*  border-right: 3px solid #d7d8da;*/
+   /*}*/
+   /*#cssmenu > ul > li > a {*/
+   /*  padding: 10px 20px;*/
+   /*}*/
+   /*#cssmenu > ul > li:hover {*/
+   /*  border-right: 3px solid #3dbd99;*/
+   /*}*/
+   /*#cssmenu ul li:hover > a {*/
+   /*  color: #3dbd99;*/
+   /*}*/
+   /*#cssmenu > ul > li:hover {*/
+   /*  background: #f6f6f6;*/
+   /*}*/
 
-   /* زیرمنوها - زیر آیتم ها */
-   #cssmenu ul ul a:link,
-   #cssmenu ul ul a:visited {
-     font-weight: 400;
-     font-size: 14px;
-   }
-   #cssmenu ul ul {
-     width: 180px;
-   }
-   #cssmenu ul ul a {
-     padding: 8px 0;
-     border-bottom: 2px solid #eeeeee;
-   }
-   #cssmenu ul ul li {
-     padding: 0 20px;
-     background: #fff;
-   }
-   #cssmenu ul ul li:last-child {
-     padding-bottom: 10px;
-   }
-   #cssmenu ul ul li:first-child {
-     padding-top: 10px;
-   }
-   #cssmenu ul ul li:last-child > a {
-     border-bottom: none;
-   }
+   /*!* زیرمنوها - زیر آیتم ها *!*/
+   /*#cssmenu ul ul a:link,*/
+   /*#cssmenu ul ul a:visited {*/
+   /*  font-weight: 400;*/
+   /*  font-size: 14px;*/
+   /*}*/
+   /*#cssmenu ul ul {*/
+   /*  width: 180px;*/
+   /*}*/
+   /*#cssmenu ul ul a {*/
+   /*  padding: 8px 0;*/
+   /*  border-bottom: 2px solid #eeeeee;*/
+   /*}*/
+   /*#cssmenu ul ul li {*/
+   /*  padding: 0 20px;*/
+   /*  background: #fff;*/
+   /*}*/
+   /*#cssmenu ul ul li:last-child {*/
+   /*  padding-bottom: 10px;*/
+   /*}*/
+   /*#cssmenu ul ul li:first-child {*/
+   /*  padding-top: 10px;*/
+   /*}*/
+   /*#cssmenu ul ul li:last-child > a {*/
+   /*  border-bottom: none;*/
+   /*}*/
 
 
 
@@ -626,11 +626,11 @@ body {
 img {vertical-align: middle;} */
 
 /* Slideshow container */
-/*.slideshow-container {*/
-/*  width: 100%;*/
-/*  position: relative;*/
-/*  margin-top: 100px;*/
-/*}*/
+.slideshow-container {
+  width: 100%;
+  position: relative;
+  margin-top: 100px;
+}
 
 /* Caption text */
 .text {
