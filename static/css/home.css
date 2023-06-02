@@ -78,6 +78,42 @@ body {
         position: absolute;
 
     }
+    .manislidermenuo {
+      direction: rtl;
+      width: 100%;
+      height: 230px;
+      position: relative;
+      top: 15px;
+  }
+  .imgslidsho {
+      position: absolute;
+      width: 100%;
+      height: 205px;
+      border-radius: 2%;
+      z-index: 0;
+      top:0px;
+
+    }
+    #gap1 {
+      position: relative;
+      display: inline-block;
+      top:15px;
+      width: 100%;
+      height: 30px;
+      background: linear-gradient( var(--vcolorh),rgb(255,255,255), var(--vcolorh));
+      border-radius: 5px;
+    }
+    .textgap1{
+      position: absolute;
+      color: black;
+      left: calc( 50% - 30px );
+      top: 290px;
+      font-family: tahoma;
+      font-size: 100%;
+      font-style: oblique;
+
+      }
+
       .part4{
         position: relative;
         width: 410px;
@@ -154,7 +190,7 @@ body {
         top:0px;
         width: 100%;
         height: 50px;
-        background: white;
+        background: linear-gradient( var(--vcolorh),rgb(255,255,255), var(--vcolorh));
         border-radius: 5px;
 
     }
@@ -413,7 +449,7 @@ body {
         top:80px;
         width: 100%;
         height: 20px;
-        background: linear-gradient(black,white,black);
+        background: linear-gradient( var(--vcolorh),rgb(255,255,255), var(--vcolorh));
         border-radius: 5px;
 
     }
@@ -626,11 +662,11 @@ body {
 img {vertical-align: middle;} */
 
 /* Slideshow container */
-.slideshow-container {
-  width: 100%;
-  position: relative;
-  margin-top: 100px;
-}
+/*.slideshow-container {*/
+/*  width: 100%;*/
+/*  position: relative;*/
+/*  margin-top: 100px;*/
+/*}*/
 
 /* Caption text */
 .text {
