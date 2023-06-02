@@ -8,7 +8,8 @@
           showConfirmButton: false,
           timer: 1500
                  });
-        window.open('http://drmahdiasadpour.ir','_self');
+        window.location = "/";
+        // window.open('http://drmahdiasadpour.ir','_self');
 }
 
 
