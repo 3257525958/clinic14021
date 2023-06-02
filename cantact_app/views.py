@@ -389,18 +389,40 @@ def logindef(request):
                         login(request, user_login)
                         # return redirect('/')
     return render(request,'login_cantact.html',context={'vorod_etebar':vorod_etebar[0],})
+
 def ignordef(request):
     melicode = request.POST.get('melicode')
+    if ( melicode != '' ) and ( melicode != None) :
+        melicod_r[0] = melicode
     button_send = request.POST.get('button_send')
     button_back = request.POST.get('button_back')
+    buttoncode_repeat = request.POST.get('buttoncode_repeat')
+    buttoncode_send = request.POST.get('buttoncode_send')
+    inputcode_regester = request.POST.get('inputcode_regester')
+
+    if (buttoncode_send != None) and (buttoncode_send != '') and (inputcode_regester != None) and (inputcode_regester != ''):
+        users = accuntmodel.objects.all()
+        for user in users:
+            if user.melicode == melicod_r[0]:
+                if inputcode_regester == user.pasword :
+                    user_login =authenticate(request,
+                                             username=melicod_r[0],
+                                             password=inputcode_regester,
+                                             )
+
+                    if user_login is not None :
+                        login (request,user_login)
+                        return redirect('/')
+
+
+
     if button_send == 'accept':
-        if (melicode != '') and (melicode != None) :
+        if (melicod_r[0] != '') and (melicod_r[0] != None) :
             users = accuntmodel.objects.all()
             for user in users :
-                if user.melicode == melicode :
+                if user.melicode == melicod_r[0] :
                     randomcode = random.randint(1000, 9999)
                     message = f"رمزجدید{randomcode}"
-                    print(message)
                     try:
                         api = KavenegarAPI(
                             '527064632B7931304866497A5376334B6B506734634E65422F627346514F59596C767475564D32656E61553D')
@@ -411,7 +433,17 @@ def ignordef(request):
                             'type': 'sms',
                         }
                         response = api.verify_lookup(params)
-                        print("oooooooo")
+                        a = accuntmodel.objects.filter(melicode=user.melicode)
+                        a.update(pasword=randomcode)
+                        b = User.objects.filter(username=user.melicode)
+                        b.delete()
+                        User.objects.create_user(
+                            username=melicod_r[0],
+                            password=str(randomcode),
+                            first_name=user.firstname,
+                            last_name=user.lastname,
+                        )
+
                         return render(request, 'code_cantact.html')
                     except APIException as e:
                         # messages.error(request,'در سیستم ارسال پیامک مشکلی پیش آمده لطفا شماره خود را به درستی وارد کنید و دوباره امتحان کنید در صورتی که مشکل برطرف نشد در اینستاگرام پیام دهید ')

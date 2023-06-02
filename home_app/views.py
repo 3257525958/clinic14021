@@ -9,6 +9,9 @@ def home(request):
         for u in us:
             if u.melicode == request.user.username:
                 profilestatus[0] = f"{u.firstname} {u.lastname} عزیز خوش آمدید "
+                break;
+            else:
+                profilestatus[0] = 'ورود به کاربری'
     else:
         profilestatus[0] = 'ورود به کاربری'
 
