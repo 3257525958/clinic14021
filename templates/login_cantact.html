@@ -18,13 +18,13 @@
             <form action="" class="nametable" method="POST">
                 <div class="box">
                     <p class=>
-                        کاربری:
+                        کاربری(کد ملی):
                     </p>
                     <input type="text" size="11" class="inputclass" name="username">
                 </div>
                 <div class="box">
                     <p class=>
-                         رمز:
+                         رمز(شماره تلفن):
                     </p>
                         <input type="text" class="inputclass" name="password">
                 </div>
@@ -36,10 +36,15 @@
             </button>
             <a class="save" href="/cantact/addcontact/">ثبت نام کنید</a>
             <a class="save1" href="/cantact/ignor/">رمزتان را فراموش کرده اید</a>
+            <label id="vorod_etebar"  >{{ vorod_etebar }}</label>
+
            {% csrf_token %}
     </form>
         </div>
     </div>
-    
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{% static "/js/login_cantact.js" %}"></script>
+
 </body>
 </html>

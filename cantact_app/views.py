@@ -309,7 +309,6 @@ def addcantactdef(request):
 
 
         else :
-            print('uuuuuuuuuuuuuuuuuuuuuuu')
             return render(request, 'add_cantact.html', context={"firstname": firstname_r[0],
                                                     "lastname": lastname_r[0],
                                                     "melicod": melicod_r[0],
@@ -364,26 +363,32 @@ def addcantactdef(request):
         # return redirect('/')
 
     return render(request,'add_cantact.html')
+vorod_etebar = ['f']
 def logindef(request):
     username = request.POST.get("username")
     password = request.POST.get("password")
     button_back = request.POST.get("button_back")
     button_send = request.POST.get("button_send")
+    vorod_etebar[0] = 'f'
     if button_back == 'accept' :
         return redirect('/')
     if button_send == 'accept' :
+        vorod_etebar[0] = 'false'
         users = accuntmodel.objects.all()
         for user in users :
-            if (username == user.melicode) and (password == user.pasword) :
-                user_login = authenticate(request,
-                                          username=username,
-                                          password=password
-                                          )
+            if username == user.melicode :
+                vorod_etebar[0] = 'false_in_paswoord'
+                if password == user.pasword :
+                    vorod_etebar[0] = 'true'
+                    user_login = authenticate(request,
+                                              username=username,
+                                              password=password
+                                              )
 
-                if user_login is not None:
-                    login(request, user_login)
-                    return redirect('/')
-    return render(request,'login_cantact.html')
+                    if user_login is not None:
+                        login(request, user_login)
+                        # return redirect('/')
+    return render(request,'login_cantact.html',context={'vorod_etebar':vorod_etebar[0],})
 def ignordef(request):
     melicode = request.POST.get('melicode')
     button_send = request.POST.get('button_send')
