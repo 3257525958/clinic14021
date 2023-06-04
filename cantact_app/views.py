@@ -363,23 +363,23 @@ def addcantactdef(request):
         # return redirect('/')
 
     return render(request,'add_cantact.html')
-vorod_etebar = ['f']
+login_etebar = ['false']
 def logindef(request):
     username = request.POST.get("username")
     password = request.POST.get("password")
     button_back = request.POST.get("button_back")
     button_send = request.POST.get("button_send")
-    vorod_etebar[0] = 'f'
+    login_etebar[0] = 'false'
     if button_back == 'accept' :
         return redirect('/')
     if button_send == 'accept' :
-        vorod_etebar[0] = 'false'
+        login_etebar[0] = 'false'
         users = accuntmodel.objects.all()
         for user in users :
             if username == user.melicode :
-                vorod_etebar[0] = 'false_in_paswoord'
+                login_etebar[0] = 'false_in_paswoord'
                 if password == user.pasword :
-                    vorod_etebar[0] = 'true'
+                    login_etebar[0] = 'true'
                     user_login = authenticate(request,
                                               username=username,
                                               password=password
@@ -388,15 +388,14 @@ def logindef(request):
                     if user_login is not None:
                         login(request, user_login)
                         # return redirect('/')
-    return render(request,'login_cantact.html',context={'vorod_etebar':vorod_etebar[0],})
-
+    return render(request,'login_cantact.html',context={'login_etebar':login_etebar[0],})
+ignor_etebar = ['false']
 def ignordef(request):
+    ignor_etebar[0] = 'false'
     melicode = request.POST.get('melicode')
-    if ( melicode != '' ) and ( melicode != None) :
+    if ( melicode != '') and ( melicode != None) :
         melicod_r[0] = melicode
     button_send = request.POST.get('button_send')
-    button_back = request.POST.get('button_back')
-    buttoncode_repeat = request.POST.get('buttoncode_repeat')
     buttoncode_send = request.POST.get('buttoncode_send')
     inputcode_regester = request.POST.get('inputcode_regester')
 
@@ -412,12 +411,15 @@ def ignordef(request):
 
                     if user_login is not None :
                         login (request,user_login)
-                        return redirect('/')
-
+                        ignor_etebar[0] = 'succes'
+                        # return redirect('/')
 
 
     if button_send == 'accept':
+        if (melicod_r[0] == '') or (melicod_r[0] == None) :
+            ignor_etebar[0] = 'empty'
         if (melicod_r[0] != '') and (melicod_r[0] != None) :
+            ignor_etebar[0] = 'nonempty'
             users = accuntmodel.objects.all()
             for user in users :
                 if user.melicode == melicod_r[0] :
@@ -452,4 +454,4 @@ def ignordef(request):
                         # messages.error(request,'در سیستم ارسال پیامک مشکلی پیش آمده لطفا شماره خود را به درستی وارد کنید و دوباره امتحان کنید در صورتی که مشکل برطرف نشد در اینستاگرام پیام دهید ')
                         return render(request, 'add_cantact.html')
 
-    return render(request,'ignor_cantact.html')
+    return render(request,'ignor_cantact.html',context={'ignor_etebar':ignor_etebar[0],})
