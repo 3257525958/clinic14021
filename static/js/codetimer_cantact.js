@@ -66,3 +66,6 @@ startTimer();
     }
 
 
+    if ( etebar.innerHTML == 'false' ){
+        Swal.fire('رمز اشتباه است یک دقیقه دیگر رمز جدید دریافت کنید')
+    }

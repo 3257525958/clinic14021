@@ -358,6 +358,9 @@ def addcantactdef(request):
                         return render(request,'code_cantact.html',context={'etebar':e},)
                         # return redirect('/')
             # return render(request, 'cod_of_phon.html')
+            else:
+                e = 'false'
+                return render(request, 'code_cantact.html', context={'etebar': e}, )
 
 
 
@@ -424,7 +427,9 @@ def ignordef(request):
                         return render(request,'code_cantact.html',context={'etebar':e},)
                         # ignor_etebar[0] = 'succes'
                         # return redirect('/')
-
+                else:
+                    e = 'false'
+                    return render(request, 'code_cantact.html', context={'etebar': e}, )
 
     if button_send == 'accept':
         if (melicod_r[0] == '') or (melicod_r[0] == None) :
