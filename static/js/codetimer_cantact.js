@@ -1,6 +1,8 @@
 var minutes;
 var seconds;
 var set_inteval;
+var etebar = document.getElementById("etebar");
+
 function otp_timer() {
     if (seconds == 0 & minutes == 0) {
         document.getElementById('seconds').innerHTML = '00';
@@ -40,3 +42,27 @@ function startTimer()
     set_inteval = setInterval( 'otp_timer()', 1000 );
 }
 startTimer();
+
+
+
+        console.log(etebar.innerHTML);
+    if ( etebar.innerHTML == 'succes' ){
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'با موفقیت وارد شدید',
+          showConfirmButton: false,
+          timer: 2000
+                 });
+
+
+    setTimeout('redirectt()',500);
+    }
+
+
+    function redirectt()
+    {
+        window.location = "/";
+    }
+
+

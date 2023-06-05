@@ -163,10 +163,12 @@ def addcantactdef(request):
     if lastname_r[0] == None :
         lastname_r[0] = ''
 
+
+    melicod_etebar[0] = 'f'
     melicod = request.POST.get("melicod")
     if (melicod != '') and ( melicod != None) :
-        users = accuntmodel.objects.all()
         melicod_etebar[0] = 'true'
+        users = accuntmodel.objects.all()
         for user in users :
             if user.melicode == melicod :
                 melicod_etebar[0] = 'false'
@@ -181,6 +183,7 @@ def addcantactdef(request):
         phonnumber_r[0] = ''
 # ****************************************************کلید برگشت**********************************************
     if button_back == "accept" :
+        melicod_r[0] = ''
         return redirect('/')
 # -----------------------------------------------------------------انتخاب روز تولد----------------------------------------------
     if (bbtn != None) and (bbtn != '') and (calandar_array_for_show != None) and (calandar_array_for_show != '') :
@@ -280,7 +283,9 @@ def addcantactdef(request):
                                                        })
 # ------------------------------------------------بعد از زدن دکمه ارسال در صفحه add_cantact- و یا بعد از زدن دکمه ارسال مجدد----کد ارسال میکنخ با پیامک-------------------------
     if (button_send == 'accept') or (buttoncode_repeat == 'accept'):
-        if melicod_etebar[0] != 'false' :
+        if (melicod_r[0] == '') and (melicod_r[0] == None) :
+            melicod_etebar[0] = 'empty'
+        if melicod_etebar[0] == 'true' :
             savecods = savecodphon.objects.all()
             for savecode in savecods:
                 a = savecodphon.objects.filter(melicode=savecode.melicode)
@@ -349,7 +354,9 @@ def addcantactdef(request):
 
                     if user_login is not None :
                         login (request,user_login)
-                        return redirect('/')
+                        e = 'succes'
+                        return render(request,'code_cantact.html',context={'etebar':e},)
+                        # return redirect('/')
             # return render(request, 'cod_of_phon.html')
 
 
@@ -362,18 +369,20 @@ def addcantactdef(request):
         #                            )
         # return redirect('/')
 
-    return render(request,'add_cantact.html')
-login_etebar = ['false']
+    return render(request,'add_cantact.html',context={'melicod_etebar':melicod_etebar[0]})
+login_etebar = ['f']
 def logindef(request):
     username = request.POST.get("username")
     password = request.POST.get("password")
     button_back = request.POST.get("button_back")
     button_send = request.POST.get("button_send")
-    login_etebar[0] = 'false'
+    login_etebar[0] = 'f'
     if button_back == 'accept' :
         return redirect('/')
     if button_send == 'accept' :
         login_etebar[0] = 'false'
+        if (username == '' ) or (username == None):
+            login_etebar[0] = 'empty'
         users = accuntmodel.objects.all()
         for user in users :
             if username == user.melicode :
@@ -411,7 +420,9 @@ def ignordef(request):
 
                     if user_login is not None :
                         login (request,user_login)
-                        ignor_etebar[0] = 'succes'
+                        e = 'succes'
+                        return render(request,'code_cantact.html',context={'etebar':e},)
+                        # ignor_etebar[0] = 'succes'
                         # return redirect('/')
 
 

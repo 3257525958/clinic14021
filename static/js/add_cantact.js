@@ -11,3 +11,12 @@
               footer: '<a href="/cantact/login/">ورود و بازیابی رمز</a>'
 })
     }
+
+    if ( etebar.innerHTML == 'empty')
+    {
+        Swal.fire({
+            icon: 'warning',
+            title: 'لطفا کد ملی را وارد کنید'
+        })
+
+    }
