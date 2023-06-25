@@ -1,7 +1,5 @@
 from django.db import models
 
-from django.db import models
-
 
 class accuntmodel(models.Model):
     firstname = models.CharField(max_length=100)

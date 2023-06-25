@@ -13,8 +13,6 @@ function addjob() {
     document.getElementsByClassName('newjob')[3].hidden = true;
     document.getElementsByClassName('regesterbuttonsave')[3].hidden = true;
 }
-
-
 function deletjob() {
     document.getElementById('textobject').innerHTML = "حذف فعالیت از لیست"
     document.getElementById('regester').hidden = false;
@@ -29,9 +27,6 @@ function deletjob() {
     document.getElementsByClassName('newjob')[3].hidden = true;
     document.getElementsByClassName('regesterbuttonsave')[3].hidden = true;
 }
-
-
-
 function addemployee() {
     document.getElementById('textobject').innerHTML = "تعریف نیروی جدید برای فعالیتها"
     document.getElementById('regester').hidden = false;
@@ -46,9 +41,6 @@ function addemployee() {
     document.getElementsByClassName('newjob')[3].hidden = true;
     document.getElementsByClassName('regesterbuttonsave')[3].hidden = true;
 }
-
-
-
 function deletemployee() {
     document.getElementById('textobject').innerHTML = "حذف نیرو از لیست "
     document.getElementById('regester').hidden = false;
@@ -63,3 +55,27 @@ function deletemployee() {
     document.getElementsByClassName('regesterbuttonsave')[3].style.top = "130px";
     document.getElementById('regesterbuttoncancel').style.top = "130px";
 }
+
+var newjobetebar = document.getElementById("newjob_etebar");
+        console.log("kjijujjhkjhkj");
+        console.log(newjobetebar.innerHTML);
+    if ( newjobetebar.innerHTML == 'ok' ){
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'با موفقیت وارد شدید',
+          showConfirmButton: false,
+          timer: 2000
+                 });
+        setTimeout('redirectt()',500);
+    }    if ( newjobetebar.innerHTML == 'false') {
+        Swal.fire({
+            icon: 'warning',
+            title: 'لطفا فعالیت مورد نظرتان را وارد گنید'
+        })
+
+    }
+    function redirectt()
+    {
+        window.location = "/";
+    }

@@ -1,32 +1,34 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="jobs.css">
+    <link rel="stylesheet" type="text/css" href="{% static "css/jobs.css" %}">
     <title>Document</title>
 </head>
 <body dir="rtl" >
-<form action="" method="POST">
-
     <div class="navbar" >
-        <button id="navbarbtn1" onmousemove ="addjob()">
+        <button id="navbarbtn1" onclick="addjob()">
             تعریف فعالیت جدید 
         </button>
-        <button id="navbarbtn2" onmousemove="deletjob()">
+        <button id="navbarbtn2" onclick="deletjob()">
              حذف فعالیت از لیست
         </button>
-        <button id="navbarbtn3" onmousemove="addemployee()">
+        <button id="navbarbtn3" onclick="addemployee()">
             تعریف نیروی جدید برای فعالیتها
         </button>
-        <button id="navbarbtn4" onmousemove="deletemployee()">
+        <button id="navbarbtn4" onclick="deletemployee()">
             حذف نیرو از لیست 
         </button>
     </div>
 
+<form action="" method="POST">
+{% csrf_token %}
+
     <div class="maine">
-        <img class="imgmaine" src="css/img/massage2.jpg" alt="addcantact">
+        <img class="imgmaine" src="{% static "/img/massage2.jpg" %}" alt="addcantact">
         <p id="textobject">
         </p>
         <div id="regester" hidden >
@@ -35,7 +37,7 @@
                     <p class=>
                         نام فعالیت :
                     </p>
-                    <input type="text" size="1" class="inputclass">
+                    <input type="text" size="1" class="inputclass" name="newjob">
                 </div>
                 <div class="newjob" hidden >
                     <p class=>
@@ -66,7 +68,7 @@
                     <input type="checkbox">k
                     <br>
                 </div>
-            <button class="regesterbuttonsave" hidden >
+            <button class="regesterbuttonsave" name="savejob" value="accept" hidden>
                 ثبت فعالیت
             </button>
             <button class="regesterbuttonsave" hidden >
@@ -85,7 +87,11 @@
         </div>
     </div>
 
+
+<label id="newjob_etebar"  >{{ newjob_etebar }}</label>
 </form>  
-<script src="jobs.js"></script>  
+
+<script src="{% static "/js/jobs.js" %}">    </script>
+
 </body>
 </html>

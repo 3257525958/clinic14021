@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home_app.urls')),
     path('cantact/', include('cantact_app.urls')),
+    path('jobs/', include('jobs_app.urls')),
 ]

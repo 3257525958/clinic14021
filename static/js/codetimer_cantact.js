@@ -54,9 +54,7 @@ startTimer();
           showConfirmButton: false,
           timer: 2000
                  });
-
-
-    setTimeout('redirectt()',500);
+        setTimeout('redirectt()',500);
     }
 
 
