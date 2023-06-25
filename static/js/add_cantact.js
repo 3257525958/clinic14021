@@ -20,3 +20,19 @@
         })
 
     }
+    if ( etebar.innerHTML == 'tellerror')
+    {
+        Swal.fire({
+            icon: 'warning',
+            title: 'شماره تلفن اشتباه وارد شده است'
+        })
+
+    }
+    if ( etebar.innerHTML == 'neterror')
+    {
+        Swal.fire({
+            icon: 'warning',
+            title: 'شبکه اینترنت شما متصل نمیشود'
+        })
+
+    }

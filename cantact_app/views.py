@@ -306,12 +306,20 @@ def addcantactdef(request):
                 response = api.verify_lookup(params)
                 return render(request, 'code_cantact.html')
             except APIException as e:
-                # messages.error(request,'در سیستم ارسال پیامک مشکلی پیش آمده لطفا شماره خود را به درستی وارد کنید و دوباره امتحان کنید در صورتی که مشکل برطرف نشد در اینستاگرام پیام دهید ')
-                return render(request, 'add_cantact.html')
+                m = 'tellerror'
+                return render(request, 'add_cantact.html', context={'melicod_etebar': m})
             except HTTPException as e:
-                # messages.error(request,'در سیستم ارسال پیامک مشکلی پیش آمده لطفا شماره خود را به درستی وارد کنید و دوباره امتحان کنید در صورتی که مشکل برطرف نشد در اینستاگرام پیام دهید ')
-                return render(request, 'add_cantact.html')
+                m = 'neterror'
+                return render(request, 'add_cantact.html', context={'melicod_etebar': m}, )
 
+            #     return render(request, 'code_cantact.html')
+            # except APIException as e:
+            #     # messages.error(request,'در سیستم ارسال پیامک مشکلی پیش آمده لطفا شماره خود را به درستی وارد کنید و دوباره امتحان کنید در صورتی که مشکل برطرف نشد در اینستاگرام پیام دهید ')
+            #     return render(request, 'add_cantact.html')
+            # except HTTPException as e:
+            #     # messages.error(request,'در سیستم ارسال پیامک مشکلی پیش آمده لطفا شماره خود را به درستی وارد کنید و دوباره امتحان کنید در صورتی که مشکل برطرف نشد در اینستاگرام پیام دهید ')
+            #     return render(request, 'add_cantact.html')
+            #
 
         else :
             return render(request, 'add_cantact.html', context={"firstname": firstname_r[0],
@@ -404,9 +412,7 @@ def logindef(request):
 ignor_etebar = ['false']
 def ignordef(request):
     ignor_etebar[0] = 'false'
-    melicode = request.POST.get('melicode')
-    if ( melicode != '') and ( melicode != None) :
-        melicod_r[0] = melicode
+    melicod_r[0] = request.POST.get('melicode')
     button_send = request.POST.get('button_send')
     buttoncode_send = request.POST.get('buttoncode_send')
     inputcode_regester = request.POST.get('inputcode_regester')
@@ -464,10 +470,13 @@ def ignordef(request):
 
                         return render(request, 'code_cantact.html')
                     except APIException as e:
+                        m = 'tellerror'
                         # messages.error(request,'در سیستم ارسال پیامک مشکلی پیش آمده لطفا شماره خود را به درستی وارد کنید و دوباره امتحان کنید در صورتی که مشکل برطرف نشد در اینستاگرام پیام دهید ')
-                        return render(request, 'add_cantact.html')
+                        return render(request, 'add_cantact.html',context={'melicod_etebar':m})
                     except HTTPException as e:
+                        m = 'neterror'
                         # messages.error(request,'در سیستم ارسال پیامک مشکلی پیش آمده لطفا شماره خود را به درستی وارد کنید و دوباره امتحان کنید در صورتی که مشکل برطرف نشد در اینستاگرام پیام دهید ')
-                        return render(request, 'add_cantact.html')
+                        # return render(request, 'add_cantact.html')
+                        return render(request, 'add_cantact.html', context={'melicod_etebar': m},)
 
     return render(request,'ignor_cantact.html',context={'ignor_etebar':ignor_etebar[0],})

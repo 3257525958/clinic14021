@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="jobs.css">
+    <title>Document</title>
+</head>
+<body dir="rtl" >
+<form action="" method="POST">
+
+    <div class="navbar" >
+        <button id="navbarbtn1" onmousemove ="addjob()">
+            تعریف فعالیت جدید 
+        </button>
+        <button id="navbarbtn2" onmousemove="deletjob()">
+             حذف فعالیت از لیست
+        </button>
+        <button id="navbarbtn3" onmousemove="addemployee()">
+            تعریف نیروی جدید برای فعالیتها
+        </button>
+        <button id="navbarbtn4" onmousemove="deletemployee()">
+            حذف نیرو از لیست 
+        </button>
+    </div>
+
+    <div class="maine">
+        <img class="imgmaine" src="css/img/massage2.jpg" alt="addcantact">
+        <p id="textobject">
+        </p>
+        <div id="regester" hidden >
+            <div  class="nametable">
+                <div class="newjob" hidden >
+                    <p class=>
+                        نام فعالیت :
+                    </p>
+                    <input type="text" size="1" class="inputclass">
+                </div>
+                <div class="newjob" hidden >
+                    <p class=>
+                        لیست فعالیتها :
+                    </p>
+                    <input type="checkbox">k
+                    <br>
+                </div>
+                <div class="newjob" hidden >
+                    <p class=>
+                        فعالیتهای مورد نظر را انتخاب کنبد :
+                    </p>
+                    <input type="checkbox">k
+                    <br>
+                    <p for="melicode">
+                        کد ملی فرد مورد نظر را وارد کنید |:
+                    </p>
+                    <input type="number" name="melicode" class="inputclass"> 
+                </div>
+                <div class="newjob" hidden >
+                    <p for="melicode">
+                        کد ملی فرد مورد نظر را وارد کنید:
+                    </p>
+                    <input type="number" name="melicode" class="inputclass"> 
+                    <p class=>
+                        فعالیتهای مورد نظر برای حذف را انتخاب کنبد:
+                    </p>
+                    <input type="checkbox">k
+                    <br>
+                </div>
+            <button class="regesterbuttonsave" hidden >
+                ثبت فعالیت
+            </button>
+            <button class="regesterbuttonsave" hidden >
+                حدف فعالیت
+            </button>
+            <button class="regesterbuttonsave" hidden >
+                ثبت فعالیت برای فرد
+            </button>
+            <button class="regesterbuttonsave" hidden >
+                حذف فعالیت برای فرد
+            </button>
+            <button id="regesterbuttoncancel" onclick = example();>
+                بازگشت
+            </button>
+        </div>
+        </div>
+    </div>
+
+</form>  
+<script src="jobs.js"></script>  
+</body>
+</html>
