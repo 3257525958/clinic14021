@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home_app.apps.HomeAppConfig',
     'cantact_app.apps.CantactAppConfig',
-     'jalali_date',
+    'jalali_date',
+    'jobs_app.apps.JobsAppConfig',
 
 
 ]
