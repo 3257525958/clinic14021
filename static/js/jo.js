@@ -1,12 +1,10 @@
 
 var newjobetebar = document.getElementById("newjobetebar");
-        console.log("kjijujjhkjhkj");
-        console.log(newjobetebar.innerHTML);
     if ( newjobetebar.innerHTML == 'ok' ){
         Swal.fire({
           position: 'top-end',
           icon: 'success',
-          title: 'با موفقیت وارد شدید',
+          title: 'فعالیت مورد نظد با موفقیت ثبت شد',
           showConfirmButton: false,
           timer: 2000
                  });
