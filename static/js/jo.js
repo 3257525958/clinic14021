@@ -4,10 +4,11 @@ var newjobetebar = document.getElementById("newjobetebar");
         Swal.fire({
           position: 'top-end',
           icon: 'success',
-          title: 'فعالیت مورد نظد با موفقیت ثبت شد',
+          title: 'فعالیت مورد نظر با موفقیت ثبت شد',
           showConfirmButton: false,
           timer: 2000
                  });
+        newjobetebar.innerHTML = 'true';
         setTimeout('redirectt()',500);
     }
 
