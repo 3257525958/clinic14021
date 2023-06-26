@@ -9,7 +9,7 @@ var newjobetebar = document.getElementById("newjobetebar");
           timer: 2000
                  });
         newjobetebar.innerHTML = 'true';
-        setTimeout('redirectt()',500);
+        setTimeout('redirectt()',1000);
     }
 
     if ( newjobetebar.innerHTML == 'false') {

@@ -9,6 +9,7 @@ def jobs(request):
     print(newjob)
     print(newjob_etebar[0])
     print(savejob)
+    newjob_etebar[0] = 'true'
     if savejob == 'accept':
         print("1")
         newjob_etebar[0] = "true"
