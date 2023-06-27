@@ -51,13 +51,17 @@ def jobs(request):
                     a.delete()
                 c += 1
 # ***************************************************************تعریف دسترسی برای هر کدوم از نیروها ******************************************************
-    employee_etebar[0] = 'true'
+    employee_etebar[0] = 't'
+    useretebar[0] = 'f'
 
     users = accuntmodel.objects.all()
-    useretebar[0] = 'false'
     for user in users :
         if user.melicode == melicode :
             useretebar[0] = 'true'
+            break
+        else:
+            useretebar[0] = 'false'
+
     js = jobsmodel.objects.all()
     jobemployee.clear()
     for j in js :
@@ -74,8 +78,12 @@ def jobs(request):
                 for j in js:
                     if c == int(employeeforjob):
                         employeemodel.objects.create(employee=j.employee, melicod=melicode)
-                        message[0] = f"{j.employee}+برای+{melicode}"
+                        users = accuntmodel.objects.all()
                         employee_etebar[0] = 'addmployee'
+                        for user in users :
+                            if user.melicode == melicode :
+                                message[0] = f"{j.employee} برای {user.firstname} {user.lastname} "
+                                break
                         break
                     c += 1
 
