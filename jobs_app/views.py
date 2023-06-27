@@ -54,13 +54,6 @@ def jobs(request):
     employee_etebar[0] = 't'
     useretebar[0] = 'f'
 
-    users = accuntmodel.objects.all()
-    for user in users :
-        if user.melicode == melicode :
-            useretebar[0] = 'true'
-            break
-        else:
-            useretebar[0] = 'false'
 
     js = jobsmodel.objects.all()
     jobemployee.clear()
@@ -70,6 +63,13 @@ def jobs(request):
     lenj = len(js)
 
     if addbuttonemployee == 'accept' :
+        users = accuntmodel.objects.all()
+        for user in users:
+            if user.melicode == melicode:
+                useretebar[0] = 'true'
+                break
+            else:
+                useretebar[0] = 'false'
         employee_etebar[0] = 'ok'
         if (employeeforjob != '') and (employeeforjob != None)  :
             if useretebar[0] == 'true':
