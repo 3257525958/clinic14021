@@ -112,7 +112,7 @@ function deletjob() {
 }
 function addemployee() {
     document.getElementById('textobject').innerHTML = "تعریف نیروی جدید برای فعالیتها";
-    document.getElementById('regester').style.height = j+70+"px";
+    document.getElementById('regester').style.height = j+150+"px";
     document.getElementById('regester').hidden = false;
     document.getElementsByClassName('newjob')[0].hidden = true;
     document.getElementsByClassName('regesterbuttonsave')[0].hidden = true;
@@ -120,10 +120,11 @@ function addemployee() {
     document.getElementsByClassName('regesterbuttonsave')[1].hidden = true;
     document.getElementsByClassName('newjob')[2].hidden = false;
     document.getElementsByClassName('regesterbuttonsave')[2].hidden = false;
-    document.getElementsByClassName('regesterbuttonsave')[2].style.top = j+"px";
-    document.getElementById('regesterbuttoncancel').style.top = j+"px";
+    document.getElementsByClassName('regesterbuttonsave')[2].style.top = j+50+"px";
+    document.getElementById('regesterbuttoncancel').style.top = j+50+"px";
     document.getElementsByClassName('newjob')[3].hidden = true;
     document.getElementsByClassName('regesterbuttonsave')[3].hidden = true;
+    document.getElementsByClassName('inputclass')[2].style.top = j+"px";
 }
 function deletemployee() {
     document.getElementById('textobject').innerHTML = "حذف نیرو از لیست ";
