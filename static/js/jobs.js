@@ -1,10 +1,12 @@
 
 var newjobetebar = document.getElementById("newjobetebar");
+var newemployetebar = document.getElementById("newemployetebar");
 var deletjobetebar = document.getElementById("deletjob");
 var lenjob = document.getElementById('lenjob');
 var useretebar = document.getElementById('useretebar');
 var employeeetebar = document.getElementById('employeeetebar');
 var employeemessage = document.getElementById('employeemessage');
+var deletemployetebar = document.getElementById('deletemployetebar');
 var    j = ( lenjob.innerHTML  * 19 ) + 100 ;
     console.log(j);
 
@@ -22,9 +24,16 @@ var    j = ( lenjob.innerHTML  * 19 ) + 100 ;
     if ( newjobetebar.innerHTML == 'false') {
         Swal.fire({
             icon: 'warning',
-            title: 'لطفا فعالیت مورد نظرتان را وارد گنید'
+            title: 'لطفا فعالیت مورد نظرتان را وارد کنید'
         })
     }
+    if ( newemployetebar.innerHTML == 'false') {
+        Swal.fire({
+            icon: 'warning',
+            title: 'لطفا عنوان کارمند را وارد کنید'
+        })
+    }
+
     if ( newjobetebar.innerHTML == 'repeat') {
         Swal.fire({
             icon: 'warning',
@@ -42,6 +51,7 @@ var    j = ( lenjob.innerHTML  * 19 ) + 100 ;
           showConfirmButton: false,
           timer: 2000
                  });
+        setTimeout('redirectt()',1000);
     }
 
 
@@ -49,6 +59,12 @@ var    j = ( lenjob.innerHTML  * 19 ) + 100 ;
         Swal.fire({
             icon: 'warning',
             title: 'یک فعالیت برای حذف انتخاب کنید'
+        })
+    }
+        if ( useretebar.innerHTML == 'empty') {
+        Swal.fire({
+            icon: 'warning',
+            title: 'لطفا کد ملی کارمند مورد نظر را وارد کنید'
         })
     }
 
@@ -71,14 +87,56 @@ var    j = ( lenjob.innerHTML  * 19 ) + 100 ;
         Swal.fire({
           position: 'top-end',
           icon: 'success',
-          title: 'با موفقیت ثبت شد'+m,
+          title: m + 'با موفقیت ثبت شد',
+          showConfirmButton: false,
+          timer: 2000
+                 });
+        setTimeout('redirectt()',1000);
+    }
+    if ( employeeetebar.innerHTML == 'repeat' ){
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: m + 'قبلا ثبت شده است ',
           showConfirmButton: false,
           timer: 2000
                  });
         setTimeout('redirectt()',1000);
     }
 
+        if ( deletemployetebar.innerHTML == 'empty') {
+        Swal.fire({
+            icon: 'warning',
+            title: 'لطفا کد ملی کارمند مورد نظر را وارد کنید'
+        })
+    }
+        if ( deletemployetebar.innerHTML == 'emptyjob') {
+        Swal.fire({
+            icon: 'warning',
+            title: 'لطفا یکی از مشاغل کارمند مورد نظر رابرای حذف انتخاب کنید'
+        })
+    }
+        if ( deletemployetebar.innerHTML == 'false') {
+        Swal.fire({
+            icon: 'warning',
+            title: 'کد ملی وارد شده جز کارمندان تعریف نشده است'
+        })
+        // setTimeout('redirectt()',1000);
+    }
 
+    if ( deletemployetebar.innerHTML == 'delet' ){
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'حدف شغل از کارمند مورد نظر با موفقیت انجام شد',
+          showConfirmButton: false,
+          timer: 2000
+                 });
+        setTimeout('redirectt()',1000);
+    }
+        if ( deletemployetebar.innerHTML == 'true') {
+            deletemployee()
+    }
 
 function addjob() {
     document.getElementById('textobject').innerHTML = "تعریف فعالیت جدید";
@@ -93,7 +151,10 @@ function addjob() {
     document.getElementsByClassName('newjob')[2].hidden = true;
     document.getElementsByClassName('regesterbuttonsave')[2].hidden = true;
     document.getElementsByClassName('newjob')[3].hidden = true;
+    document.getElementsByClassName('newjob')[4].hidden = true;
     document.getElementsByClassName('regesterbuttonsave')[3].hidden = true;
+    document.getElementsByClassName('regesterbuttonsave')[4].hidden = true;
+    document.getElementById('te').hidden = false
 }
 function deletjob() {
     document.getElementById('textobject').innerHTML = "حذف فعالیت از لیست";
@@ -108,11 +169,14 @@ function deletjob() {
     document.getElementsByClassName('newjob')[2].hidden = true;
     document.getElementsByClassName('regesterbuttonsave')[2].hidden = true;
     document.getElementsByClassName('newjob')[3].hidden = true;
+    document.getElementsByClassName('newjob')[4].hidden = true;
     document.getElementsByClassName('regesterbuttonsave')[3].hidden = true;
+    document.getElementsByClassName('regesterbuttonsave')[4].hidden = true;
+    document.getElementById('te').hidden = false
 }
 function addemployee() {
     document.getElementById('textobject').innerHTML = "تعریف نیروی جدید برای فعالیتها";
-    document.getElementById('regester').style.height = j+150+"px";
+    document.getElementById('regester').style.height = j+130+"px";
     document.getElementById('regester').hidden = false;
     document.getElementsByClassName('newjob')[0].hidden = true;
     document.getElementsByClassName('regesterbuttonsave')[0].hidden = true;
@@ -123,12 +187,16 @@ function addemployee() {
     document.getElementsByClassName('regesterbuttonsave')[2].style.top = j+50+"px";
     document.getElementById('regesterbuttoncancel').style.top = j+50+"px";
     document.getElementsByClassName('newjob')[3].hidden = true;
+    document.getElementsByClassName('newjob')[4].hidden = true;
     document.getElementsByClassName('regesterbuttonsave')[3].hidden = true;
     document.getElementsByClassName('inputclass')[2].style.top = j+"px";
+    document.getElementsByClassName('regesterbuttonsave')[4].hidden = true;
+    document.getElementById('te').hidden = false
 }
-function deletemployee() {
-    document.getElementById('textobject').innerHTML = "حذف نیرو از لیست ";
+function melicodesearch() {
+    document.getElementById('textobject').innerHTML = "حذف نیرو از لیست";
     document.getElementById('regester').hidden = false;
+    document.getElementById('regester').style.height = "200px";
     document.getElementsByClassName('newjob')[0].hidden = true;
     document.getElementsByClassName('regesterbuttonsave')[0].hidden = true;
     document.getElementsByClassName('newjob')[1].hidden = true;
@@ -136,8 +204,30 @@ function deletemployee() {
     document.getElementsByClassName('newjob')[2].hidden = true;
     document.getElementsByClassName('regesterbuttonsave')[2].hidden = true;
     document.getElementsByClassName('newjob')[3].hidden = false;
+    document.getElementsByClassName('newjob')[4].hidden = true;
+    document.getElementsByClassName('regesterbuttonsave')[3].hidden = true;
+    document.getElementsByClassName('regesterbuttonsave')[4].hidden = false;
+    document.getElementsByClassName('regesterbuttonsave')[4].style.top = "130px";
+    document.getElementsByClassName('regesterbuttonsave')[4].style.left = "40px";
+    document.getElementById('regesterbuttoncancel').hidden = true;
+}
+
+function deletemployee() {
+    document.getElementById('textobject').innerHTML = "حذف نیرو از لیست ";
+    document.getElementById('regester').hidden = false;
+    document.getElementById('regester').style.height = j+130+"px";
+    document.getElementsByClassName('newjob')[0].hidden = true;
+    document.getElementsByClassName('regesterbuttonsave')[0].hidden = true;
+    document.getElementsByClassName('newjob')[1].hidden = true;
+    document.getElementsByClassName('regesterbuttonsave')[1].hidden = true;
+    document.getElementsByClassName('newjob')[2].hidden = true;
+    document.getElementsByClassName('regesterbuttonsave')[2].hidden = true;
+    document.getElementsByClassName('newjob')[3].hidden = true;
+    document.getElementsByClassName('newjob')[4].hidden = false;
     document.getElementsByClassName('regesterbuttonsave')[3].hidden = false;
-    document.getElementsByClassName('regesterbuttonsave')[3].style.top = "130px";
-    document.getElementById('regesterbuttoncancel').style.top = "130px";
+    document.getElementsByClassName('regesterbuttonsave')[3].style.top = j+50+"px";
+    document.getElementById('regesterbuttoncancel').style.top = j+50+"px";
+    document.getElementsByClassName('regesterbuttonsave')[4].hidden = true;
+    document.getElementById('te').hidden = false
 }
 

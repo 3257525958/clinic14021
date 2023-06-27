@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static "css/jobs.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/jo.css" %}">
     <title>Document</title>
 </head>
 <body dir="rtl" >
@@ -19,8 +19,11 @@
         <button id="navbarbtn3" onclick="addemployee()">
             تعریف نیروی جدید برای فعالیتها
         </button>
-        <button id="navbarbtn4" onclick="deletemployee()">
+        <button id="navbarbtn4" onclick="melicodesearch()">
             حذف نیرو از لیست 
+        </button>
+        <button id="navbarbtn5" onclick="deletemployee()">
+             لیست
         </button>
     </div>
 
@@ -70,12 +73,19 @@
                     <p for="meli">
                         کد ملی فرد مورد نظر را وارد کنید:
                     </p>
-                    <input type="number" name="meli" class="inputclass">
-                    <p class=>
+                    <input type="number" name="employmelicode" class="inputclass">
+                </div>
+                <div class="newjob" hidden >
+                    <p for="meli">
+                        {{ employename }}
+                    </p>
+                    <p id="te" hidden>
                         فعالیتهای مورد نظر برای حذف را انتخاب کنبد:
                     </p>
-                    <input type="checkbox">k
-                    <br>
+                    {% for emp in  employerjoblist %}
+                        <input type="radio" name="empnumber" value="{{ forloop.counter0 }}">{{ emp }}
+                        <br>
+                    {% endfor %}
                 </div>
             <button class="regesterbuttonsave" name="savejob" value="accept" hidden>
                 ثبت فعالیت
@@ -86,10 +96,13 @@
             <button class="regesterbuttonsave" name="addbuttonemployee" value="accept" hidden >
                 ثبت فعالیت برای فرد
             </button>
-            <button class="regesterbuttonsave" hidden >
+            <button class="regesterbuttonsave" name="deletemploy" value="accept" hidden >
                 حذف فعالیت برای فرد
             </button>
-            <button id="regesterbuttoncancel" onclick = example();>
+            <button class="regesterbuttonsave" name="cearshmelicode" value="accept" hidden >
+                بررسی کد ملی
+            </button>
+            <button id="regesterbuttoncancel" >
                 بازگشت
             </button>
         </div>
@@ -98,16 +111,18 @@
 
 
 <label id="newjobetebar"  hidden >{{ newjob_etebar }}</label>
+<label id="newemployetebar"  hidden >{{ newemploy_etebar }}</label>
 <label id="deletjob"  hidden >{{ delet_etebar }}</label>
 <label id="lenjob"  hidden >{{ actcount }}</label>
 <label id="useretebar"  hidden >{{ useretebar }}</label>
 <label id="employeeetebar"  hidden >{{ employeeetebar }}</label>
 <label id="employeemessage"  hidden >{{ employeemessage }}</label>
+<label id="deletemployetebar"  hidden >{{ deletemployetebar }}</label>
 </form>
 
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="{% static "/js/jo.js" %}">    </script>
+<script src="{% static "/js/jobs.js" %}">    </script>
 
 </body>
 </html>

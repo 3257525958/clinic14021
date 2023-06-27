@@ -3,12 +3,16 @@ from jobs_app.models import jobsmodel , employeemodel
 from cantact_app.models import accuntmodel
 
 newjob_etebar = ['true']
+newemploy_etebar = ['true']
 delet_etebar = ['true']
 employee_etebar = ['true']
 jobemployee = ['true']
 jobemployee[0] = 'true'
 useretebar = ['true']
 message = ['true']
+deletemploy_etebar = ['t']
+employerjoblist = ['t']
+melicodearay = ['']
 def jobs(request):
     savejob = request.POST.get("savejob")
     newjob = request.POST.get("newjob")
@@ -18,23 +22,31 @@ def jobs(request):
     addbuttonemployee =request.POST.get("addbuttonemployee")
     employeeforjob = request.POST.get("employeeforjob")
     melicode = request.POST.get("melicode")
+    deletemploy = request.POST.get("deletemploy")
+    employmelicode = request.POST.get("employmelicode")
+    empnumber = request.POST.get("empnumber")
+    cearshmelicode = request.POST.get("cearshmelicode")
 # ****************************************************اضافه کردن یک فعالیت********************************************************
     newjob_etebar[0] = 'true'
+    newemploy_etebar[0] = 'true'
     if savejob == 'accept':
         newjob_etebar[0] = "true"
         if (newjob == '') or (newjob == None):
             newjob_etebar[0] = "false"
         else:
-            js = jobsmodel.objects.all()
-            a = 0
-            for j in js :
-                if j.job == newjob:
-                    a = 1
-                    newjob_etebar[0] = "repeat"
-                    break
-            if a == 0 :
-                jobsmodel.objects.create(job=newjob,employee=newemployee)
-                newjob_etebar[0] = "ok"
+            if (newemployee == '') or (newemployee == None):
+                newemploy_etebar[0] = 'false'
+            else:
+                js = jobsmodel.objects.all()
+                a = 0
+                for j in js :
+                    if j.job == newjob:
+                        a = 1
+                        newjob_etebar[0] = "repeat"
+                        break
+                if a == 0 :
+                    jobsmodel.objects.create(job=newjob,employee=newemployee)
+                    newjob_etebar[0] = "ok"
 # ******************************************************************حذف کردن یک فعالیت******************************************************
     delet_etebar[0] = 'true'
     js = jobsmodel.objects.all()
@@ -63,41 +75,103 @@ def jobs(request):
     lenj = len(js)
 
     if addbuttonemployee == 'accept' :
-        users = accuntmodel.objects.all()
-        for user in users:
-            if user.melicode == melicode:
-                useretebar[0] = 'true'
-                break
-            else:
-                useretebar[0] = 'false'
-        employee_etebar[0] = 'ok'
+        if (melicode != '') and (melicode != None):
+            users = accuntmodel.objects.all()
+            for user in users:
+                if user.melicode == melicode:
+                    useretebar[0] = 'true'
+                    break
+                else:
+                    useretebar[0] = 'false'
+        else:
+            useretebar[0] = 'empty'
         if (employeeforjob != '') and (employeeforjob != None)  :
+            employee_etebar[0] = 'None'
             if useretebar[0] == 'true':
                 c = 0
                 js = jobsmodel.objects.all()
                 for j in js:
                     if c == int(employeeforjob):
-                        employeemodel.objects.create(employee=j.employee, melicod=melicode)
-                        users = accuntmodel.objects.all()
-                        employee_etebar[0] = 'addmployee'
-                        for user in users :
-                            if user.melicode == melicode :
-                                message[0] = f"{j.employee} برای {user.firstname} {user.lastname} "
-                                break
-                        break
+                        employees = employeemodel.objects.all()
+                        for emp in employees :
+                            if emp.melicod == melicode :
+                                if emp.employee == j.employee :
+                                    employee_etebar[0] = "repeat"
+                                    message[0] = f" شغل {j.employee} برای {user.firstname} {user.lastname} "
+                        if employee_etebar[0] != "repeat" :
+                            employeemodel.objects.create(employee=j.employee, melicod=melicode)
+                            users = accuntmodel.objects.all()
+                            employee_etebar[0] = 'addmployee'
+                            for user in users :
+                                if user.melicode == melicode :
+                                    message[0] = f" شغل {j.employee} برای {user.firstname} {user.lastname} "
+                                    break
+                            break
                     c += 1
+        else:
+            employee_etebar[0] = 'ok'
 
+# ****************************************************************حدف یک شغل برای یک کارمند*************************************************
+    employename = ''
+    deletemploy_etebar[0] = 't'
+    # if (employmelicode != '') and (employmelicode != None):
+    #     melicodearay[0] = str(employmelicode)
+    employerjoblist.clear()
+    employs = employeemodel.objects.all()
+    for emp in employs :
+        if emp.melicod == employmelicode :
+            employerjoblist.append(emp.employee)
+    lenemploy = len(employerjoblist)
+    if cearshmelicode == 'accept' :
+        # employmelicode = melicodearay[0]
+        if (employmelicode !='') and (employmelicode != None) :
+            employs = employeemodel.objects.all()
+            for emp in employs :
+                if emp.melicod == employmelicode :
+                    deletemploy_etebar[0] = 'true'
+                    melicodearay[0] = employmelicode
+                    users = accuntmodel.objects.all()
+                    for user in users :
+                        if user.melicode == employmelicode :
+                            employename = user.lastname + user.firstname
+                else:
+                    deletemploy_etebar[0] = "false"
+                    melicodearay[0] = ''
+        else:
+            deletemploy_etebar[0] = "empty"
 
+    if deletemploy == "accept":
+        if (empnumber != '') and (empnumber != None):
+            employmelicode = melicodearay[0]
+            employerjoblist.clear()
+            employs = employeemodel.objects.all()
+            for emp in employs:
+                if emp.melicod == employmelicode:
+                    employerjoblist.append(emp.employee)
+            lenemploy = len(employerjoblist)
+            print(empnumber)
+            print(employerjoblist)
+            a = employeemodel.objects.filter(melicod=employmelicode, employee=employerjoblist[int(empnumber)])
+            a.delete()
+            deletemploy_etebar[0] = 'delet'
+            melicodearay[0] = ''
+        else:
+            deletemploy_etebar[0] = 'emptyjob'
+            melicodearay[0] = ''
 
-
-# *****************************************************************************************************************
+# ****************************************************************************************************************************************
     js = jobsmodel.objects.all()
     return render(request,"jobs.html",context={'newjob_etebar':newjob_etebar[0],
+                                               'newemploy_etebar':newemploy_etebar[0],
                                                'delet_etebar':delet_etebar[0],
                                                'actcount':lenj,
                                                'jobs': js ,
                                                'jobemployee':jobemployee,
                                                'useretebar':useretebar[0],
                                                'employeeetebar':employee_etebar[0],
-                                               'employeemessage':message[0]
+                                               'employeemessage':message[0],
+                                               'deletemployetebar':deletemploy_etebar[0],
+                                               'lenemploy':lenemploy,
+                                               'employerjoblist':employerjoblist,
+                                               'employename':employename,
                                                })

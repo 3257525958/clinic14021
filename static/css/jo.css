@@ -28,7 +28,7 @@
           
   }
     #navbarbtn1 {
-          width: 24%;
+          width: 19%;
           height: 100%;
           background:rgba(var(--vred),var(--vgreen),var(--vblue),.5);
           border: 2px solid rgb(var(--vred),var(--vgreen),var(--vblue));
@@ -41,9 +41,9 @@
   
   }
   #navbarbtn2 {
-          width: 24%;
+          width: 19%;
           height: 100%;
-          left: 51%;
+          left: 61%;
           background:rgba(var(--vred),var(--vgreen),var(--vblue),.5);
           border: 2px solid rgb(var(--vred),var(--vgreen),var(--vblue));
           border-radius: 10px;
@@ -55,9 +55,9 @@
   
   }
   #navbarbtn3 {
-          width: 24%;
+          width: 19%;
           height: 100%;
-          left: 26%;
+          left: 41%;
           background:rgba(var(--vred),var(--vgreen),var(--vblue),.5);
           border: 2px solid rgb(var(--vred),var(--vgreen),var(--vblue));
           border-radius: 10px;
@@ -69,9 +69,9 @@
   
   }
   #navbarbtn4 {
-          width: 24%;
+          width: 19%;
           height: 100%;
-          left: 1%;
+          left: 21%;
           background:rgba(var(--vred),var(--vgreen),var(--vblue),.5);
           border: 2px solid rgb(var(--vred),var(--vgreen),var(--vblue));
           border-radius: 10px;
@@ -83,7 +83,21 @@
   
   }
 
-  
+  #navbarbtn5 {
+        width: 19%;
+        height: 100%;
+        left: 1%;
+        background:rgba(var(--vred),var(--vgreen),var(--vblue),.5);
+        border: 2px solid rgb(var(--vred),var(--vgreen),var(--vblue));
+        border-radius: 10px;
+        font-family:Tahoma;
+        color:white;
+        text-align: center;
+        font-size: small;
+        position: absolute;
+
+}
+
 .maine{
     padding: 10px;
     margin: 0 auto;
