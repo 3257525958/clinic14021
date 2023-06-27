@@ -38,30 +38,39 @@
                         نام فعالیت :
                     </p>
                     <input type="text" size="1" class="inputclass" name="newjob">
+                    <p class=>
+                        عنوان کارمند :
+                    </p>
+                    <input type="text" size="1" class="inputclass" name="newemployee">
                 </div>
                 <div class="newjob" hidden >
                     <p class=>
                         لیست فعالیتها :
                     </p>
-                    <input type="checkbox">k
+                    {% for job in  jobs %}
+                        <input type="radio" name="deletjob" value="{{ forloop.counter0 }}">{{ job }}
+                        <br>
+                    {% endfor %}
                     <br>
                 </div>
                 <div class="newjob" hidden >
                     <p class=>
                         فعالیتهای مورد نظر را انتخاب کنبد :
                     </p>
-                    <input type="checkbox">k
-                    <br>
+                    {% for employee in  jobemployee %}
+                        <input type="radio" name="employeeforjob" value="{{ forloop.counter0 }}">{{ employee }}
+                        <br>
+                    {% endfor %}
                     <p for="melicode">
-                        کد ملی فرد مورد نظر را وارد کنید |:
+                        کد ملی فرد مورد نظر را وارد کنید :
                     </p>
                     <input type="number" name="melicode" class="inputclass"> 
                 </div>
                 <div class="newjob" hidden >
-                    <p for="melicode">
+                    <p for="meli">
                         کد ملی فرد مورد نظر را وارد کنید:
                     </p>
-                    <input type="number" name="melicode" class="inputclass"> 
+                    <input type="number" name="meli" class="inputclass">
                     <p class=>
                         فعالیتهای مورد نظر برای حذف را انتخاب کنبد:
                     </p>
@@ -71,10 +80,10 @@
             <button class="regesterbuttonsave" name="savejob" value="accept" hidden>
                 ثبت فعالیت
             </button>
-            <button class="regesterbuttonsave" hidden >
+            <button class="regesterbuttonsave" name="buttondeletjob" value="accept" hidden>
                 حدف فعالیت
             </button>
-            <button class="regesterbuttonsave" hidden >
+            <button class="regesterbuttonsave" name="addbuttonemployee" value="accept" hidden >
                 ثبت فعالیت برای فرد
             </button>
             <button class="regesterbuttonsave" hidden >
@@ -89,7 +98,12 @@
 
 
 <label id="newjobetebar"  hidden >{{ newjob_etebar }}</label>
-</form>  
+<label id="deletjob"  hidden >{{ delet_etebar }}</label>
+<label id="lenjob"  hidden >{{ actcount }}</label>
+<label id="useretebar"  hidden >{{ useretebar }}</label>
+<label id="employeeetebar"  hidden >{{ employeeetebar }}</label>
+<label id="employeemessage"  hidden >{{ employeemessage }}</label>
+</form>
 
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
