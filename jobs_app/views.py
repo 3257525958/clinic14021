@@ -127,13 +127,14 @@ def jobs(request):
         if (employmelicode !='') and (employmelicode != None) :
             employs = employeemodel.objects.all()
             for emp in employs :
-                if emp.melicod == employmelicode :
+                if int(emp.melicod) == int(employmelicode) :
                     deletemploy_etebar[0] = 'true'
                     melicodearay[0] = employmelicode
                     users = accuntmodel.objects.all()
                     for user in users :
                         if user.melicode == employmelicode :
-                            employename = user.lastname + user.firstname
+                            employename = user.firstname +' '+user.lastname
+                    break
                 else:
                     deletemploy_etebar[0] = "false"
                     melicodearay[0] = ''
@@ -149,8 +150,6 @@ def jobs(request):
                 if emp.melicod == employmelicode:
                     employerjoblist.append(emp.employee)
             lenemploy = len(employerjoblist)
-            print(empnumber)
-            print(employerjoblist)
             a = employeemodel.objects.filter(melicod=employmelicode, employee=employerjoblist[int(empnumber)])
             a.delete()
             deletemploy_etebar[0] = 'delet'
