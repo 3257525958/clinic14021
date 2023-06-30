@@ -13,7 +13,7 @@ class employeemodel(models.Model):
         return f"{self.melicod}"
 class servicmodel(models.Model):
     servic = models.CharField(max_length=150 , default='')
-    employee = models.CharField(max_length=150 , default='')
+    emp = models.CharField(max_length=150 , default='')
     time = models.CharField(max_length=150 , default='')
     cast = models.CharField(max_length=150 , default='')
 
