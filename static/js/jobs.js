@@ -7,6 +7,7 @@ var useretebar = document.getElementById('useretebar');
 var employeeetebar = document.getElementById('employeeetebar');
 var employeemessage = document.getElementById('employeemessage');
 var deletemployetebar = document.getElementById('deletemployetebar');
+var selectjob = document.getElementById('selectjob');
 var    j = ( lenjob.innerHTML  * 19 ) + 100 ;
     console.log(j);
 
@@ -137,6 +138,9 @@ var    j = ( lenjob.innerHTML  * 19 ) + 100 ;
         if ( deletemployetebar.innerHTML == 'true') {
             deletemployee()
     }
+        if ( selectjob.innerHTML == 'true') {
+            servic()
+    }
 
 function addjob() {
     document.getElementById('textobject').innerHTML = "تعریف فعالیت جدید";
@@ -152,9 +156,10 @@ function addjob() {
     document.getElementsByClassName('regesterbuttonsave')[2].hidden = true;
     document.getElementsByClassName('newjob')[3].hidden = true;
     document.getElementsByClassName('newjob')[4].hidden = true;
+    document.getElementsByClassName('newjob')[5].hidden = true;
     document.getElementsByClassName('regesterbuttonsave')[3].hidden = true;
     document.getElementsByClassName('regesterbuttonsave')[4].hidden = true;
-    document.getElementById('te').hidden = false
+    document.getElementById('te').hidden = true;
 }
 function deletjob() {
     document.getElementById('textobject').innerHTML = "حذف فعالیت از لیست";
@@ -170,9 +175,10 @@ function deletjob() {
     document.getElementsByClassName('regesterbuttonsave')[2].hidden = true;
     document.getElementsByClassName('newjob')[3].hidden = true;
     document.getElementsByClassName('newjob')[4].hidden = true;
+    document.getElementsByClassName('newjob')[5].hidden = true;
     document.getElementsByClassName('regesterbuttonsave')[3].hidden = true;
     document.getElementsByClassName('regesterbuttonsave')[4].hidden = true;
-    document.getElementById('te').hidden = false
+    document.getElementById('te').hidden = true;
 }
 function addemployee() {
     document.getElementById('textobject').innerHTML = "تعریف نیروی جدید برای فعالیتها";
@@ -188,10 +194,11 @@ function addemployee() {
     document.getElementById('regesterbuttoncancel').style.top = j+50+"px";
     document.getElementsByClassName('newjob')[3].hidden = true;
     document.getElementsByClassName('newjob')[4].hidden = true;
+    document.getElementsByClassName('newjob')[5].hidden = true;
     document.getElementsByClassName('regesterbuttonsave')[3].hidden = true;
     document.getElementsByClassName('inputclass')[2].style.top = j+"px";
     document.getElementsByClassName('regesterbuttonsave')[4].hidden = true;
-    document.getElementById('te').hidden = false
+    document.getElementById('te').hidden = true;
 }
 function melicodesearch() {
     document.getElementById('textobject').innerHTML = "حذف نیرو از لیست";
@@ -205,13 +212,13 @@ function melicodesearch() {
     document.getElementsByClassName('regesterbuttonsave')[2].hidden = true;
     document.getElementsByClassName('newjob')[3].hidden = false;
     document.getElementsByClassName('newjob')[4].hidden = true;
+    document.getElementsByClassName('newjob')[5].hidden = true;
     document.getElementsByClassName('regesterbuttonsave')[3].hidden = true;
     document.getElementsByClassName('regesterbuttonsave')[4].hidden = false;
     document.getElementsByClassName('regesterbuttonsave')[4].style.top = "130px";
     document.getElementsByClassName('regesterbuttonsave')[4].style.left = "40px";
     document.getElementById('regesterbuttoncancel').hidden = true;
 }
-
 function deletemployee() {
     document.getElementById('textobject').innerHTML = "حذف نیرو از لیست ";
     document.getElementById('regester').hidden = false;
@@ -224,10 +231,65 @@ function deletemployee() {
     document.getElementsByClassName('regesterbuttonsave')[2].hidden = true;
     document.getElementsByClassName('newjob')[3].hidden = true;
     document.getElementsByClassName('newjob')[4].hidden = false;
+    document.getElementsByClassName('newjob')[5].hidden = true;
     document.getElementsByClassName('regesterbuttonsave')[3].hidden = false;
     document.getElementsByClassName('regesterbuttonsave')[3].style.top = j+50+"px";
     document.getElementById('regesterbuttoncancel').style.top = j+50+"px";
     document.getElementsByClassName('regesterbuttonsave')[4].hidden = true;
-    document.getElementById('te').hidden = false
+    document.getElementById('te').hidden = false;
+}
+
+// function servic() {
+//     document.getElementById('textobject').innerHTML = "تعریف یک خدمت  ";
+//     document.getElementById('regester').hidden = false;
+//     document.getElementById('regester').style.height = "100px";
+//     document.getElementsByClassName('newjob')[0].hidden = true;
+//     document.getElementsByClassName('regesterbuttonsave')[0].hidden = true;
+//     document.getElementsByClassName('newjob')[1].hidden = true;
+//     document.getElementsByClassName('regesterbuttonsave')[1].hidden = true;
+//     document.getElementsByClassName('newjob')[2].hidden = true;
+//     document.getElementsByClassName('regesterbuttonsave')[2].hidden = true;
+//     document.getElementsByClassName('newjob')[3].hidden = true;
+//     document.getElementsByClassName('newjob')[4].hidden = true;
+//     document.getElementsByClassName('newjob')[5].hidden = false;
+//     document.getElementsByClassName('regesterbuttonsave')[3].hidden = true;
+//     document.getElementsByClassName('regesterbuttonsave')[3].style.top = "130px";
+//     document.getElementById('regesterbuttoncancel').hidden = true;
+//     document.getElementsByClassName('regesterbuttonsave')[4].hidden = true;
+//     document.getElementById('te').hidden = true;
+//     document.getElementById("textemployname").hidden =false;
+//     document.getElementById("texttime").hidden =false;
+//     document.getElementById("sel").hidden = false;
+//     document.getElementById("time").hidden = false;
+// }
+function servic() {
+    document.getElementById('textobject').innerHTML = "تعریف یک خدمت  ";
+    document.getElementById('regester').hidden = false;
+    document.getElementById('regester').style.height = "400px";
+    document.getElementsByClassName('newjob')[0].hidden = true;
+    document.getElementsByClassName('regesterbuttonsave')[0].hidden = true;
+    document.getElementsByClassName('newjob')[1].hidden = true;
+    document.getElementsByClassName('regesterbuttonsave')[1].hidden = true;
+    document.getElementsByClassName('newjob')[2].hidden = true;
+    document.getElementsByClassName('regesterbuttonsave')[2].hidden = true;
+    document.getElementsByClassName('newjob')[3].hidden = true;
+    document.getElementsByClassName('newjob')[4].hidden = true;
+    document.getElementsByClassName('newjob')[5].hidden = false;
+    document.getElementsByClassName('regesterbuttonsave')[3].hidden = true;
+    document.getElementsByClassName('regesterbuttonsave')[3].style.top = "130px";
+    document.getElementById('regesterbuttoncancel').hidden = false;
+    document.getElementById('regesterbuttoncancel').style.top = "330px";
+    document.getElementsByClassName('regesterbuttonsave')[4].hidden = true;
+    document.getElementsByClassName('regesterbuttonsave')[5].hidden = false;
+    document.getElementsByClassName('regesterbuttonsave')[5].style.top = "330px";
+    document.getElementById('te').hidden = true;
+    document.getElementById("textemployname").hidden =false;
+    document.getElementById("sel").hidden = false;
+    document.getElementById("time").hidden = false;
+}
+function citylist()
+{
+        f = document.getElementById("face");
+        f.click()
 }
 

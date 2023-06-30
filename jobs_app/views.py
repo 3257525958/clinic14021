@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from jobs_app.models import jobsmodel , employeemodel
 from cantact_app.models import accuntmodel
+from store_app.models import storemodel
 
 newjob_etebar = ['true']
 newemploy_etebar = ['true']
@@ -13,6 +14,10 @@ message = ['true']
 deletemploy_etebar = ['t']
 employerjoblist = ['t']
 melicodearay = ['']
+joblist = ['t']
+joblistforjava = ['t']
+emplist = ['انتخاب کنید']
+selectjob = ['t']
 def jobs(request):
     savejob = request.POST.get("savejob")
     newjob = request.POST.get("newjob")
@@ -26,6 +31,8 @@ def jobs(request):
     employmelicode = request.POST.get("employmelicode")
     empnumber = request.POST.get("empnumber")
     cearshmelicode = request.POST.get("cearshmelicode")
+    facebutton = request.POST.get("facebutton")
+    servicselector = request.POST.get("servicselector")
 # ****************************************************اضافه کردن یک فعالیت********************************************************
     newjob_etebar[0] = 'true'
     newemploy_etebar[0] = 'true'
@@ -114,14 +121,13 @@ def jobs(request):
 # ****************************************************************حدف یک شغل برای یک کارمند*************************************************
     employename = ''
     deletemploy_etebar[0] = 't'
-    # if (employmelicode != '') and (employmelicode != None):
-    #     melicodearay[0] = str(employmelicode)
     employerjoblist.clear()
     employs = employeemodel.objects.all()
     for emp in employs :
         if emp.melicod == employmelicode :
             employerjoblist.append(emp.employee)
     lenemploy = len(employerjoblist)
+
     if cearshmelicode == 'accept' :
         # employmelicode = melicodearay[0]
         if (employmelicode !='') and (employmelicode != None) :
@@ -157,6 +163,39 @@ def jobs(request):
         else:
             deletemploy_etebar[0] = 'emptyjob'
             melicodearay[0] = ''
+# **********************************************************ساختن یک خدمت*********************************************************
+    selectjob[0] = "t"
+    servicselect = "انتخاب کنیدددد"
+    joblist.clear()
+    allservic = jobsmodel.objects.all()
+    for ser in allservic :
+        joblist.append(ser.job)
+
+    if facebutton == "accept" :
+        print("1")
+        selectjob[0] = 'true'
+        servicselect = joblist[int(servicselector)]
+        allservic = jobsmodel.objects.all()
+        for ser in allservic :
+            print(ser.job)
+            print(joblist[int(servicselector)])
+            if ser.job == joblist[int(servicselector)] :
+                print("2")
+                emps = employeemodel.objects.all()
+                for emp in emps :
+                    print(ser.employee)
+                    print(emp.employee)
+                    if ser.employee == emp.employee :
+                        print("3")
+                        users = accuntmodel.objects.all()
+                        for user in users :
+                            print(emp.melicod)
+                            print(user.melicode)
+                            if emp.melicod == user.melicode :
+                                print("4")
+                                emplist.append(user.firstname+' '+user.lastname)
+                                print(emplist)
+
 
 # ****************************************************************************************************************************************
     js = jobsmodel.objects.all()
@@ -173,4 +212,9 @@ def jobs(request):
                                                'lenemploy':lenemploy,
                                                'employerjoblist':employerjoblist,
                                                'employename':employename,
+                                               'allservic':joblist,
+                                               'allemployee':emplist,
+                                               'servicselect':servicselect,
+                                               'selectjob':selectjob[0],
+                                               'emplist':emplist,
                                                })

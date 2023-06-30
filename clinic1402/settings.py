@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'cantact_app.apps.CantactAppConfig',
     'jalali_date',
     'jobs_app.apps.JobsAppConfig',
+    'store_app.apps.StoreAppConfig',
 
 
 ]
