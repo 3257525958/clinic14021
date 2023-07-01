@@ -120,10 +120,10 @@ WSGI_APPLICATION = 'clinic1402.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'cilinic1xqg_db',
+        'NAME': 'clinuaa_db',
         'USER': 'root',
-        'PASSWORD': '27jmmsr45bs8m69',
-        'HOST': 'cilinic1402-1-gfp-service',
+        'PASSWORD': 'p8sp4hr3jvz1l6h',
+        'HOST': 'clin-sho-service',
 
     }
 }
