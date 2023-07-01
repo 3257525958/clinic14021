@@ -19,3 +19,11 @@ class employeemodel(models.Model):
 #
 #     def __str__(self):
 #         return f"{self.servic}"
+
+
+
+class workmodel(models.Model):
+    work = models.CharField(max_length=150, default='تزریقات')
+    cast = models.CharField(max_length=150, default='0')
+    def __str__(self):
+        return f"{self.work}"
