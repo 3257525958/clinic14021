@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from jobs_app.models import jobsmodel , employeemodel
+from jobs_app.models import jobsmodel , employeemodel , workmodel
 from cantact_app.models import accuntmodel
 from store_app.models import storemodel
 
@@ -18,6 +18,8 @@ joblist = ['t']
 joblistforjava = ['t']
 emplist = ['انتخاب کنید']
 selectjob = ['t']
+savework = ['']
+savework[0] = 'e'
 def jobs(request):
     savejob = request.POST.get("savejob")
     newjob = request.POST.get("newjob")
@@ -33,6 +35,10 @@ def jobs(request):
     cearshmelicode = request.POST.get("cearshmelicode")
     facebutton = request.POST.get("facebutton")
     servicselector = request.POST.get("servicselector")
+    timename = request.POST.get("timename")
+    cast = request.POST.get("cast")
+    servicsave =request.POST.get("servicsave")
+    employselector = request.POST.get("employselector")
 # ****************************************************اضافه کردن یک فعالیت********************************************************
     newjob_etebar[0] = 'true'
     newemploy_etebar[0] = 'true'
@@ -164,38 +170,43 @@ def jobs(request):
             deletemploy_etebar[0] = 'emptyjob'
             melicodearay[0] = ''
 # **********************************************************ساختن یک خدمت*********************************************************
+    print(servicselector)
+    print("1111111")
     selectjob[0] = "t"
-    servicselect = "انتخاب کنیدددد"
     joblist.clear()
     allservic = jobsmodel.objects.all()
+    servicselect = 'انتخاب کنید'
     for ser in allservic :
         joblist.append(ser.job)
-
+    print(savework)
     if facebutton == "accept" :
-        print("1")
+        emplist.clear()
+        emplist.append('')
+        savework.clear()
+        savework.append(joblist[int(servicselector)])
         selectjob[0] = 'true'
         servicselect = joblist[int(servicselector)]
         allservic = jobsmodel.objects.all()
         for ser in allservic :
-            print(ser.job)
-            print(joblist[int(servicselector)])
             if ser.job == joblist[int(servicselector)] :
-                print("2")
                 emps = employeemodel.objects.all()
                 for emp in emps :
-                    print(ser.employee)
-                    print(emp.employee)
                     if ser.employee == emp.employee :
-                        print("3")
                         users = accuntmodel.objects.all()
                         for user in users :
-                            print(emp.melicod)
-                            print(user.melicode)
                             if emp.melicod == user.melicode :
-                                print("4")
                                 emplist.append(user.firstname+' '+user.lastname)
-                                print(emplist)
 
+    if servicsave == "accept" :
+        savework.append(str(cast))
+        savework.append(timename)
+        savework.append(emplist[int(employselector)])
+        print(savework)
+        print(savework[0])
+        print(savework[1])
+        print(savework[2])
+        print(savework[3])
+        workmodel.objects.create(work=savework[0],cast=savework[1],time=savework[2],person=savework[3])
 
 # ****************************************************************************************************************************************
     js = jobsmodel.objects.all()
