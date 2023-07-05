@@ -25,6 +25,9 @@
         <button id="navbarbtn5" onclick="servic()">
              تعریف خدمت
         </button>
+        <button id="navbarbtn6" onclick="deletservic()">
+             حذف خدمت
+        </button>
     </div>
 
 <form action="" method="POST">
@@ -121,6 +124,16 @@
                     </p>
                     <input type="number" size="1" class="inputclass" name="cast">
                 </div>
+                <div class="newjob" hidden >
+                    <p class=>
+                        خدمت مورد نظرتان انتخاب کنید :
+                    </p>
+                    <select id="selectcss" name="deletservicselect" >
+                        {% for delet in deletservics %}
+                            <option value= "{{ delet.work }}">{{ delet.work }}</option>
+                        {% endfor %}
+                    </select>
+                 </div>
 
 
             <button class="regesterbuttonsave" name="savejob" value="accept" hidden>
@@ -144,13 +157,15 @@
             <button class="regesterbuttonsave" name="servicsave" value="accept" hidden >
                 ثبت خدمت
             </button>
-            <button id="regesterbuttoncancel" >
+            <button class="regesterbuttonsave" name="servicdelet" value="accept" hidden >
+               حذف خدمت
+            </button>
+            <button id="regesterbuttoncancel" onclick="redirectt();" >
                 بازگشت
             </button>
         </div>
-        </div>
     </div>
-
+    </div>
 
 <label id="newjobetebar"  hidden >{{ newjob_etebar }}</label>
 <label id="newemployetebar"  hidden >{{ newemploy_etebar }}</label>
@@ -161,14 +176,14 @@
 <label id="employeemessage"  hidden >{{ employeemessage }}</label>
 <label id="deletemployetebar"  hidden >{{ deletemployetebar }}</label>
 <label id="selectjob"  hidden >{{ selectjob }}</label>
-
 <label id="allservic" >{{  allservicforjava }}</label>
+<label id="deletworkmessage"  hidden >{{ deletworkmessage }}</label>
 
 </form>
 
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="{% static "/js/jobs.js" %}">    </script>
+<script src="{% static "/js/jobe.js" %}">    </script>
 
 </body>
 </html>
