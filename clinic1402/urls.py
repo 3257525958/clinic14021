@@ -23,4 +23,5 @@ urlpatterns = [
     path('', include('home_app.urls')),
     path('cantact/', include('cantact_app.urls')),
     path('jobs/', include('jobs_app.urls')),
+    path('test/', include('jobs_app.urls')),
 ]

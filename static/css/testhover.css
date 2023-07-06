@@ -1,0 +1,75 @@
+html {
+    box-sizing: border-box;
+  }
+  
+  *,*::after,*::before {
+    box-sizing: inherit; 
+  }
+  
+  /* body, button, input, textarea, select {
+    text-rendering: optimizelegibility;
+    font-size: 100%;
+  }
+   */
+  body {
+    margin: 10px;
+    font-family: cursive;
+    background: gray;  
+    min-height: 100vh;
+  }
+  
+  .main {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 4.2em);  
+  }
+ 
+  .effects {
+    width: 300px;
+    display: flex;
+    flex-flow: row nowrap;  
+    overflow: auto;
+    padding: 10px 0;
+    background: white;  
+    flex: 0 0 150px;
+  }
+  
+  .effects__item {
+    display: flex;
+    flex-direction: column;
+    flex: 10 0 100px;
+    margin: 0 10px;
+    border: 1px solid #35373a;
+    border-radius: 5px;
+    cursor: pointer;
+    overflow: hidden;
+    padding-bottom: 0;
+    transition: .3s border;
+  }
+  
+  .effects__item.selected ,
+  .effects__item:hover {
+    border-color: #c4ccdf;
+  }
+  
+  
+  
+  .effects__name {
+    flex-grow: 1;
+    color: #7e8792;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: large;
+    padding: .3em;
+    text-transform: capitalize;
+    transition: .3s color;
+    user-select: none;
+  }
+  
+  .effects__item.selected .effects__name,
+  .effects__item:hover .effects__name {
+    color: blue;
+  }
+  

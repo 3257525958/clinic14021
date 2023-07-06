@@ -234,3 +234,6 @@ def jobs(request):
                                                'deletservics':deletservics,
                                                'deletworkmessage':deletworkmessage[0]
                                                })
+
+def testdef(request):
+    return render(request,'testhover.html')
