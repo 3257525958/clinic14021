@@ -235,5 +235,3 @@ def jobs(request):
                                                'deletworkmessage':deletworkmessage[0]
                                                })
 
-def testdef(request):
-    return render(request,'testhover.html')
