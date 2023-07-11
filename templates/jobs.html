@@ -100,6 +100,10 @@
                             <option value= "{{ forloop.counter0 }}">{{ servic }}</option>
                         {% endfor %}
                     </select>
+                    <p>
+                        جزئیات خدمت
+                    </p>
+                    <input type="text" size="1" class="inputclass" name="detalejob">
                     <p id=textemployname>
                         نام کارمند برای انجام خدمت را انتخاب کنید :
                     </p>
@@ -130,7 +134,7 @@
                     </p>
                     <select id="selectcss" name="deletservicselect" >
                         {% for delet in deletservics %}
-                            <option value= "{{ delet.work }}">{{ delet.work }}</option>
+                            <option value= "{{ delet.id }}">{{ delet.work }} {{ delet.detalework }}</option>
                         {% endfor %}
                     </select>
                  </div>
@@ -178,7 +182,8 @@
 <label id="selectjob"  hidden >{{ selectjob }}</label>
 <label id="allservic" >{{  allservicforjava }}</label>
 <label id="deletworkmessage"  hidden >{{ deletworkmessage }}</label>
-
+<label id="addetebar" >{{  addetebar }}</label>
+<label id="succes" >{{  succes }}</label>
 </form>
 
 

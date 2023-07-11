@@ -11,19 +11,11 @@ class employeemodel(models.Model):
     melicod = models.CharField(max_length=10,default='0')
     def __str__(self):
         return f"{self.melicod}"
-# class servicmodel(models.Model):
-#     servic = models.CharField(max_length=150 , default='')
-#     emp = models.CharField(max_length=150 , default='')
-#     time = models.CharField(max_length=150 , default='')
-#     cast = models.CharField(max_length=150 , default='')
-#
-#     def __str__(self):
-#         return f"{self.servic}"
-
 
 
 class workmodel(models.Model):
     work = models.CharField(max_length=150, default='تزریقات')
+    detalework = models.CharField(max_length=150 , default='تزریقات')
     person = models.CharField(max_length=150,default='من')
     time = models.CharField(max_length=50, default='امروز')
     cast = models.CharField(max_length=150, default='0')

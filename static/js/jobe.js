@@ -9,8 +9,9 @@ var employeemessage = document.getElementById('employeemessage');
 var deletemployetebar = document.getElementById('deletemployetebar');
 var selectjob = document.getElementById('selectjob');
 var deletworkmessage = document.getElementById('deletworkmessage');
+var addetebar = document.getElementById('addetebar');
 var    j = ( lenjob.innerHTML  * 19 ) + 100 ;
-    console.log(j);
+    console.log(addetebar);
 
     if ( newjobetebar.innerHTML == 'ok' ){
         Swal.fire({
@@ -153,6 +154,28 @@ var    j = ( lenjob.innerHTML  * 19 ) + 100 ;
         if ( selectjob.innerHTML == 'true') {
             servic()
     }
+    if ( addetebar.innerHTML == 'cast') {
+        Swal.fire({
+            icon: 'warning',
+            title: 'لطفا قیمت خدمت را وارد کنید'
+        })
+    }
+    if ( addetebar.innerHTML == 'detalejob') {
+        Swal.fire({
+            icon: 'warning',
+            title: 'لطفا جزئیات خدمت را وارد کنید'
+        })
+    }
+    if (addetebar.innerHTML == 'succes' ){
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'خدمت مورد نظر با موفقیت ثبت شد',
+          showConfirmButton: false,
+          timer: 2000
+                 });
+        setTimeout('redirectt()',1000);
+    }
 
 function addjob() {
     document.getElementById('textobject').innerHTML = "تعریف فعالیت جدید";
@@ -281,7 +304,7 @@ function deletemployee() {
 function servic() {
     document.getElementById('textobject').innerHTML = "تعریف یک خدمت  ";
     document.getElementById('regester').hidden = false;
-    document.getElementById('regester').style.height = "430px";
+    document.getElementById('regester').style.height = "500px";
 
     document.getElementsByClassName('newjob')[0].hidden = true;
     document.getElementsByClassName('newjob')[1].hidden = true;
@@ -298,11 +321,11 @@ function servic() {
     document.getElementsByClassName('regesterbuttonsave')[3].hidden = true;
     document.getElementsByClassName('regesterbuttonsave')[4].hidden = true;
     document.getElementsByClassName('regesterbuttonsave')[5].hidden = false;
-    document.getElementsByClassName('regesterbuttonsave')[5].style.top = "360px";
+    document.getElementsByClassName('regesterbuttonsave')[5].style.top = "430px";
     document.getElementsByClassName('regesterbuttonsave')[6].hidden = true;
 
     document.getElementById('regesterbuttoncancel').hidden = false;
-    document.getElementById('regesterbuttoncancel').style.top = "360px";
+    document.getElementById('regesterbuttoncancel').style.top = "430px";
     document.getElementById('te').hidden = true;
     document.getElementById("textemployname").hidden =false;
     document.getElementById("sel").hidden = false;

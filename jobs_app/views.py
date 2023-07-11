@@ -21,6 +21,7 @@ selectjob = ['t']
 savework = ['']
 savework[0] = 'e'
 deletworkmessage = ['true']
+addetebar = ['t']
 def jobs(request):
     savejob = request.POST.get("savejob")
     newjob = request.POST.get("newjob")
@@ -42,6 +43,7 @@ def jobs(request):
     employselector = request.POST.get("employselector")
     servicdelet = request.POST.get("servicdelet")
     deletservicselect = request.POST.get("deletservicselect")
+    detalejob = request.POST.get('detalejob')
 # ****************************************************اضافه کردن یک فعالیت********************************************************
     newjob_etebar[0] = 'true'
     newemploy_etebar[0] = 'true'
@@ -180,7 +182,6 @@ def jobs(request):
         joblist.append(ser.job)
     if facebutton == "accept" :
         emplist.clear()
-        emplist.append('')
         savework.clear()
         savework.append(joblist[int(servicselector)])
         selectjob[0] = 'true'
@@ -197,20 +198,33 @@ def jobs(request):
                                 emplist.append(user.firstname+' '+user.lastname)
 
     if servicsave == "accept" :
-        savework.append(str(cast))
-        savework.append(timename)
-        savework.append(emplist[int(employselector)])
-        workmodel.objects.create(work=savework[0],cast=savework[1],time=savework[2],person=savework[3])
+        if (cast != '') and (cast != None):
+            if (detalejob != '') and (detalejob != None):
+                savework.append(str(cast))
+                savework.append(timename)
+                savework.append(emplist[int(employselector)])
+                savework.append(detalejob)
+                workmodel.objects.create(work=savework[0],
+                                         cast=savework[1],
+                                         time=savework[2],
+                                         person=savework[3],
+                                         detalework=savework[4])
+                addetebar[0] = 'succes'
+
+            else:
+                addetebar[0] = 'detalejob'
+        else:
+            addetebar[0] = 'cast'
 
 # *****************************************************حذف یک خدمت*******************************************************
     deletworkmessage[0] = 'true'
     deletservics = workmodel.objects.all()
     if servicdelet== "accept" :
         if (deletservicselect != '') and (deletservicselect != None) :
-            a = workmodel.objects.filter(work=deletservicselect)
+            a = workmodel.objects.filter(id=deletservicselect)
             a.delete()
             deletworkmessage[0] = 'false'
-    # ************************************************************************************************************
+    # ***********************************************************************************************************
 
     js = jobsmodel.objects.all()
     return render(request,"jobs.html",context={'newjob_etebar':newjob_etebar[0],
@@ -232,6 +246,7 @@ def jobs(request):
                                                'selectjob':selectjob[0],
                                                'emplist':emplist,
                                                'deletservics':deletservics,
-                                               'deletworkmessage':deletworkmessage[0]
+                                               'deletworkmessage':deletworkmessage[0],
+                                               'addetebar':addetebar[0],
                                                })
 
