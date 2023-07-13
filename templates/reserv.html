@@ -9,26 +9,27 @@
     <title>Document</title>
 </head>
 <body>
-    {% for work in works %}
+    {% for w in job %}
         <div class="main">
         <div class="textbox">
             <p class="textobject">
-                {{ work.detalework }}
+                {{ w }}
             </p>
         </div>
-        <div class="effects">    
-            <div  class="effects__item ">
-                <p class="effects__name" >سلام</p>
-                <p class="effects__name" >سلام</p>
-                <p class="effects__name" >سلام</p>
-            </div>
-            <div  class="effects__item ">
-                <p class="effects__name" >بوتاکس زیر بغل</p>
-                <p class="effects__name" >سلام</p>
-                <p class="effects__name" >سلام</p>
-            </div>
+        <div class="effects">
+            {% for d in works %}
+                {% if d.work == w %}
+                    <div  class="effects__item ">
+                        <p class="effects__name" >{{ d.work }} {{ d.detalework }}</p>
+                        <p class="effects__name" >{{ d.person }}</p>
+                        <p class="effects__name" >{{ d.cast }}</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
         </div>
     </div>
+        <br>
+        <br>
     {% endfor %}
 
 
