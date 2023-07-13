@@ -21,12 +21,21 @@ html {
     background: whitesmoke;  
     min-height: 100vh;
   }
-  
+  #titr{
+    position: absolute;
+    width: 100%;
+    top: -2%;
+    font-family:Tahoma;
+    color: black;
+    text-align: center;
+    font-size: xx-large;
+  }
+
   .main {
     position: relative;
     width: 350px;
     height: 200px;
-    top: 50px;
+    top: 100px;
     left: -10%;
     display: flex;
     flex-direction: column;
