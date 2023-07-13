@@ -175,6 +175,7 @@ def jobs(request):
             melicodearay[0] = ''
 # **********************************************************ساختن یک خدمت*********************************************************
     selectjob[0] = "t"
+    addetebar[0] = 'p'
     joblist.clear()
     allservic = jobsmodel.objects.all()
     servicselect = 'انتخاب کنید'
