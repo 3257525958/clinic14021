@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'jalali_date',
     'jobs_app.apps.JobsAppConfig',
     'store_app.apps.StoreAppConfig',
+    'reserv_app.apps.ReservAppConfig',
 
 
 ]
