@@ -106,10 +106,10 @@ body {
 .main {
     position: relative;
     text-align: center;
-    width:calc(100% / 3 * 2);
+    width:calc(100% / 13 * 12);
     height: 1100px;
     top: 100px;
-    left: calc(-50% + calc(100% / 3));
+    left: calc(-50% + calc(100% / 13 * 6));
     display: flex;
     flex-direction: column;
     background-color: rgb(var(--vred), var(--vgreen), var(--vblue),calc(var(--contrast) - var(--ekhtelaf)));
