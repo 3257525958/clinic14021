@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href= "{% static "/css/reservee.css" %}">
+    <title>Document</title>
+</head>
+<body>
+<form method="POST">
+{% csrf_token %}
+    <div >
+        <p id="titr">
+            رزرو آنلاین
+        </p>
+    </div>
+
+    <div class="main">
+            <div class="textbox">
+                <p class="textobject">
+                    لیزر دکتر اسدپور
+                </p>
+            </div>
+            <div class="effects">
+                {% for t in shamsiarray %}
+                    <div  class="effects__item ">
+                        <p class="textboxxx">{{ t }}</p>
+                        <br>
+                        <button class="boxxx"  name="timeselect" value="1,{{ forloop.counter}}">10 تا 10.5</button>
+                        <button class="boxxx"  name="timeselect" value="2,{{ forloop.counter }}">10.5 تا 11</button>
+                        <button class="boxxx"  name="timeselect" value="3,{{ forloop.counter }}">11 تا 11.5</button>
+                        <button class="boxxx"  name="timeselect" value="4,{{ forloop.counter }}">11.5 تا 12</button>
+                        <button class="boxxx"  name="timeselect" value="5,{{ forloop.counter }}">12 تا 12.5</button>
+                        <button class="boxxx"  name="timeselect" value="6,{{ forloop.counter }}">12.5 تا 1</button>
+                        <button class="boxxx"  name="timeselect" value="7,{{ forloop.counter }}">1 تا 1.5</button>
+                        <button class="boxxx"  name="timeselect" value="8,{{ forloop.counter }}">1.5 تا 2</button>
+                        <button class="boxxx"  name="timeselect" value="9,{{ forloop.counter }}">2 تا 2.5</button>
+                        <button class="boxxx"  name="timeselect" value="10,{{ forloop.counter }}">2.5 تا 3</button>
+                        <button class="boxxx"  name="timeselect" value="11,{{ forloop.counter }}">3 تا 3.5</button>
+                        <button class="boxxx"  name="timeselect" value="12,{{ forloop.counter }}">3.5 تا 4</button>
+                        <button class="boxxx"  name="timeselect" value="13,{{ forloop.counter }}">4 تا 4.5</button>
+                        <button class="boxxx"  name="timeselect" value="14,{{ forloop.counter }}">4.5 تا 5</button>
+                        <button class="boxxx"  name="timeselect" value="15,{{ forloop.counter }}">5 تا 5.5</button>
+                        <button class="boxxx"  name="timeselect" value="16,{{ forloop.counter }}">5.5 تا 6</button>
+                        <button class="boxxx"  name="timeselect" value="17,{{ forloop.counter }}">6 تا 6.5</button>
+                        <button class="boxxx"  name="timeselect" value="18,{{ forloop.counter }}">6.5 تا 7</button>
+                        <button class="boxxx"  name="timeselect" value="19,{{ forloop.counter }}">7 تا 7.5</button>
+                        <button class="boxxx"  name="timeselect" value="20,{{ forloop.counter }}">7.5 تا 8</button>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+</form>
+
+</body>
+</html>

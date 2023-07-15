@@ -9,6 +9,8 @@
     <title>Document</title>
 </head>
 <body>
+<form method="POST">
+{% csrf_token %}
     <div >
         <p id="titr">
             رزرو آنلاین
@@ -16,20 +18,20 @@
     </div>
 
     {% for w in job %}
-        <div class="main">
-        <div class="textbox">
-            <p class="textobject">
+        <div class="maine" >
+        <div class="textbox" >
+            <p class="textobject" >
                 {{ w }}
             </p>
         </div>
-        <div class="effects">
+        <div class="effectse" hidden>
             {% for d in works %}
                 {% if d.work == w %}
-                    <div  class="effects__item ">
+                    <button type="submit" class="effects__iteme " name="inputwork" value="{{ forloop.counter0 }}">
                         <p class="effects__name" >{{ d.work }} {{ d.detalework }}</p>
                         <p class="effects__name" >{{ d.person }}</p>
                         <p class="effects__name" >{{ d.cast }}</p>
-                    </div>
+                    </button>
                 {% endif %}
             {% endfor %}
         </div>
@@ -37,6 +39,7 @@
         <br>
     {% endfor %}
 
+</form>
 
 </body>
 </html>

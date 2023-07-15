@@ -1,7 +1,7 @@
 html {
     box-sizing: border-box;
   }
-  :root{
+:root{
     --test :rgb(211, 135, 227);
     --vred:212;
     --vgreen:135;
@@ -10,18 +10,14 @@ html {
     --contrast:1;
     --ekhtelaf:0.7;
   }
-  
-  /* *,*::after,*::before {
-    box-sizing: inherit; 
-  } */
-  body {
+body {
     direction: rtl;
     margin: 10px;
     font-family: cursive;
-    background: whitesmoke;  
+    background: whitesmoke;
     min-height: 100vh;
   }
-  #titr{
+#titr{
     position: absolute;
     width: 100%;
     top: -2%;
@@ -30,8 +26,7 @@ html {
     text-align: center;
     font-size: xx-large;
   }
-
-  .main {
+.maine {
     position: relative;
     width: 350px;
     height: 200px;
@@ -48,7 +43,7 @@ html {
     /* border: 4px solid blue; */
     /* min-height: 100px   */
   }
-  .textbox {
+.textbox {
     display: inline-block;
     /* background-color: rgb(var(--vred), var(--vgreen), var(--vblue),calc(var(--contrast) - var(--ekhtelaf))); */
     position: relative;
@@ -63,13 +58,13 @@ html {
 .textobject{
   position: relative;
 }
-  .effects {
+.effectse {
    position: relative;
    top: 0px;
    left: 0%;
     width: 100%;
     display: flex;
-    flex-flow: row nowrap;  
+    flex-flow: row nowrap;
     overflow: auto;
     padding: 0px 0;
     /* background: rgb(var(--vred), var(--vgreen), var(--vblue),calc(var(--contrast) - var(--ekhtelaf)));   */
@@ -83,8 +78,7 @@ html {
     margin: 0px ;
     padding: 0px ;
   }
-  
-  .effects__item {
+.effects__iteme {
     display: flex;
     flex-direction: column;
     flex: 0 0 100px;
@@ -99,15 +93,95 @@ html {
     transition: .3s border;
     line-height: 5px;
   }
-  
-  .effects__item.selected ,
-  .effects__item:hover {
+.effects__item.selected ,
+.effects__item:hover {
     border-color: var(--ghotr) outset rgb(var(--vred), var(--vgreen), var(--vblue),1);
   }
-  
-  
-  
-  .effects__name {
+.effects__item.selected .effects__name,
+.effects__item:hover .effects__name {
+    color: var(--ghotr) outset rgb(var(--vred), var(--vgreen), var(--vblue),var(--contrast));
+    font-weight: bold;
+
+  }
+.main {
+    position: relative;
+    text-align: center;
+    width: 300px;
+    height: 1050px;
+    top: 100px;
+    /* left:-50%; */
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(var(--vred), var(--vgreen), var(--vblue),calc(var(--contrast) - var(--ekhtelaf)));
+    border-top: var(--ghotr) outset rgb(var(--vred), var(--vgreen), var(--vblue),var(--contrast));
+    border-left:var(--ghotr) outset rgb(var(--vred), var(--vgreen), var(--vblue),var(--contrast));
+    border-right:var(--ghotr) inset rgb(var(--vred), var(--vgreen), var(--vblue),var(--contrast));
+    border-bottom:var(--ghotr) inset rgb(var(--vred), var(--vgreen), var(--vblue),var(--contrast));
+    border-radius: 10px;
+    /* border: 4px solid blue; */
+    /* min-height: 100px   */
+  }
+.boxxx{
+  position: relative;
+  top: 0px;
+
+  border: 3px unset rgb(var(--vred), var(--vgreen), var(--vblue),var(--ekhtelaf));
+  transition: .3s color;
+  width: 100px;
+  height: 35px;
+  border-radius: 5px;
+  font-family: "B Yekan";
+  font-size: 15px;
+  margin: 7px;
+}
+.textboxxx {
+  display: inline-block;
+  /* background-color: rgb(var(--vred), var(--vgreen), var(--vblue),calc(var(--contrast) - var(--ekhtelaf))); */
+  position: relative;
+  /* top:5%; */
+  /* left: 100px; */
+  font-family:  "B Yekan";
+  color: black;
+  text-align: center;
+  font-size:17px ;
+  font-weight: bold;
+}
+.effects {
+   position: relative;
+   top: 0px;
+   left: 0%;
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    overflow: auto;
+    padding: 0px 0;
+    /* background: rgb(var(--vred), var(--vgreen), var(--vblue),calc(var(--contrast) - var(--ekhtelaf)));   */
+    flex: 10 10 125px;
+    border-radius: 5px;
+    /* border: 1px solid gray; */
+    /* border-top: var(--ghotr) outset rgb(var(--vred), var(--vgreen), var(--vblue),var(--contrast));
+    border-left:var(--ghotr) outset rgb(var(--vred), var(--vgreen), var(--vblue),var(--contrast));
+    border-right:var(--ghotr) outset rgb(var(--vred), var(--vgreen), var(--vblue),calc(var(--contrast) - var(--ekhtelaf)));
+    border-bottom:var(--ghotr) outset rgb(var(--vred), var(--vgreen), var(--vblue),calc(var(--contrast) - var(--ekhtelaf))); */
+    margin: 0px ;
+    padding: 0px ;
+  }
+.effects__item {
+    /* display: flex; */
+    flex-direction: column;
+    flex: 0 0 150px;
+    margin: 0 10px;
+    background: rgb(var(--vred), var(--vgreen), var(--vblue),var(--contrast));
+    border: 2px solid rgb(var(--vred), var(--vgreen), var(--vblue),var(--contrast));
+    border-radius: 5px;
+    cursor: pointer;
+    overflow: hidden;
+    padding-bottom: 10px;
+    margin: 10px;
+    transition: .3s border;
+    line-height: 5px;
+  }
+.effects__name {
     /* flex-grow: 1; */
     color:black;
   /* left:35px; */
@@ -121,14 +195,14 @@ html {
     /* text-transform: capitalize; */
     transition: .3s color;
     /* user-select: none; */
-    font-family: Tahoma;
+    font-family: "B Yekan";
 
   }
-  
-  .effects__item.selected .effects__name,
-  .effects__item:hover .effects__name {
+.effects__iteme.selected .effects__name,
+.effects__iteme:hover .effects__name,
+.boxxx:hover {
     color: var(--ghotr) outset rgb(var(--vred), var(--vgreen), var(--vblue),var(--contrast));
     font-weight: bold;
-
   }
-  
+
+
