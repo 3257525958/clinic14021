@@ -31,7 +31,7 @@ body {
     width: 350px;
     height: 200px;
     top: 100px;
-    left: -10%;
+    left: calc(-50% + 175px);
     display: flex;
     flex-direction: column;
     background-color: rgb(var(--vred), var(--vgreen), var(--vblue),calc(var(--contrast) - var(--ekhtelaf)));
@@ -106,10 +106,10 @@ body {
 .main {
     position: relative;
     text-align: center;
-    width: 250px;
-    height: 1050px;
+    width:calc(100% / 3 * 2);
+    height: 1100px;
     top: 100px;
-    /* left:-50%; */
+    left: calc(-50% + calc(100% / 3));
     display: flex;
     flex-direction: column;
     background-color: rgb(var(--vred), var(--vgreen), var(--vblue),calc(var(--contrast) - var(--ekhtelaf)));

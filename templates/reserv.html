@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href= "{% static "/css/reservee.css" %}">
+    <link rel="stylesheet" type="text/css" href= "{% static "/css/reser.css" %}">
     <title>Document</title>
 </head>
 <body>
@@ -19,24 +19,23 @@
 
     {% for w in job %}
         <div class="maine" >
-        <div class="effectse" hidden>
-            {% for d in works %}
-                {% if d.work == w %}
-         <div class="textbox" >
-            <p class="textobject" >
-                {{ w }}
-            </p>
+                        <div class="textbox" >
+                            <p class="textobject" >
+                                {{ w }}
+                            </p>
+                        </div>
+             <div class="effectse" >
+                {% for d in works %}
+                    {% if d.work == w %}
+                        <button type="submit" class="effects__iteme " name="inputwork" value="{{ forloop.counter0 }}">
+                            <p class="effects__name" >{{ d.work }} {{ d.detalework }}</p>
+                            <p class="effects__name" >{{ d.person }}</p>
+                            <p class="effects__name" >{{ d.cast }}</p>
+                        </button>
+                    {% endif %}
+                {% endfor %}
+             </div>
         </div>
-
-                    <button type="submit" class="effects__iteme " name="inputwork" value="{{ forloop.counter0 }}">
-                        <p class="effects__name" >{{ d.work }} {{ d.detalework }}</p>
-                        <p class="effects__name" >{{ d.person }}</p>
-                        <p class="effects__name" >{{ d.cast }}</p>
-                    </button>
-                {% endif %}
-            {% endfor %}
-        </div>
-    </div>
         <br>
     {% endfor %}
 
