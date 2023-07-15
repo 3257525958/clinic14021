@@ -106,7 +106,7 @@ body {
 .main {
     position: relative;
     text-align: center;
-    width: 300px;
+    width: 250px;
     height: 1050px;
     top: 100px;
     /* left:-50%; */
@@ -124,7 +124,6 @@ body {
 .boxxx{
   position: relative;
   top: 0px;
-
   border: 3px unset rgb(var(--vred), var(--vgreen), var(--vblue),var(--ekhtelaf));
   transition: .3s color;
   width: 100px;
