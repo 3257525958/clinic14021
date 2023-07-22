@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path , include
+from azbankgateways.urls import az_bank_gateways_urls
+from peyment_app.views import go_to_gateway_view
 from django.conf.urls.static import static
 from . import settings
 
@@ -24,4 +26,9 @@ urlpatterns = [
     path('cantact/', include('cantact_app.urls')),
     path('jobs/', include('jobs_app.urls')),
     path('reserv/', include('reserv_app.urls')),
+    path('bankgateways/', az_bank_gateways_urls()),
+    path('go-to-gateway/',go_to_gateway_view),
+    path('logout/', include('home_app.urls')),
 ]
+
+

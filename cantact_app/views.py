@@ -410,21 +410,28 @@ def logindef(request):
                         # return redirect('/')
     return render(request,'login_cantact.html',context={'login_etebar':login_etebar[0],})
 ignor_etebar = ['false']
+melicod_ignor = ['']
 def ignordef(request):
     ignor_etebar[0] = 'false'
-    melicod_r[0] = request.POST.get('melicode')
+    melicode = request.POST.get('melicode')
     button_send = request.POST.get('button_send')
     buttoncode_send = request.POST.get('buttoncode_send')
     inputcode_regester = request.POST.get('inputcode_regester')
-
+    if (melicode != '') and (melicode != None) :
+        melicod_ignor[0] = melicode
     if (buttoncode_send != None) and (buttoncode_send != '') and (inputcode_regester != None) and (inputcode_regester != ''):
+        print(inputcode_regester)
         users = accuntmodel.objects.all()
+        print(melicod_ignor[0])
         for user in users:
-            if user.melicode == melicod_r[0]:
+            if user.melicode == melicod_ignor[0]:
+                print(melicod_ignor[0])
+                print(user.pasword)
                 if inputcode_regester == user.pasword :
-                    user_login =authenticate(request,
-                                             username=melicod_r[0],
-                                             password=inputcode_regester,
+                    print('PPPPP')
+                    user_login = authenticate(request,
+                                                 username=melicod_ignor[0],
+                                                 password=inputcode_regester,
                                              )
 
                     if user_login is not None :
@@ -438,13 +445,13 @@ def ignordef(request):
                     return render(request, 'code_cantact.html', context={'etebar': e}, )
 
     if button_send == 'accept':
-        if (melicod_r[0] == '') or (melicod_r[0] == None) :
+        if (melicod_ignor[0] == '') or (melicod_ignor[0] == None) :
             ignor_etebar[0] = 'empty'
-        if (melicod_r[0] != '') and (melicod_r[0] != None) :
+        if (melicod_ignor[0] != '') and (melicod_ignor[0] != None) :
             ignor_etebar[0] = 'nonempty'
             users = accuntmodel.objects.all()
             for user in users :
-                if user.melicode == melicod_r[0] :
+                if user.melicode == melicod_ignor[0] :
                     randomcode = random.randint(1000, 9999)
                     message = f"رمزجدید{randomcode}"
                     try:
@@ -462,7 +469,7 @@ def ignordef(request):
                         b = User.objects.filter(username=user.melicode)
                         b.delete()
                         User.objects.create_user(
-                            username=melicod_r[0],
+                            username=melicod_ignor[0],
                             password=str(randomcode),
                             first_name=user.firstname,
                             last_name=user.lastname,

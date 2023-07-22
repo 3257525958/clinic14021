@@ -52,7 +52,7 @@ body {
     font-family:Tahoma;
     color: black;
     text-align: center;
-    font-size:small ;
+    font-size:large ;
     font-weight: bold;
 }
 .textobject{
@@ -81,7 +81,7 @@ body {
 .effects__iteme {
     display: flex;
     flex-direction: column;
-    flex: 0 0 100px;
+    flex: 0 0 130px;
     margin: 0 10px;
     background: rgb(var(--vred), var(--vgreen), var(--vblue),var(--contrast));
     border: 2px solid rgb(var(--vred), var(--vgreen), var(--vblue),var(--contrast));
@@ -107,7 +107,7 @@ body {
     position: relative;
     text-align: center;
     width:calc(100% / 13 * 12);
-    height: 1100px;
+    height: 1150px;
     top: 100px;
     left: calc(-50% + calc(100% / 13 * 6));
     display: flex;
@@ -168,7 +168,7 @@ body {
 .effects__item {
     /* display: flex; */
     flex-direction: column;
-    flex: 0 0 150px;
+    flex: 0 0 130px;
     margin: 0 10px;
     background: rgb(var(--vred), var(--vgreen), var(--vblue),var(--contrast));
     border: 2px solid rgb(var(--vred), var(--vgreen), var(--vblue),var(--contrast));

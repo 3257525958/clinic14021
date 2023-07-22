@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'jobs_app.apps.JobsAppConfig',
     'store_app.apps.StoreAppConfig',
     'reserv_app.apps.ReservAppConfig',
-
+    'azbankgateways',
+    'peyment_app.apps.PeymentAppConfig',
 
 ]
 JALALI_DATE_DEFAULTS = {
@@ -174,3 +175,25 @@ MEDIA_ROOT='/app/public/media/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+AZ_IRANIAN_BANK_GATEWAYS = {
+   'GATEWAYS': {
+       'IDPAY': {
+           'MERCHANT_CODE': "e9f4c7e3-7cc2-4abe-81a0-5559da24e4ae",
+           'METHOD': 'POST',  # GET or POST
+           'X_SANDBOX': 0,  # 0 disable, 1 active
+       },
+   },
+   'IS_SAMPLE_FORM_ENABLE': True, # اختیاری و پیش فرض غیر فعال است
+   'DEFAULT': 'IDPAY',
+   'CURRENCY': 'IRR', # اختیاری
+   'TRACKING_CODE_QUERY_PARAM': 'tc', # اختیاری
+   'TRACKING_CODE_LENGTH': 16, # اختیاری
+   'SETTING_VALUE_READER_CLASS': 'azbankgateways.readers.DefaultReader', # اختیاری
+   'BANK_PRIORITIES': [
+       # and so on ...
+   ], # اختیاری
+   # 'IS_SAFE_GET_GATEWAY_PAYMENT': False, #اختیاری، بهتر است True بزارید.
+   # 'CUSTOM_APP': None, # اختیاری
+}

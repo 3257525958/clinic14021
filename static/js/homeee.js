@@ -1,12 +1,16 @@
 const menuo = document.querySelector(".imgnavbarmenuo");
 const visib = document.querySelector(".menuo");
+var loginetebar = document.getElementById("loginetebar");
+
 var c = false
 function visiblemenuo(){
     if (c == false){
         visib.style.visibility="visible";
+        console.log(c);
     }
     if (c == true){
         visib.style.visibility="hidden";
+        console.log(c);
     }
     switch (c){
         case false: c = true;
@@ -16,7 +20,6 @@ function visiblemenuo(){
     }
 
 }
-menuo.addEventListener("click",visiblemenuo);
 
 var slideIndex = 0;
 
@@ -42,4 +45,31 @@ function showSlides() {
 
 function menuooo() {
   console.log("kkkkkkkkkkklllllllllll");
+    if (c == false){
+        visib.style.visibility="visible";
+        console.log(c);
+    }
+    if (c == true){
+        visib.style.visibility="hidden";
+        console.log(c);
+    }
+    switch (c){
+        case false: c = true;
+             break;
+        case true: c = false;
+             break;
+    }
+
 }
+    if ( loginetebar.innerHTML == 'false' ){
+                Swal.fire({
+              icon: 'هشدار',
+              title: 'برای رزرو ابتدا باید به حساب کاربری وارد شوید',
+              text: 'برای ثبت نام از لینک زیر استفاده کنید',
+              footer: '<a href="/cantact/addcontact/">ثبت نام </a>'
+});
+                        setTimeout('redirectt()',1000);
+
+    }
+
+    function redirectt() { window.location = "/"; }
