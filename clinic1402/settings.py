@@ -117,15 +117,15 @@ WSGI_APPLICATION = 'clinic1402.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-
+#
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'clinuaa_db',
+        'NAME': 'clinicbajff_db',
         'USER': 'root',
-        'PASSWORD': 'p8sp4hr3jvz1l6h',
-        'HOST': 'clin-sho-service',
+        'PASSWORD': 'jz41nnvhx9jwmeg',
+        'HOST': 'clinicbank-iwd-service',
 
     }
 }
