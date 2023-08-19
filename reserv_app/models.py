@@ -13,3 +13,11 @@ class reservemodel(models.Model):
     yearshamsi = models.CharField(max_length=10,default='0')
     def __str__(self):
         return f"{self.personreserv}"
+
+
+class leavemodel(models.Model):
+    personelmelicod = models.CharField(max_length=11,default='0')
+    dateshamsi = models.CharField(max_length=50,default='0')
+    datemiladi = models.CharField(max_length=50,default='0')
+    muont = models.CharField(max_length=50,default='0')
+    leave = models.CharField (max_length=630,default='0')

@@ -8,6 +8,10 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
+
+upstream my_server {
+  server unix:/webapps/my_app/run/gunicorn.sock fail_timeout=0;
+}
 """
 
 from pathlib import Path
@@ -15,6 +19,7 @@ import os
 
 # import locale
 # locale.setlocale(locale.LC_ALL,"fa_IR.UTF-8")
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -50,7 +55,7 @@ INSTALLED_APPS = [
     'store_app.apps.StoreAppConfig',
     'reserv_app.apps.ReservAppConfig',
     'azbankgateways',
-    'peyment_app.apps.PeymentAppConfig',
+    'peyment_app'
 
 ]
 JALALI_DATE_DEFAULTS = {
@@ -117,7 +122,7 @@ WSGI_APPLICATION = 'clinic1402.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-#
+
 
 DATABASES = {
     'default': {
@@ -179,21 +184,55 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AZ_IRANIAN_BANK_GATEWAYS = {
    'GATEWAYS': {
+       # 'BMI': {
+       #     'MERCHANT_CODE': '<YOUR MERCHANT CODE>',
+       #     'TERMINAL_CODE': '<YOUR TERMINAL CODE>',
+       #     'SECRET_KEY': '<YOUR SECRET CODE>',
+       # },
+       # 'SEP': {
+       #     'MERCHANT_CODE': '<YOUR MERCHANT CODE>',
+       #     'TERMINAL_CODE': '<YOUR TERMINAL CODE>',
+       # },
+       # 'ZARINPAL': {
+       #     'MERCHANT_CODE': '<YOUR MERCHANT CODE>',
+       #     'SANDBOX': 0,  # 0 disable, 1 active
+       # },
        'IDPAY': {
-           'MERCHANT_CODE': "e9f4c7e3-7cc2-4abe-81a0-5559da24e4ae",
+           'MERCHANT_CODE': '021de8d3-3eb3-40ba-b0e3-01883a6575e1',
            'METHOD': 'POST',  # GET or POST
-           'X_SANDBOX': 0,  # 0 disable, 1 active
+           'X_SANDBOX': 1,  # 0 disable, 1 active
        },
+       # 'ZIBAL': {
+       #     'MERCHANT_CODE': '64c2047fcbbc270017f4c6b2',
+       # },
+       # 'BAHAMTA': {
+       #     'MERCHANT_CODE': '<YOUR MERCHANT CODE>',
+       # },
+       # 'MELLAT': {
+       #     'TERMINAL_CODE': '<YOUR TERMINAL CODE>',
+       #     'USERNAME': '<YOUR USERNAME>',
+       #     'PASSWORD': '<YOUR PASSWORD>',
+       # },
+       # 'PAYV1': {
+       #     'MERCHANT_CODE': '<YOUR MERCHANT CODE>',
+       #     'X_SANDBOX': 0,  # 0 disable, 1 active
+       # },
    },
-   'IS_SAMPLE_FORM_ENABLE': True, # اختیاری و پیش فرض غیر فعال است
+   # 'IS_SAMPLE_FORM_ENABLE': True, # اختیاری و پیش فرض غیر فعال است
    'DEFAULT': 'IDPAY',
    'CURRENCY': 'IRR', # اختیاری
    'TRACKING_CODE_QUERY_PARAM': 'tc', # اختیاری
    'TRACKING_CODE_LENGTH': 16, # اختیاری
    'SETTING_VALUE_READER_CLASS': 'azbankgateways.readers.DefaultReader', # اختیاری
    'BANK_PRIORITIES': [
+       # 'BMI',
+       # 'SEP',
        # and so on ...
    ], # اختیاری
-   # 'IS_SAFE_GET_GATEWAY_PAYMENT': False, #اختیاری، بهتر است True بزارید.
+    # 'IS_SAMPLE_FORM_ENABLE': True,
+   'IS_SAFE_GET_GATEWAY_PAYMENT': True, #اختیاری، بهتر است True بزارید.
    # 'CUSTOM_APP': None, # اختیاری
 }
+
+MERCHANT = '021de8d3-3eb3-40ba-b0e3-01883a6575e1'
+SANDBOX = True

@@ -13,12 +13,10 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
 from django.urls import path , include
-from azbankgateways.urls import az_bank_gateways_urls
-from peyment_app.views import go_to_gateway_view
-from django.conf.urls.static import static
-from . import settings
+from django.contrib import admin
+
+admin.autodiscover()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,9 +24,10 @@ urlpatterns = [
     path('cantact/', include('cantact_app.urls')),
     path('jobs/', include('jobs_app.urls')),
     path('reserv/', include('reserv_app.urls')),
-    path('bankgateways/', az_bank_gateways_urls()),
-    path('go-to-gateway/',go_to_gateway_view),
     path('logout/', include('home_app.urls')),
+    path('zib/', include('peyment_app.urls')),
+
 ]
 
-
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

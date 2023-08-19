@@ -16,6 +16,7 @@
         </p>
         <div class="regester">
             <form action="" class="nametable" method="POST">
+                {% csrf_token %}
                 <div class="box">
                     <p class=>
                         دوست عزیز شما خدمت لیزر فول بادی 
@@ -24,11 +25,11 @@
                        نننن 
                     </p>
                 </div>
-            <button class="regesterbuttonsave">
-                ارسال
+            <button  class="regesterbuttonsave">
+                <a href="{% url 'order' %}">زرینپال</a>
             </button>
             <button class="regesterbuttoncancel">
-                بازگشت
+                <a href="{% url 'irandargah' %}">ایراندرگاه</a>
             </button>
     </form>
         </div>
