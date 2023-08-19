@@ -27,7 +27,7 @@ description = "توضیحات مربوط به تراکنش را در این قس
 phone = 'YOUR_PHONE_NUMBER'  # Optional
 # Important: need to edit for realy server.
 CallbackURL = 'http://127.0.0.1:8000/zib/verify/'
-callbackirandargaah = 'http://127.0.0.1:8000/zib/irandargahcallback/'
+callbackirandargaah = 'http://drmahdiasadpour.ir/zib/irandargahcallback/'
 
 
 
@@ -55,8 +55,6 @@ class OrderPayView(View):
         else:
             print(res.json()['errors'])
             return HttpResponse(str(res.json()['errors']))
-
-
 class VerifyPayView(View):
     def get(self,request):
         authority = request.GET['Authority']
@@ -76,10 +74,6 @@ class VerifyPayView(View):
                 return HttpResponse({'Status': response['Status'],'RefID':response['RefID']})
         else:
             return HttpResponse('پرداخت ناموفق')
-
-
-
-
 class OrderPayViewirandagaah(View):
     def get(self,request):
         data = {
@@ -108,8 +102,6 @@ class OrderPayViewirandagaah(View):
         else:
             print("Error in connecting to gateway: " + result['message'])
             return render(request,'home.html')
-
-
 class Verifyi(View):
     def get(self,request):
         print("0000000000")
