@@ -27,7 +27,7 @@ description = "توضیحات مربوط به تراکنش را در این قس
 phone = 'YOUR_PHONE_NUMBER'  # Optional
 # Important: need to edit for realy server.
 CallbackURL = 'http://127.0.0.1:8000/zib/verify/'
-callbackirandargaah = 'http://drmahdiasadpour.ir/zib/irandargahcallback/'
+callbackirandargaah = 'http://127.0.0.1:8000/zib/irandargahcallback/'
 
 
 
