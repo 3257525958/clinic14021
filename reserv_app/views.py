@@ -5,7 +5,7 @@ import datetime
 from jalali_date import date2jalali,datetime2jalali
 from datetime import timedelta
 import matplotlib
-from reserv_app.models import reservemodel,leavemodel
+from reserv_app.models import reservemodel,leavemodel,reservemodeltest,neurseformtestmodel
 from cantact_app.models import accuntmodel
 matplotlib.use('Agg')
 def strb(tdef):
@@ -98,16 +98,34 @@ day = ['t']
 day.clear()
 level = ['']
 loginetebar = ['t']
-
+reservposition = ['0']
+file_botax = ["0"]
+for i  in range(10) :
+    file_botax.append("0")
+mellicoduser = ["0"]
 def reservdef(request):
     if request.user.is_authenticated:
         users = accuntmodel.objects.all()
         for user in users:
             if user.melicode == request.user.username:
                 level[0] = user.level
+                ferstname_user = user.firstname
+                lastname_user = user.lastname
+                mellicoduser[0] = user.melicode
+        filesendbutton = request.POST.get("filesendbutton")
+        inject_botax  = request.POST.get("r1")
+        illnes  = request.POST.get("r2")
+        drug = request.POST.get("drug")
+        sensivety  = request.POST.get("r3")
+        pregnancy  = request.POST.get("r4")
+        date_finaly = request.POST.get("date_finaly")
+        image_full  = request.POST.get("c1")
+        image_semi = request.POST.get('c2')
+        image_not =request.POST.get("c3")
+        satisfact = request.POST.get("c4")
         inputwork = request.POST.get("inputwork")
         timeselect = request.POST.get("timeselect")
-    # *******************************************************ساختن آرایه ها برای نمایش خدمتها در صفحه وب********************************************
+# *******************************************************ساختن آرایه ها برای نمایش خدمتها در صفحه وب********************************************
         works = workmodel.objects.all()
         ww.clear()
         ww.append('start')
@@ -119,9 +137,10 @@ def reservdef(request):
             if a == 0 :
                 ww.append(w.work)
         ww.pop(0)
-    #**********************انتخاب کاربر به صورت یک عدد از forloop  از وب میاد و در اینجا اون عدد تبدیل میشه به انتخاب اصلی و در  f  ریخته میشه**************
+#**********************انتخاب کاربر به صورت یک عدد از forloop  از وب میاد و در اینجا اون عدد تبدیل میشه به انتخاب اصلی و در  f  ریخته میشه**************
         c = 0
         if inputwork != None:
+            reservposition[0] = "1"
             for f in works :
                 if int(c) == int(inputwork) :
                     selectprocedure.clear()
@@ -176,18 +195,11 @@ def reservdef(request):
                     dayarr.append('true')
 # _____برسی مرخصی ها و حضور اپراتوری که انتخاب شده_________
                 day_leave = strd(t)
-                print(day_leave)
                 ls = leavemodel.objects.all()
                 users = accuntmodel.objects.all()
                 for user in users:
-                    print(user.firstname + ' ' + user.lastname,"user.firstname + ' ' + user.lastname")
-                    print(selectprocedure[2],"selectprocedure[2]")
                     if user.firstname + ' ' + user.lastname == selectprocedure[2] :
                         for l in ls :
-                            print(l.personelmelicod,"l.personelmelicod")
-                            print(user.melicode,"user.melicode")
-                            print(l.muont,"l.muont")
-                            print(strb(t),"strb(t)")
                             if (l.personelmelicod == user.melicode) and (l.muont == strb(t)) :
                                 s = l.leave.split(",")
                                 a = 2
@@ -267,14 +279,55 @@ def reservdef(request):
             return render(request,'timereserv.html',context={'day':day,
                                                              'person':" رزرو وقت برای " + selectprocedure[0] +" "+ selectprocedure[1] + "(" + selectprocedure[2] + ")",
                                                              })
-
+# _______انتخاب یه تایم برای خدمت مورد نظر__________
         if (timeselect != None) and (timeselect != '') :
+            reservposition[0] = 2
             s = timeselect
             stime = s.split(",")
             selectprocedure.append(shamsiarray[int(stime[1])-1])
             selectprocedure.append(miladiarray[int(stime[1])-1])
             selectprocedure.append(stry(datetime.datetime.now()))
             selectprocedure.append(stime[0])
+            if stime[0] == "1"  :
+                selectprocedure.append("10")
+            if stime[0] == "2"  :
+                selectprocedure.append("10.5")
+            if stime[0] == "3"  :
+                selectprocedure.append("11")
+            if stime[0] == "4"  :
+                selectprocedure.append("11.5")
+            if stime[0] == "5"  :
+                selectprocedure.append("12")
+            if stime[0] == "6"  :
+                selectprocedure.append("12.5")
+            if stime[0] == "7"  :
+                selectprocedure.append("13")
+            if stime[0] == "8"  :
+                selectprocedure.append("13.5")
+            if stime[0] == "9"  :
+                selectprocedure.append("14")
+            if stime[0] == "10"  :
+                selectprocedure.append("14.5")
+            if stime[0] == "11"  :
+                selectprocedure.append("15")
+            if stime[0] == "12"  :
+                selectprocedure.append("15.5")
+            if stime[0] == "13"  :
+                selectprocedure.append("16")
+            if stime[0] == "14"  :
+                selectprocedure.append("16.5")
+            if stime[0] == "15"  :
+                selectprocedure.append("17")
+            if stime[0] == "16"  :
+                selectprocedure.append("17.5")
+            if stime[0] == "17"  :
+                selectprocedure.append("18")
+            if stime[0] == "18"  :
+                selectprocedure.append("18.5")
+            if stime[0] == "19"  :
+                selectprocedure.append("19")
+            if stime[0] == "20"  :
+                selectprocedure.append("19.5")
 
             reservs = reservemodel.objects.all()
             reservetebar[0] = 'succes'
@@ -297,7 +350,6 @@ def reservdef(request):
                                 reservetebar[0] = "fals3"
                             if int(r.timereserv) == int(t) + 2:
                                 reservetebar[0] = "false3"
-
             if selectprocedure[3] == '4' :
                 t = int(selectprocedure[8])
                 for r in reservs :
@@ -309,7 +361,6 @@ def reservdef(request):
                                 reservetebar[0] = "false4"
                             if int(r.timereserv) == int(t) + 3:
                                 reservetebar[0] = "false4"
-
             if selectprocedure[3] == '5' :
                 t = int(selectprocedure[8])
                 for r in reservs :
@@ -323,9 +374,8 @@ def reservdef(request):
                                 reservetebar[0] = "false5"
                             if int(r.timereserv) == int(t) + 4:
                                 reservetebar[0] = "false5"
-
             if reservetebar[0] == 'succes' :
-                reservemodel.objects.create(jobreserv=selectprocedure[0],
+                reservemodeltest.objects.create(jobreserv=selectprocedure[0],
                                             detalereserv=selectprocedure[1],
                                             personreserv=selectprocedure[2],
                                             timereserv=selectprocedure[3],
@@ -334,10 +384,61 @@ def reservdef(request):
                                             datemiladireserv=selectprocedure[6],
                                             yearshamsi=selectprocedure[7],
                                             hourreserv=selectprocedure[8],
+                                            mellicode= mellicoduser[0]
                                             )
-                return render(request,'reserv_end.html')
+                return render(request,'add_userfilebotax.html')
             else:
                 return render(request,'timereserv.html',context={'reservetebar':reservetebar[0],})
+# ___________________تشکیل پرونده___________
+        if filesendbutton == "accept" :
+            reservposition[0] = "3"
+            if (inject_botax == "yes") or (inject_botax == "no") :
+                file_botax[0] = inject_botax
+            else:
+                error = "inject_botax"
+                return render(request, 'add_userfilebotax.html', context={"error": error})
+            if (illnes == "yes") or (illnes == "no"):
+                file_botax[1] = illnes
+            else:
+                error = "illnes"
+                return render(request, 'add_userfilebotax.html', context={"error": error})
+            file_botax[2] = drug
+            if (sensivety == "yes") or (sensivety == "no"):
+                file_botax[3] = sensivety
+            else:
+                error = "sensivety"
+                return render(request, 'add_userfilebotax.html', context={"error": error})
+            if (pregnancy == "yes") or (pregnancy == "no"):
+                file_botax[4] = pregnancy
+            else:
+                error = "pregnancy"
+                return render(request, 'add_userfilebotax.html', context={"error": error})
+            file_botax[5] = date_finaly
+            file_botax[6] = image_full
+            file_botax[7] = image_semi
+            file_botax[8] = image_not
+            if satisfact == "yes":
+                file_botax[9] = satisfact
+            else:
+                error = "satisfact"
+                return render(request, 'add_userfilebotax.html', context={"error": error})
+            neurseformtest.objects.create(
+                mellicode=mellicoduser[0],
+                inject_botax=inject_botax,
+                illnes=illnes,
+                drug = drug,
+                sensivety = sensivety,
+                pregnancy = pregnancy,
+                date_finaly = date_finaly,
+                image_full = image_full,
+                image_semi = image_semi,
+                image_not = image_not,
+                satisfact = satisfact,
+                                           )
+
+            return render(request,'reserv_end.html',context={"selectprocedure":selectprocedure,
+                                                             "firstname":ferstname_user,
+                                                             "lastname":lastname_user,})
         return render(request,'reserv.html',context={'works':works,
                                                  'job':ww,
                                                  'shamsiarray':shamsiarray,
@@ -345,6 +446,9 @@ def reservdef(request):
     else:
         loginetebar[0] = "false"
         return render(request,'home.html',context={"loginetebar":loginetebar[0]})
+
+
+
 
 
 
