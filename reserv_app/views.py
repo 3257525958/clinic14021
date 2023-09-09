@@ -5,7 +5,7 @@ import datetime
 from jalali_date import date2jalali,datetime2jalali
 from datetime import timedelta
 import matplotlib
-from reserv_app.models import reservemodel,leavemodel,reservemodeltest,neurseformtestmodel
+from reserv_app.models import reservemodel,leavemodel,reservemodeltest,neursetestmodel
 from cantact_app.models import accuntmodel
 matplotlib.use('Agg')
 def strb(tdef):
@@ -422,7 +422,7 @@ def reservdef(request):
             else:
                 error = "satisfact"
                 return render(request, 'add_userfilebotax.html', context={"error": error})
-            neurseformtest.objects.create(
+            neursetest.objects.create(
                 mellicode=mellicoduser[0],
                 inject_botax=inject_botax,
                 illnes=illnes,

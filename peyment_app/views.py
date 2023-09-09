@@ -5,7 +5,7 @@ from django.conf import settings
 import requests
 import json
 from django.http import HttpResponse
-from reserv_app.models import reservemodeltest,reservemodel,neurseformmodel,neurseformtestmodel
+from reserv_app.models import reservemodeltest,reservemodel,neursemodel,neursetestmodel
 from cantact_app.models import accuntmodel
 
 
@@ -231,10 +231,10 @@ def callbackzibal(request):
                                             )
                 a = reservemodeltest.objects.filter(mellicode=m[0])
                 a.delete()
-        neurse = neurseformtestmodel.objects.all()
+        neurse = neursetestmodel.objects.all()
         for r in neurse :
             if r.mellicode == m[0]:
-                neurseformmodel.objects.create(
+                neursemodel.objects.create(
                     mellicode=m[0],
                     inject_botax=r.inject_botax,
                     illnes=r.illnes,
@@ -247,7 +247,7 @@ def callbackzibal(request):
                     image_not=r.image_not,
                     satisfact=r.satisfact,
                 )
-                a = neurseformtestmodel.objects.filter(mellicode=m[0])
+                a = neursetestmodel.objects.filter(mellicode=m[0])
                 a.delete()
 
     # return redirect('http://127.0.0.1:8000/zib/end/')

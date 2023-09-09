@@ -38,7 +38,7 @@ class leavemodel(models.Model):
     leave = models.CharField (max_length=630,default='0')
 
 
-class neurseformmodel(models.Model):
+class neursemodel(models.Model):
     mellicode = models.CharField(max_length=12, default="0")
     inject_botax = models.CharField(max_length=150,default='0')
     illnes = models.CharField(max_length=150,default='0')
@@ -52,7 +52,7 @@ class neurseformmodel(models.Model):
     satisfact = models.CharField(max_length=150,default='0')
     def __str__(self):
         return f"{self.mellicode}"
-class neurseformtestmodel(models.Model):
+class neursetestmodel(models.Model):
     mellicode = models.CharField(max_length=12, default="0")
     inject_botax = models.CharField(max_length=150,default='0')
     illnes = models.CharField(max_length=150,default='0')
