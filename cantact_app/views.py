@@ -360,10 +360,9 @@ def addcantactdef(request):
                                              password=phonnumber_r[0],
                                              )
 
-                    if user_login is not None :
-                        login (request,user_login)
-                        e = 'succes'
-                        return render(request,'code_cantact.html',context={'etebar':e},)
+                    login (request,user_login)
+                    e = 'succes'
+                    return render(request,'code_cantact.html',context={'etebar':e},)
                         # return redirect('/')
             # return render(request, 'cod_of_phon.html')
             else:
@@ -411,6 +410,7 @@ def logindef(request):
     return render(request,'login_cantact.html',context={'login_etebar':login_etebar[0],})
 ignor_etebar = ['false']
 melicod_ignor = ['']
+
 def ignordef(request):
     ignor_etebar[0] = 'false'
     melicode = request.POST.get('melicode')
@@ -420,15 +420,10 @@ def ignordef(request):
     if (melicode != '') and (melicode != None) :
         melicod_ignor[0] = melicode
     if (buttoncode_send != None) and (buttoncode_send != '') and (inputcode_regester != None) and (inputcode_regester != ''):
-        print(inputcode_regester)
         users = accuntmodel.objects.all()
-        print(melicod_ignor[0])
         for user in users:
             if user.melicode == melicod_ignor[0]:
-                print(melicod_ignor[0])
-                print(user.pasword)
                 if inputcode_regester == user.pasword :
-                    print('PPPPP')
                     user_login = authenticate(request,
                                                  username=melicod_ignor[0],
                                                  password=inputcode_regester,
