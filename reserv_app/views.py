@@ -422,7 +422,7 @@ def reservdef(request):
             else:
                 error = "satisfact"
                 return render(request, 'add_userfilebotax.html', context={"error": error})
-            neursetest.objects.create(
+            neursetestmodel.objects.create(
                 mellicode=mellicoduser[0],
                 inject_botax=inject_botax,
                 illnes=illnes,
