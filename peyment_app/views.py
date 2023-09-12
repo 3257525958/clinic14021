@@ -140,9 +140,9 @@ class Verifyi(View):
 ZIB_API_REQUEST = "https://gateway.zibal.ir/v1/request"
 ZIB_API_VERIFY = "https://gateway.zibal.ir/verify"
 ZIB_API_STARTPAY = "https://gateway.zibal.ir/start/"
-# callbackzibalurl = 'http://127.0.0.1:8000/zib/verifyzibal/'
+# callbackzibalurl = 'https://127.0.0.1:8000/zib/verifyzibal/'
 merchanzibal = 'zibal'
-callbackzibalurl = 'http://mahdiasadpour.ir/zib/verifyzibal/'
+callbackzibalurl = 'https://drmahdiasadpour.ir/zib/verifyzibal/'
 # merchanzibal = '64c2047fcbbc270017f4c6b2'
 m=["0"]
 peyment = 50000
@@ -250,8 +250,8 @@ def callbackzibal(request):
                 a = neursetestmodel.objects.filter(mellicode=m[0])
                 a.delete()
 
-    # return redirect('http://127.0.0.1:8000/zib/end/')
-    return redirect('http://mahdiasadpour.ir/zib/end/')
+    # return redirect('https://127.0.0.1:8000/zib/end/')
+    return redirect('https://drmahdiasadpour.ir/zib/end/')
 
 def end(request):
 
