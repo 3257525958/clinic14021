@@ -166,21 +166,24 @@ def addcantactdef(request):
 
     melicod_etebar[0] = 'f'
     melicod = request.POST.get("melicod")
-    if len(str(melicod)) != 10 :
-        melicod_etebar[0] = 'repeat'
-        melicod = ''
-    try:
-        melicod = int(melicod)
-    except:
-        melicod_etebar[0] = 'stringerror'
 
     if (melicod != '') and ( melicod != None) :
         melicod_etebar[0] = 'true'
+
         users = accuntmodel.objects.all()
         for user in users :
             if user.melicode == melicod :
                 melicod_etebar[0] = 'false'
+        if len(str(melicod)) != 10:
+            melicod_etebar[0] = 'repeat'
+
+        try:
+            melicod = str(int(melicod))
+        except:
+            melicod_etebar[0] = 'stringerror'
+
         melicod_r[0] = melicod
+
     if melicod_r[0] == None :
         melicod_r[0] = ''
 
@@ -291,7 +294,7 @@ def addcantactdef(request):
                                                        })
 # ------------------------------------------------بعد از زدن دکمه ارسال در صفحه add_cantact- و یا بعد از زدن دکمه ارسال مجدد----کد ارسال میکنخ با پیامک-------------------------
     if (button_send == 'accept') or (buttoncode_repeat == 'accept'):
-        if (melicod_r[0] == '') and (melicod_r[0] == None) and (melicod_etebar[0] != 'repeat') :
+        if (melicod_r[0] == '') and (melicod_r[0] == None)  :
             melicod_etebar[0] = 'empty'
         if melicod_etebar[0] == 'true' :
             savecods = savecodphon.objects.all()
