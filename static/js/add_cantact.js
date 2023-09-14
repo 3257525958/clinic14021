@@ -20,6 +20,21 @@
         })
 
     }
+    if ( etebar.innerHTML == 'repeat')
+    {
+        Swal.fire({
+            icon: 'warning',
+            title: 'لطفا کد ملی را وارد کنید'
+        })
+    }
+    if ( etebar.innerHTML == 'stringerror')
+    {
+        Swal.fire({
+            icon: 'warning',
+            title: 'لطفا اعداد را انگلیسی وارد کنید'
+        })
+
+    }
     if ( etebar.innerHTML == 'tellerror')
     {
         Swal.fire({
@@ -28,6 +43,8 @@
         })
 
     }
+
+
     if ( etebar.innerHTML == 'neterror')
     {
         Swal.fire({

@@ -166,6 +166,14 @@ def addcantactdef(request):
 
     melicod_etebar[0] = 'f'
     melicod = request.POST.get("melicod")
+    if len(str(melicod)) != 10 :
+        melicod_etebar[0] = 'repeat'
+        melicod = ''
+    try:
+        melicod = int(melicod)
+    except:
+        melicod_etebar[0] = 'stringerror'
+
     if (melicod != '') and ( melicod != None) :
         melicod_etebar[0] = 'true'
         users = accuntmodel.objects.all()
@@ -283,7 +291,7 @@ def addcantactdef(request):
                                                        })
 # ------------------------------------------------بعد از زدن دکمه ارسال در صفحه add_cantact- و یا بعد از زدن دکمه ارسال مجدد----کد ارسال میکنخ با پیامک-------------------------
     if (button_send == 'accept') or (buttoncode_repeat == 'accept'):
-        if (melicod_r[0] == '') and (melicod_r[0] == None) :
+        if (melicod_r[0] == '') and (melicod_r[0] == None) and (melicod_etebar[0] != 'repeat') :
             melicod_etebar[0] = 'empty'
         if melicod_etebar[0] == 'true' :
             savecods = savecodphon.objects.all()
@@ -399,11 +407,19 @@ def logindef(request):
                 login_etebar[0] = 'false_in_paswoord'
                 if password == user.pasword :
                     login_etebar[0] = 'true'
-                    user_login = authenticate(request,
-                                              username=username,
-                                              password=password
-                                              )
+                    a = User.objects.filter(username=username)
+                    a.delete()
+                    User.objects.create_user(
+                                                username=user.melicode,
+                                                password=user.pasword,
+                                                first_name=user.firstname,
+                                                last_name=user.lastname,
+                                            )
 
+                    user_login =authenticate(request,
+                                             username=user.melicode,
+                                             password=user.pasword,
+                                             )
                     if user_login is not None:
                         login(request, user_login)
                         # return redirect('/')
@@ -417,8 +433,16 @@ def ignordef(request):
     button_send = request.POST.get('button_send')
     buttoncode_send = request.POST.get('buttoncode_send')
     inputcode_regester = request.POST.get('inputcode_regester')
+    changhbutton = request.POST.get("changhbutton")
+    newpass = request.POST.get("newpass")
     if (melicode != '') and (melicode != None) :
         melicod_ignor[0] = melicode
+    if changhbutton == "accept":
+        a = accuntmodel.objects.filter(melicode=melicod_ignor[0])
+        a.update(pasword=newpass)
+        e = 'succes'
+        return render(request,'changepaswoord.html',context={'etebar': e})
+
     if (buttoncode_send != None) and (buttoncode_send != '') and (inputcode_regester != None) and (inputcode_regester != ''):
         users = accuntmodel.objects.all()
         for user in users:
@@ -431,10 +455,7 @@ def ignordef(request):
 
                     if user_login is not None :
                         login (request,user_login)
-                        e = 'succes'
-                        return render(request,'code_cantact.html',context={'etebar':e},)
-                        # ignor_etebar[0] = 'succes'
-                        # return redirect('/')
+                        return render(request,'changepaswoord.html')
                 else:
                     e = 'false'
                     return render(request, 'code_cantact.html', context={'etebar': e}, )
@@ -482,3 +503,8 @@ def ignordef(request):
                         return render(request, 'add_cantact.html', context={'melicod_etebar': m},)
 
     return render(request,'ignor_cantact.html',context={'ignor_etebar':ignor_etebar[0],})
+
+
+
+def chengpaswoord(request):
+    return render(request,'changepaswoord.html')
