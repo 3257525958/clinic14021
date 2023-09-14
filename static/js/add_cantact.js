@@ -24,7 +24,7 @@
     {
         Swal.fire({
             icon: 'warning',
-            title: 'لطفا کد ملی را وارد کنید'
+            title: 'کد ملی معتبر نمیباشد'
         })
     }
     if ( etebar.innerHTML == 'stringerror')
