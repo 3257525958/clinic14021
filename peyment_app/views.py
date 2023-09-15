@@ -271,30 +271,36 @@ def callbackzibal(request):
     return redirect('https://drmahdiasadpour.ir/zib/end/')
 
 def end(request):
+    print("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
+    print("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
+    print("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
+    print("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
+    print("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
+    print("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
     print(request)
-    backbutton = request.POST.get("backbutton")
-    if backbutton == "accept":
-        # return redirect('http://127.0.0.1:8000/')
-        return redirect('https://drmahdiasadpour.ir/')
-    message = f"{result[5]}_{result[6]}پرداخت_موفقیت_آمیز_کدرهگیری_{result[2]}"
-
-    try:
-        api = KavenegarAPI(
-            '527064632B7931304866497A5376334B6B506734634E65422F627346514F59596C767475564D32656E61553D')
-        params = {
-            'receptor': result[4],
-            'template': 'test',
-            'token': message,
-            'type': 'sms',
-        }
-        response = api.verify_lookup(params)
-        return render(request, 'end.html', context={"result": result, })
-    except APIException as e:
-        m = 'tellerror'
-        # messages.error(request,'در سیستم ارسال پیامک مشکلی پیش آمده لطفا شماره خود را به درستی وارد کنید و دوباره امتحان کنید در صورتی که مشکل برطرف نشد در اینستاگرام پیام دهید ')
-        return render(request, 'end.html', context={"result": result, })
-    except HTTPException as e:
-        m = 'neterror'
-        # messages.error(request,'در سیستم ارسال پیامک مشکلی پیش آمده لطفا شماره خود را به درستی وارد کنید و دوباره امتحان کنید در صورتی که مشکل برطرف نشد در اینستاگرام پیام دهید ')
-        # return render(request, 'add_cantact.html')
-        return render(request, 'end.html', context={"result": result, })
+    # backbutton = request.POST.get("backbutton")
+    # if backbutton == "accept":
+    #     # return redirect('http://127.0.0.1:8000/')
+    #     return redirect('https://drmahdiasadpour.ir/')
+    # message = f"{result[5]}_{result[6]}پرداخت_موفقیت_آمیز_کدرهگیری_{result[2]}"
+    #
+    # try:
+    #     api = KavenegarAPI(
+    #         '527064632B7931304866497A5376334B6B506734634E65422F627346514F59596C767475564D32656E61553D')
+    #     params = {
+    #         'receptor': result[4],
+    #         'template': 'test',
+    #         'token': message,
+    #         'type': 'sms',
+    #     }
+    #     response = api.verify_lookup(params)
+    #     return render(request, 'end.html', context={"result": result, })
+    # except APIException as e:
+    #     m = 'tellerror'
+    #     # messages.error(request,'در سیستم ارسال پیامک مشکلی پیش آمده لطفا شماره خود را به درستی وارد کنید و دوباره امتحان کنید در صورتی که مشکل برطرف نشد در اینستاگرام پیام دهید ')
+    #     return render(request, 'end.html', context={"result": result, })
+    # except HTTPException as e:
+    #     m = 'neterror'
+    #     # messages.error(request,'در سیستم ارسال پیامک مشکلی پیش آمده لطفا شماره خود را به درستی وارد کنید و دوباره امتحان کنید در صورتی که مشکل برطرف نشد در اینستاگرام پیام دهید ')
+    #     # return render(request, 'add_cantact.html')
+    return render(request, 'end.html', context={"result": result, })
