@@ -129,10 +129,11 @@ def reservdef(request):
         peymentbutton = request.POST.get("peymentbutton")
         backbutton = request.POST.get("backbutton")
         if backbutton =="accept":
-            redirect("/")
+            # return redirect('http://127.0.0.1:8000/')
+            return redirect('https://drmahdiasadpour.ir/')
         if peymentbutton == "accept":
-            return redirect('http://127.0.0.1:8000/zib/zibal/')
-            # return redirect('https://drmahdiasadpour.ir/zib/zibal/')
+            # return redirect('http://127.0.0.1:8000/zib/zibal/')
+            return redirect('https://drmahdiasadpour.ir/zib/zibal/')
         # *******************************************************ساختن آرایه ها برای نمایش خدمتها در صفحه وب********************************************
         works = workmodel.objects.all()
         ww.clear()

@@ -142,10 +142,10 @@ class Verifyi(View):
 ZIB_API_REQUEST = "https://gateway.zibal.ir/v1/request"
 ZIB_API_VERIFY = "https://gateway.zibal.ir/verify"
 ZIB_API_STARTPAY = "https://gateway.zibal.ir/start/"
-callbackzibalurl = 'http://127.0.0.1:8000/zib/verifyzibal/'
-merchanzibal = 'zibal'
-# callbackzibalurl = 'https://drmahdiasadpour.ir/zib/verifyzibal/'
-# merchanzibal = '64c2047fcbbc270017f4c6b2'
+# callbackzibalurl = 'http://127.0.0.1:8000/zib/verifyzibal/'
+# merchanzibal = 'zibal'
+callbackzibalurl = 'https://drmahdiasadpour.ir/zib/verifyzibal/'
+merchanzibal = '64c2047fcbbc270017f4c6b2'
 m=["0"]
 peyment = 50000
 phonnumber = ["0"]
@@ -263,8 +263,8 @@ def callbackzibal(request):
                 a = neursetestmodel.objects.filter(mellicode=m[0])
                 a.delete()
 
-    return redirect('http://127.0.0.1:8000/zib/end/')
-    # return redirect('https://drmahdiasadpour.ir/zib/end/')
+    # return redirect('http://127.0.0.1:8000/zib/end/')
+    return redirect('https://drmahdiasadpour.ir/zib/end/')
 
 def end(request):
     # print(result[0])
@@ -276,9 +276,10 @@ def end(request):
     # print(result[6])
     backbutton = request.POST.get("backbutton")
     if backbutton == "accept":
-        return redirect('http://127.0.0.1:8000/')
-        # return redirect('https://drmahdiasadpour.ir/')
+        # return redirect('http://127.0.0.1:8000/')
+        return redirect('https://drmahdiasadpour.ir/')
     message = f"{result[5]}_{result[6]}پرداخت_موفقیت_آمیز_کدرهگیری_{result[2]}"
+
     try:
         api = KavenegarAPI(
             '527064632B7931304866497A5376334B6B506734634E65422F627346514F59596C767475564D32656E61553D')
@@ -288,6 +289,14 @@ def end(request):
             'token': message,
             'type': 'sms',
         }
+        response = api.verify_lookup(params)
         return render(request, 'end.html', context={"result": result, })
-    except:
-        return render(request,'end.html',context={"result":result,})
+    except APIException as e:
+        m = 'tellerror'
+        # messages.error(request,'در سیستم ارسال پیامک مشکلی پیش آمده لطفا شماره خود را به درستی وارد کنید و دوباره امتحان کنید در صورتی که مشکل برطرف نشد در اینستاگرام پیام دهید ')
+        return render(request, 'end.html', context={"result": result, })
+    except HTTPException as e:
+        m = 'neterror'
+        # messages.error(request,'در سیستم ارسال پیامک مشکلی پیش آمده لطفا شماره خود را به درستی وارد کنید و دوباره امتحان کنید در صورتی که مشکل برطرف نشد در اینستاگرام پیام دهید ')
+        # return render(request, 'add_cantact.html')
+        return render(request, 'end.html', context={"result": result, })
