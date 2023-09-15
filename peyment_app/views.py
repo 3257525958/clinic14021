@@ -271,13 +271,7 @@ def callbackzibal(request):
     return redirect('https://drmahdiasadpour.ir/zib/end/')
 
 def end(request):
-    # print(result[0])
-    # print(result[1])
-    # print(result[2])
-    # print(result[3])
-    # print(result[4])
-    # print(result[5])
-    # print(result[6])
+    print(request)
     backbutton = request.POST.get("backbutton")
     if backbutton == "accept":
         # return redirect('http://127.0.0.1:8000/')
