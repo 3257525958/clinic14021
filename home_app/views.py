@@ -8,10 +8,6 @@ from django.shortcuts import redirect
 profilestatus =['']
 loglevel = ['']
 def home(request):
-    print("ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp")
-    print(request)
-    print("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr")
-
     if request.user.is_authenticated:
         us = accuntmodel.objects.all()
         for u in us:

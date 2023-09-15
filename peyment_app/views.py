@@ -158,7 +158,7 @@ def orderzibal(request):
                 phonnumber[0] = user.phonnumber
                 m[0] = user.melicode
     print("ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp")
-    print(request)
+    print(request.user.username)
     print("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr")
     data = {
         "merchant": merchanzibal,
