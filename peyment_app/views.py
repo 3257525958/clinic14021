@@ -9,6 +9,12 @@ from kavenegar import KavenegarAPI, APIException, HTTPException
 
 from reserv_app.models import reservemodeltest,reservemodel,neursemodel,neursetestmodel
 from cantact_app.models import accuntmodel
+from django.shortcuts import render
+from cantact_app.models import accuntmodel
+from django.contrib.auth import authenticate,login, logout
+from django.contrib.auth.models import User
+from django.shortcuts import redirect
+
 
 
 
@@ -150,6 +156,7 @@ resulttt = ["t"]
 peyment = 50000
 phonnumber = ["0"]
 def orderzibal(request):
+    print(request.user)
     if request.user.is_authenticated:
         users = accuntmodel.objects.all()
         for user in users:
