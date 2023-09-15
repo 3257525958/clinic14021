@@ -1,3 +1,4 @@
+from django.contrib.auth import authenticate, login
 from django.shortcuts import render , redirect
 from django.views import View
 import requests
@@ -156,6 +157,9 @@ def orderzibal(request):
             if user.melicode == request.user.username:
                 phonnumber[0] = user.phonnumber
                 m[0] = user.melicode
+    print("ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp")
+    print(request.user.username)
+    print("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr")
     data = {
         "merchant": merchanzibal,
         "amount": peyment,
