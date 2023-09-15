@@ -125,7 +125,15 @@ def reservdef(request):
         satisfact = request.POST.get("c4")
         inputwork = request.POST.get("inputwork")
         timeselect = request.POST.get("timeselect")
-# *******************************************************ساختن آرایه ها برای نمایش خدمتها در صفحه وب********************************************
+# +++++++++++++++++++++++++++++کلید های صفحه reserv_end.html++همون که بزنی میره برا پرداخت+++++++++++++++++++++++++++
+        peymentbutton = request.POST.get("peymentbutton")
+        backbutton = request.POST.get("backbutton")
+        if backbutton =="accept":
+            redirect("/")
+        if peymentbutton == "accept":
+            return redirect('http://127.0.0.1:8000/zib/zibal/')
+            # return redirect('https://drmahdiasadpour.ir/zib/zibal/')
+        # *******************************************************ساختن آرایه ها برای نمایش خدمتها در صفحه وب********************************************
         works = workmodel.objects.all()
         ww.clear()
         ww.append('start')

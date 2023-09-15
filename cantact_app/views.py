@@ -174,13 +174,13 @@ def addcantactdef(request):
         for user in users :
             if user.melicode == melicod :
                 melicod_etebar[0] = 'false'
-        if len(str(melicod)) != 10:
-            melicod_etebar[0] = 'repeat'
-
-        try:
-            melicod = str(int(melicod))
-        except:
-            melicod_etebar[0] = 'stringerror'
+        # if len(str(melicod)) != 10:
+        #     melicod_etebar[0] = 'repeat'
+        #
+        # try:
+        #     melicod = str(int(melicod))
+        # except:
+        #     melicod_etebar[0] = 'stringerror'
 
         melicod_r[0] = melicod
 

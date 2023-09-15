@@ -2,6 +2,7 @@ from django.db import models
 
 
 class reservemodel(models.Model):
+    melicod =models.CharField(max_length=150,default='0')
     jobreserv = models.CharField(max_length=150,default='0')
     detalereserv = models.CharField(max_length=150,default='0')
     personreserv = models.CharField(max_length=150,default='0')
@@ -13,6 +14,8 @@ class reservemodel(models.Model):
     yearshamsi = models.CharField(max_length=10,default='0')
     cardnumber = models.CharField(max_length=20 ,default='0')
     pyment = models.CharField(max_length=20,default='0')
+    trakingcod = models.CharField(max_length=20,default='0')
+    bank = models.CharField(max_length=20,default='0')
     def __str__(self):
         return f"{self.personreserv}"
 

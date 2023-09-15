@@ -5,6 +5,8 @@ from django.conf import settings
 import requests
 import json
 from django.http import HttpResponse
+from kavenegar import KavenegarAPI, APIException, HTTPException
+
 from reserv_app.models import reservemodeltest,reservemodel,neursemodel,neursetestmodel
 from cantact_app.models import accuntmodel
 
@@ -140,18 +142,19 @@ class Verifyi(View):
 ZIB_API_REQUEST = "https://gateway.zibal.ir/v1/request"
 ZIB_API_VERIFY = "https://gateway.zibal.ir/verify"
 ZIB_API_STARTPAY = "https://gateway.zibal.ir/start/"
-# callbackzibalurl = 'https://127.0.0.1:8000/zib/verifyzibal/'
+callbackzibalurl = 'http://127.0.0.1:8000/zib/verifyzibal/'
 merchanzibal = 'zibal'
-callbackzibalurl = 'https://drmahdiasadpour.ir/zib/verifyzibal/'
+# callbackzibalurl = 'https://drmahdiasadpour.ir/zib/verifyzibal/'
 # merchanzibal = '64c2047fcbbc270017f4c6b2'
 m=["0"]
 peyment = 50000
+phonnumber = ["0"]
 def orderzibal(request):
     if request.user.is_authenticated:
         users = accuntmodel.objects.all()
         for user in users:
             if user.melicode == request.user.username:
-                phonnumber = user.phonnumber
+                phonnumber[0] = user.phonnumber
                 m[0] = user.melicode
     data = {
         "merchant": merchanzibal,
@@ -159,7 +162,7 @@ def orderzibal(request):
         "callbackUrl": callbackzibalurl,
         "description": "بیعانه جهت رزرو",
         "orderId": "ZBL-7799",
-        "mobile": phonnumber
+        "mobile": str(phonnumber[0])
     }
     data = json.dumps(data)
     headers = {'content-type': 'application/json', 'content-length': str(len(data))}
@@ -192,7 +195,6 @@ def orderzibal(request):
         else:
             return HttpResponse('پرداخت ناموفق')
 
-
 def callbackzibal(request):
     trac = request.GET['trackId']
     data = {
@@ -206,6 +208,11 @@ def callbackzibal(request):
         r = res.json()
         result[0] =r['message']
         result.append(r['cardNumber'])
+        result.append(trac)
+        result.append(request.user.username)
+        result.append(str(phonnumber[0]))
+        result.append(request.user.first_name)
+        result.append(request.user.last_name)
         # print(r['message'])
         # print(r['result'])
         # print(r['status'])
@@ -217,7 +224,11 @@ def callbackzibal(request):
         reserve = reservemodeltest.objects.all()
         for r in reserve :
             if r.mellicode == m[0]:
-                reservemodel.objects.create(jobreserv=r.jobreserv,
+                result.append(r.jobreserv+" "+r.detalereserv)
+                result.append(r.dateshamsireserv)
+                result.append(r.hourreserv)
+                reservemodel.objects.create(melicod =str(request.user.username),
+                                            jobreserv=r.jobreserv,
                                             detalereserv=r.detalereserv,
                                             personreserv=r.personreserv,
                                             timereserv=r.timereserv,
@@ -228,6 +239,8 @@ def callbackzibal(request):
                                             yearshamsi=r.yearshamsi,
                                             cardnumber="result[1]",
                                             pyment=peyment,
+                                            trakingcod = str(result[2]),
+                                            bank= "zibal"
                                             )
                 a = reservemodeltest.objects.filter(mellicode=m[0])
                 a.delete()
@@ -250,10 +263,31 @@ def callbackzibal(request):
                 a = neursetestmodel.objects.filter(mellicode=m[0])
                 a.delete()
 
-    # return redirect('https://127.0.0.1:8000/zib/end/')
-    return redirect('https://drmahdiasadpour.ir/zib/end/')
+    return redirect('http://127.0.0.1:8000/zib/end/')
+    # return redirect('https://drmahdiasadpour.ir/zib/end/')
 
 def end(request):
-
-
-    return render(request,'end.html',context={"result":result})
+    # print(result[0])
+    # print(result[1])
+    # print(result[2])
+    # print(result[3])
+    # print(result[4])
+    # print(result[5])
+    # print(result[6])
+    backbutton = request.POST.get("backbutton")
+    if backbutton == "accept":
+        return redirect('http://127.0.0.1:8000/')
+        # return redirect('https://drmahdiasadpour.ir/')
+    message = f"{result[5]}_{result[6]}پرداخت_موفقیت_آمیز_کدرهگیری_{result[2]}"
+    try:
+        api = KavenegarAPI(
+            '527064632B7931304866497A5376334B6B506734634E65422F627346514F59596C767475564D32656E61553D')
+        params = {
+            'receptor': result[4],
+            'template': 'test',
+            'token': message,
+            'type': 'sms',
+        }
+        return render(request, 'end.html', context={"result": result, })
+    except:
+        return render(request,'end.html',context={"result":result,})
