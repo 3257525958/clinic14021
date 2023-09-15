@@ -11,7 +11,6 @@ from reserv_app.models import reservemodeltest,reservemodel,neursemodel,neursete
 from cantact_app.models import accuntmodel
 
 
-result = ["t"]
 
 class OrderPageView(View):
     def get(self, request):
@@ -147,6 +146,7 @@ merchanzibal = 'zibal'
 callbackzibalurl = 'https://drmahdiasadpour.ir/zib/verifyzibal/'
 # merchanzibal = '64c2047fcbbc270017f4c6b2'
 m=["0"]
+resulttt = ["t"]
 peyment = 50000
 phonnumber = ["0"]
 def orderzibal(request):
@@ -206,17 +206,17 @@ def callbackzibal(request):
     res = requests.post(ZIB_API_VERIFY, data=data, headers=headers)
     if res.status_code == 200:
         r = res.json()
-        result[0] =r['message']
-        result.append(r['cardNumber'])
-        result.append(trac)
-        result.append(request.user.username)
-        result.append(str(phonnumber[0]))
+        resulttt[0] =r['message']
+        resulttt.append(r['cardNumber'])
+        resulttt.append(trac)
+        resulttt.append(request.user.username)
+        resulttt.append(str(phonnumber[0]))
         if request.user.is_authenticated:
             us = accuntmodel.objects.all()
             for u in us:
                 if u.melicode == request.user.username:
-                    result.append(u.firstname)
-                    result.append(u.lastname)
+                    resulttt.append(u.firstname)
+                    resulttt.append(u.lastname)
         # print(r['message'])
         # print(r['result'])
         # print(r['status'])
@@ -224,13 +224,13 @@ def callbackzibal(request):
         # print(r['description'])
         # print(r['cardNumber'])
         # print(r['orderId'])
-    if result[0] == "success":
+    if resulttt[0] == "success":
         reserve = reservemodeltest.objects.all()
         for r in reserve :
             if r.mellicode == m[0]:
-                result.append(r.jobreserv+" "+r.detalereserv)
-                result.append(r.dateshamsireserv)
-                result.append(r.hourreserv)
+                resulttt.append(r.jobreserv+" "+r.detalereserv)
+                resulttt.append(r.dateshamsireserv)
+                resulttt.append(r.hourreserv)
                 reservemodel.objects.create(melicod =str(request.user.username),
                                             jobreserv=r.jobreserv,
                                             detalereserv=r.detalereserv,
@@ -243,7 +243,7 @@ def callbackzibal(request):
                                             yearshamsi=r.yearshamsi,
                                             cardnumber="result[1]",
                                             pyment=peyment,
-                                            trakingcod = str(result[2]),
+                                            trakingcod = str(resulttt[2]),
                                             bank= "zibal"
                                             )
                 a = reservemodeltest.objects.filter(mellicode=m[0])
@@ -277,30 +277,32 @@ def end(request):
     print("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
     print("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
     print("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
-    print(request)
-    # backbutton = request.POST.get("backbutton")
-    # if backbutton == "accept":
-    #     # return redirect('http://127.0.0.1:8000/')
-    #     return redirect('https://drmahdiasadpour.ir/')
-    # message = f"{result[5]}_{result[6]}پرداخت_موفقیت_آمیز_کدرهگیری_{result[2]}"
-    #
-    # try:
-    #     api = KavenegarAPI(
-    #         '527064632B7931304866497A5376334B6B506734634E65422F627346514F59596C767475564D32656E61553D')
-    #     params = {
-    #         'receptor': result[4],
-    #         'template': 'test',
-    #         'token': message,
-    #         'type': 'sms',
-    #     }
-    #     response = api.verify_lookup(params)
-    #     return render(request, 'end.html', context={"result": result, })
-    # except APIException as e:
-    #     m = 'tellerror'
-    #     # messages.error(request,'در سیستم ارسال پیامک مشکلی پیش آمده لطفا شماره خود را به درستی وارد کنید و دوباره امتحان کنید در صورتی که مشکل برطرف نشد در اینستاگرام پیام دهید ')
-    #     return render(request, 'end.html', context={"result": result, })
-    # except HTTPException as e:
-    #     m = 'neterror'
-    #     # messages.error(request,'در سیستم ارسال پیامک مشکلی پیش آمده لطفا شماره خود را به درستی وارد کنید و دوباره امتحان کنید در صورتی که مشکل برطرف نشد در اینستاگرام پیام دهید ')
-    #     # return render(request, 'add_cantact.html')
-    return render(request, 'end.html', context={"result": result, })
+    print(resulttt)
+    print("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
+    print("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
+    backbutton = request.POST.get("backbutton")
+    if backbutton == "accept":
+        # return redirect('http://127.0.0.1:8000/')
+        return redirect('https://drmahdiasadpour.ir/')
+    message = f"{resulttt[5]}_{resulttt[6]}پرداخت_موفقیت_آمیز_کدرهگیری_{resulttt[2]}"
+
+    try:
+        api = KavenegarAPI(
+            '527064632B7931304866497A5376334B6B506734634E65422F627346514F59596C767475564D32656E61553D')
+        params = {
+            'receptor': resulttt[4],
+            'template': 'test',
+            'token': message,
+            'type': 'sms',
+        }
+        response = api.verify_lookup(params)
+        return render(request, 'end.html', context={"result": resulttt, })
+    except APIException as e:
+        m = 'tellerror'
+        # messages.error(request,'در سیستم ارسال پیامک مشکلی پیش آمده لطفا شماره خود را به درستی وارد کنید و دوباره امتحان کنید در صورتی که مشکل برطرف نشد در اینستاگرام پیام دهید ')
+        return render(request, 'end.html', context={"result": resulttt, })
+    except HTTPException as e:
+        m = 'neterror'
+        # messages.error(request,'در سیستم ارسال پیامک مشکلی پیش آمده لطفا شماره خود را به درستی وارد کنید و دوباره امتحان کنید در صورتی که مشکل برطرف نشد در اینستاگرام پیام دهید ')
+        # return render(request, 'add_cantact.html')
+        return render(request, 'end.html', context={"result": resulttt, })
