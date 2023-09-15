@@ -19,15 +19,6 @@ def home(request):
                 profilestatus[0] = 'ورود به کاربری'
     else:
         profilestatus[0] = 'ورود به کاربری'
-    print("zzzzzzzffffffffffffffzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz")
-    print("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz")
-    print("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz")
-    print("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz")
-    print(request.user.username)
-    print("zzzzzzzzzzzzzzzzzzzzzffffffzzzzzzzzzzzzzzzzzzzzzzzzz")
-    print("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz")
-    print("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz")
-    print("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz")
 
     return render(request,'home.html',context={ 'loglevel':loglevel[0],
                                                 'profilestatus':profilestatus[0],
