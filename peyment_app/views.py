@@ -157,9 +157,6 @@ def orderzibal(request):
             if user.melicode == request.user.username:
                 phonnumber[0] = user.phonnumber
                 m[0] = user.melicode
-    print("ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp")
-    print(request.user.username)
-    print("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr")
     data = {
         "merchant": merchanzibal,
         "amount": peyment,
@@ -200,6 +197,7 @@ def orderzibal(request):
             return HttpResponse('پرداخت ناموفق')
 
 def callbackzibal(request):
+
     trac = request.GET['trackId']
     data = {
         "merchant": merchanzibal,
@@ -213,10 +211,14 @@ def callbackzibal(request):
         result[0] =r['message']
         result.append(r['cardNumber'])
         result.append(trac)
-        result.append(request.user.username)
-        result.append(str(phonnumber[0]))
-        result.append(request.user.first_name)
-        result.append(request.user.last_name)
+        users = accuntmodel.objects.all()
+        for user in users:
+            if user.melicode == m[0]:
+                phonnumber[0] = user.phonnumber
+        result.append(user.melicode)
+        result.append(str(user.phonnumber))
+        result.append(user.firstname)
+        result.append(user.lastname)
         # print(r['message'])
         # print(r['result'])
         # print(r['status'])
