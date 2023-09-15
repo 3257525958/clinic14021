@@ -143,9 +143,9 @@ ZIB_API_REQUEST = "https://gateway.zibal.ir/v1/request"
 ZIB_API_VERIFY = "https://gateway.zibal.ir/verify"
 ZIB_API_STARTPAY = "https://gateway.zibal.ir/start/"
 # callbackzibalurl = 'http://127.0.0.1:8000/zib/verifyzibal/'
-# merchanzibal = 'zibal'
+merchanzibal = 'zibal'
 callbackzibalurl = 'https://drmahdiasadpour.ir/zib/verifyzibal/'
-merchanzibal = '64c2047fcbbc270017f4c6b2'
+# merchanzibal = '64c2047fcbbc270017f4c6b2'
 m=["0"]
 peyment = 50000
 phonnumber = ["0"]
@@ -211,8 +211,12 @@ def callbackzibal(request):
         result.append(trac)
         result.append(request.user.username)
         result.append(str(phonnumber[0]))
-        result.append(request.user.first_name)
-        result.append(request.user.last_name)
+        if request.user.is_authenticated:
+            us = accuntmodel.objects.all()
+            for u in us:
+                if u.melicode == request.user.username:
+                    result.append(u.firstname)
+                    result.append(u.lastname)
         # print(r['message'])
         # print(r['result'])
         # print(r['status'])
