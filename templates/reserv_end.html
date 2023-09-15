@@ -35,12 +35,19 @@
                         برای قطعی شدن رزرو مبلغ بیعانه را پزداخت نمایید توجه فرمایید در صورت کنسل کردن 20 درصد از مبلغ بیعانه کاسته میگردد.
                     </p>
                 </div>
-            <button  class="regesterbuttonsave" name="peymentbutton" value="accept">
-                پرداخت
+            <button  class="regesterbuttonsave">
+                <a href="{% url 'order' %}">پرداخت</a>
             </button>
-            <button class="regesterbuttoncancel" name="backbutton" value="accept">
-                بازگشت
+            <button class="regesterbuttoncancel" >
+                <a href="{% url 'zibal' %}">بازگشت</a>
             </button>
+{#                            <button  class="regesterbuttonsave" name="peymentbutton" value="accept">#}
+{#                پرداخت#}
+{#            </button>#}
+{#            <button class="regesterbuttoncancel" name="backbutton" value="accept">#}
+{#                بازگشت#}
+{#            </button>#}
+
     </form>
         </div>
     </div>
