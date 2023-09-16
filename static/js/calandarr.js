@@ -10,7 +10,7 @@
         f.click();
         Swal.fire({
           position: 'top-end',
-          icon: 'info',
+          icon: 'success',
           title: m + 'جند لحظه صبر کنید',
           showConfirmButton: false,
           timer: 2000
