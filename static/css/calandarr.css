@@ -311,4 +311,19 @@
     top: 2px;
 
 }
+#w {
+    position: relative;
+    top: -175px;
+    width: 380px;
+    right: calc(50% - 182px);
+
+
+}
+.w3{
+    background:rgb(179, 180, 181);
+    border-radius: 15px;
+    width:0%;
+    height: 450px;
+    }
+
 

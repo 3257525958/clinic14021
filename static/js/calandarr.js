@@ -3,11 +3,12 @@
     a = v /1000;
     console.log(a);
     if (a >= 1 ){
-        move();
-    }
-}
-
-function move() {
+        f = document.getElementById("face");
+        f.click();
+       move();
+     }
+ }
+ function move() {
     var elem = document.getElementById("myBar");
     var width = 0;
     var id = setInterval(frame, 20);
