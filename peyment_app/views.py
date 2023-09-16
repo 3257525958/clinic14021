@@ -212,13 +212,14 @@ def callbackzibal(request):
     res = requests.post(ZIB_API_VERIFY, data=data, headers=headers)
     if res.status_code == 200:
         r = res.json()
-        result[0] =r['message']
-        result.append(r['cardNumber'])
-        result.append(trac)
-        users = accuntmodel.objects.all()
-        for user in users:
-            if user.melicode == m[0]:
-                phonnumber[0] = user.phonnumber
+        print(r)
+        # result[0] =r['message']
+        # result.append(r['cardNumber'])
+        # result.append(trac)
+        # users = accuntmodel.objects.all()
+        # for user in users:
+        #     if user.melicode == m[0]:
+        #         phonnumber[0] = user.phonnumber
         print("pppppppppppppppppppppppppppppp")
         print(m[0])
         print("pppppppppppppppppppppppppppppp")
