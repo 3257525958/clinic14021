@@ -130,7 +130,7 @@ def reservdef(request):
         backbutton = request.POST.get("backbutton")
         if backbutton =="accept":
             # return redirect('http://127.0.0.1:8000/')
-            return redirect('https://drmahdiasadpour.ir/')
+            return redirect("/")
         if peymentbutton == "accept":
             # return redirect('http://127.0.0.1:8000/zib/zibal/')
             return redirect('https://drmahdiasadpour.ir/zib/zibal/')

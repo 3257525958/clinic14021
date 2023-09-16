@@ -236,7 +236,7 @@ def callbackzibal(request):
                                             dateshamsireserv=r.dateshamsireserv,
                                             datemiladireserv=r.datemiladireserv,
                                             yearshamsi=r.yearshamsi,
-                                            cardnumber=result[1],
+                                            cardnumber="result[1]",
                                             pyment=peyment,
                                             trakingcod = str(result[2]),
                                             bank= "zibal"
