@@ -157,6 +157,10 @@ def orderzibal(request):
             if user.melicode == request.user.username:
                 phonnumber[0] = user.phonnumber
                 m[0] = user.melicode
+    print("pppppppppppppppppppppppppppppp")
+    print(m[0])
+    print(request.user.username)
+    print("pppppppppppppppppppppppppppppp")
     data = {
         "merchant": merchanzibal,
         "amount": peyment,
@@ -215,7 +219,9 @@ def callbackzibal(request):
         for user in users:
             if user.melicode == m[0]:
                 phonnumber[0] = user.phonnumber
+        print("pppppppppppppppppppppppppppppp")
         print(m[0])
+        print("pppppppppppppppppppppppppppppp")
         result.append(user.melicode)
         result.append(str(user.phonnumber))
         result.append(user.firstname)
