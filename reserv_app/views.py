@@ -429,7 +429,7 @@ def reservdef(request):
                 error = "pregnancy"
                 return render(request, 'add_userfilebotax.html', context={"error": error})
             file_botax[5] = date_finaly
-            if (image_show == "yes") or (image_show == "no"):
+            if (image_show == "با انتشار تصویرم به صورت واضح در فضای مجازی مشکل ندارم") or (image_show == "با انتشار تصویرم به صورت غیرواضح در فضای مجازی مشکل ندارم") or (image_show == "با انتشار تصویرم در فضای مجازی مشکل دارم"):
                 file_botax[6] = image_show
             else:
                 error = "imgshow"
