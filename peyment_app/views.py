@@ -156,10 +156,6 @@ def orderzibal(request):
             if user.melicode == request.user.username:
                 phonnumber[0] = user.phonnumber
                 m[0] = user.melicode
-    print("pppppppppppppppppppppppppppppp")
-    print(m[0])
-    print(request.user.username)
-    print("pppppppppppppppppppppppppppppp")
     data = {
         "merchant": merchanzibal,
         "amount": peyment,
@@ -213,7 +209,6 @@ def callbackzibal(request):
     res = requests.post(ZIB_API_VERIFY, data=data, headers=headers)
     if res.status_code == 200:
         r = res.json()
-        print(r)
         endresult.append(r['message'])
         endresult.append(r['cardNumber'])
         endresult.append(trac)
@@ -221,9 +216,6 @@ def callbackzibal(request):
         for user in users:
             if user.melicode == m[0]:
                 phonnumber[0] = user.phonnumber
-                print("pppppppppppppppppppppppppppppp")
-                print(m[0])
-                print("pppppppppppppppppppppppppppppp")
                 endresult.append(user.melicode)
                 endresult.append(str(user.phonnumber))
                 endresult.append(user.firstname)
@@ -280,9 +272,6 @@ def end(request):
     # print(result[4])
     # print(result[5])
     # print(result[6])
-    print("qqqqqqqqqqqqqqwwwwwwwwwwwwwwwwaaaaaaaaaaaaass")
-    print(endresult)
-    print("qqqqqqqqqqqqqqwwwwwwwwwwwwwwwwaaaaaaaaaaaaass")
     backbutton = request.POST.get("backbutton")
     if backbutton == "accept":
         # return redirect('http://127.0.0.1:8000/')
