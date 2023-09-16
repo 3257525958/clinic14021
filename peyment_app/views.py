@@ -254,7 +254,7 @@ def callbackzibal(request):
                     sensivety=r.sensivety,
                     pregnancy=r.pregnancy,
                     date_finaly=r.date_finaly,
-                    image_full=r.image_show,
+                    image_show=r.image_show,
                     satisfact=r.satisfact,
                 )
                 a = neursetestmodel.objects.filter(mellicode=m[0])
