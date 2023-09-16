@@ -213,7 +213,7 @@ def callbackzibal(request):
     if res.status_code == 200:
         r = res.json()
         print(r)
-        endresult[0] = r['message']
+        endresult.append(r['message'])
         endresult.append(r['cardNumber'])
         endresult.append(trac)
         users = accuntmodel.objects.all()
