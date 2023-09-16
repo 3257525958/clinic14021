@@ -197,7 +197,7 @@ def orderzibal(request):
             return HttpResponse('پرداخت ناموفق')
 
 def callbackzibal(request):
-
+    result.clear()
     trac = request.GET['trackId']
     data = {
         "merchant": merchanzibal,
@@ -215,6 +215,7 @@ def callbackzibal(request):
         for user in users:
             if user.melicode == m[0]:
                 phonnumber[0] = user.phonnumber
+        print(m[0])
         result.append(user.melicode)
         result.append(str(user.phonnumber))
         result.append(user.firstname)
@@ -274,7 +275,7 @@ def end(request):
     backbutton = request.POST.get("backbutton")
     if backbutton == "accept":
         # return redirect('http://127.0.0.1:8000/')
-        return redirect('https://drmahdiasadpour.ir/')
+        return redirect('/')
     message = f"{result[5]}_{result[6]}پرداخت_موفقیت_آمیز_کدرهگیری_{result[2]}دکتر_اسدپور_"
 
     try:
