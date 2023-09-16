@@ -119,9 +119,7 @@ def reservdef(request):
         sensivety  = request.POST.get("r3")
         pregnancy  = request.POST.get("r4")
         date_finaly = request.POST.get("date_finaly")
-        image_full  = request.POST.get("c1")
-        image_semi = request.POST.get('c2')
-        image_not =request.POST.get("c3")
+        image_show = request.POST.get("c1")
         satisfact = request.POST.get("c4")
         inputwork = request.POST.get("inputwork")
         timeselect = request.POST.get("timeselect")
@@ -431,9 +429,11 @@ def reservdef(request):
                 error = "pregnancy"
                 return render(request, 'add_userfilebotax.html', context={"error": error})
             file_botax[5] = date_finaly
-            file_botax[6] = image_full
-            file_botax[7] = image_semi
-            file_botax[8] = image_not
+            if (sensivety == "yes") or (sensivety == "no"):
+                file_botax[6] = sensivety
+            else:
+                error = "imgshow"
+                return render(request, 'add_userfilebotax.html', context={"error": error})
             if satisfact == "yes":
                 file_botax[9] = satisfact
             else:
@@ -447,7 +447,7 @@ def reservdef(request):
                 sensivety = sensivety,
                 pregnancy = pregnancy,
                 date_finaly = date_finaly,
-                image_show = image_full,
+                image_show = image_show,
                 satisfact = satisfact,
                                            )
 

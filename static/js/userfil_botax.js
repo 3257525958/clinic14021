@@ -18,6 +18,18 @@ var error = document.getElementById("error");
             title: 'لطفااطلاعات مربوط به سابقه ی حساسیت را وارد کنید'
         })
     }
+    if ( error.innerHTML == 'pregnancy') {
+        Swal.fire({
+            icon: 'warning',
+            title: 'لطفااطلاعات مربوط به باردار بودنتان را وارد کنید'
+        })
+    }
+    if ( error.innerHTML == 'imgshow') {
+        Swal.fire({
+            icon: 'warning',
+            title: 'درباره استفاده از تصویرتان لطفا گزینه مورد نظرتان راانتخاب کنید'
+        })
+    }
     if ( error.innerHTML == 'satisfact') {
         Swal.fire({
             icon: 'warning',
