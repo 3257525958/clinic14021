@@ -212,7 +212,7 @@ def callbackzibal(request):
     res = requests.post(ZIB_API_VERIFY, data=data, headers=headers)
     if res.status_code == 200:
         r = res.json()
-        print(r)
+        print(r['message'])
         # result[0] =r['message']
         # result.append(r['cardNumber'])
         # result.append(trac)
@@ -223,10 +223,10 @@ def callbackzibal(request):
         print("pppppppppppppppppppppppppppppp")
         print(m[0])
         print("pppppppppppppppppppppppppppppp")
-        result.append(user.melicode)
-        result.append(str(user.phonnumber))
-        result.append(user.firstname)
-        result.append(user.lastname)
+        # result.append(user.melicode)
+        # result.append(str(user.phonnumber))
+        # result.append(user.firstname)
+        # result.append(user.lastname)
     # if result[0] == "success":
     #     reserve = reservemodeltest.objects.all()
     #     for r in reserve :
