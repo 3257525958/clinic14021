@@ -49,9 +49,7 @@ class neursemodel(models.Model):
     sensivety = models.CharField(max_length=150,default='0')
     pregnancy = models.CharField(max_length=150,default='0')
     date_finaly = models.CharField(max_length=150,default='0')
-    image_full = models.CharField(max_length=150,default='0')
-    image_semi = models.CharField(max_length=150,default='0')
-    image_not = models.CharField(max_length=150,default='0')
+    image_show = models.CharField(max_length=150,default='0')
     satisfact = models.CharField(max_length=150,default='0')
     def __str__(self):
         return f"{self.mellicode}"
@@ -63,9 +61,7 @@ class neursetestmodel(models.Model):
     sensivety = models.CharField(max_length=150,default='0')
     pregnancy = models.CharField(max_length=150,default='0')
     date_finaly = models.CharField(max_length=150,default='0')
-    image_full = models.CharField(max_length=150,default='0')
-    image_semi = models.CharField(max_length=150,default='0')
-    image_not = models.CharField(max_length=150,default='0')
+    image_show = models.CharField(max_length=150,default='0')
     satisfact = models.CharField(max_length=150,default='0')
     def __str__(self):
         return f"{self.mellicode}"

@@ -60,6 +60,15 @@
     color: white;
     margin-left: 30px;
 }
+.inputclassput{
+    width: 180px;
+    height: 27px;
+    border-radius: 10px;
+    font-family: Tahoma;
+    font-size: 90%;
+    color: black;
+    margin-left: 30px;
+}
 #r1{
     color: blue;
 }

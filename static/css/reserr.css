@@ -230,8 +230,8 @@ body {
     background-color: var(--vcolor);
     font-family: Tahoma;
     font-size: 90%;
-    top: 250px;
-    right: 1%;
+    top: 400px;
+    left: calc( 50% - 60px) ;
 }
 
 

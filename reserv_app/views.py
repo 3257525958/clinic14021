@@ -291,6 +291,8 @@ def reservdef(request):
 
                 t += timedelta(days=1)
                 day.append(dayarr)
+            day.pop(0)
+            day.pop(0)
             return render(request,'timereserv.html',context={'day':day,
                                                              'person':" رزرو وقت برای " + selectprocedure[0] +" "+ selectprocedure[1] + "(" + selectprocedure[2] + ")",
                                                              })
@@ -445,9 +447,7 @@ def reservdef(request):
                 sensivety = sensivety,
                 pregnancy = pregnancy,
                 date_finaly = date_finaly,
-                image_full = image_full,
-                image_semi = image_semi,
-                image_not = image_not,
+                image_show = image_full,
                 satisfact = satisfact,
                                            )
 
