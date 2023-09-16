@@ -226,47 +226,47 @@ def callbackzibal(request):
         result.append(str(user.phonnumber))
         result.append(user.firstname)
         result.append(user.lastname)
-    if result[0] == "success":
-        reserve = reservemodeltest.objects.all()
-        for r in reserve :
-            if r.mellicode == m[0]:
-                result.append(r.jobreserv+" "+r.detalereserv)
-                result.append(r.dateshamsireserv)
-                result.append(r.hourreserv)
-                reservemodel.objects.create(melicod =str(request.user.username),
-                                            jobreserv=r.jobreserv,
-                                            detalereserv=r.detalereserv,
-                                            personreserv=r.personreserv,
-                                            timereserv=r.timereserv,
-                                            castreserv=r.castreserv,
-                                            hourreserv=r.hourreserv,
-                                            dateshamsireserv=r.dateshamsireserv,
-                                            datemiladireserv=r.datemiladireserv,
-                                            yearshamsi=r.yearshamsi,
-                                            cardnumber="result[1]",
-                                            pyment=peyment,
-                                            trakingcod = str(result[2]),
-                                            bank= "zibal"
-                                            )
-                a = reservemodeltest.objects.filter(mellicode=m[0])
-                a.delete()
-        neurse = neursetestmodel.objects.all()
-        for r in neurse :
-            if r.mellicode == m[0]:
-                neursemodel.objects.create(
-                    mellicode=m[0],
-                    inject_botax=r.inject_botax,
-                    illnes=r.illnes,
-                    drug=r.drug,
-                    sensivety=r.sensivety,
-                    pregnancy=r.pregnancy,
-                    date_finaly=r.date_finaly,
-                    image_show=r.image_show,
-                    satisfact=r.satisfact,
-                )
-                a = neursetestmodel.objects.filter(mellicode=m[0])
-                a.delete()
-
+    # if result[0] == "success":
+    #     reserve = reservemodeltest.objects.all()
+    #     for r in reserve :
+    #         if r.mellicode == m[0]:
+    #             result.append(r.jobreserv+" "+r.detalereserv)
+    #             result.append(r.dateshamsireserv)
+    #             result.append(r.hourreserv)
+    #             reservemodel.objects.create(melicod =str(request.user.username),
+    #                                         jobreserv=r.jobreserv,
+    #                                         detalereserv=r.detalereserv,
+    #                                         personreserv=r.personreserv,
+    #                                         timereserv=r.timereserv,
+    #                                         castreserv=r.castreserv,
+    #                                         hourreserv=r.hourreserv,
+    #                                         dateshamsireserv=r.dateshamsireserv,
+    #                                         datemiladireserv=r.datemiladireserv,
+    #                                         yearshamsi=r.yearshamsi,
+    #                                         cardnumber="result[1]",
+    #                                         pyment=peyment,
+    #                                         trakingcod = str(result[2]),
+    #                                         bank= "zibal"
+    #                                         )
+    #             a = reservemodeltest.objects.filter(mellicode=m[0])
+    #             a.delete()
+    #     neurse = neursetestmodel.objects.all()
+    #     for r in neurse :
+    #         if r.mellicode == m[0]:
+    #             neursemodel.objects.create(
+    #                 mellicode=m[0],
+    #                 inject_botax=r.inject_botax,
+    #                 illnes=r.illnes,
+    #                 drug=r.drug,
+    #                 sensivety=r.sensivety,
+    #                 pregnancy=r.pregnancy,
+    #                 date_finaly=r.date_finaly,
+    #                 image_show=r.image_show,
+    #                 satisfact=r.satisfact,
+    #             )
+    #             a = neursetestmodel.objects.filter(mellicode=m[0])
+    #             a.delete()
+    #
     # return redirect('http://127.0.0.1:8000/zib/end/')
     return redirect('https://drmahdiasadpour.ir/zib/end/')
 
