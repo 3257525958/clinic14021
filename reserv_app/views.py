@@ -429,8 +429,8 @@ def reservdef(request):
                 error = "pregnancy"
                 return render(request, 'add_userfilebotax.html', context={"error": error})
             file_botax[5] = date_finaly
-            if (sensivety == "yes") or (sensivety == "no"):
-                file_botax[6] = sensivety
+            if (image_show == "yes") or (image_show == "no"):
+                file_botax[6] = image_show
             else:
                 error = "imgshow"
                 return render(request, 'add_userfilebotax.html', context={"error": error})
