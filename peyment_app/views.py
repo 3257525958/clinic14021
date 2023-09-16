@@ -199,6 +199,7 @@ def orderzibal(request):
         else:
             return HttpResponse('پرداخت ناموفق')
 endresult = ["t"]
+endresult.clear()
 
 def callbackzibal(request):
     endresult.clear()
@@ -279,6 +280,9 @@ def end(request):
     # print(result[4])
     # print(result[5])
     # print(result[6])
+    print("qqqqqqqqqqqqqqwwwwwwwwwwwwwwwwaaaaaaaaaaaaass")
+    print(endresult)
+    print("qqqqqqqqqqqqqqwwwwwwwwwwwwwwwwaaaaaaaaaaaaass")
     backbutton = request.POST.get("backbutton")
     if backbutton == "accept":
         # return redirect('http://127.0.0.1:8000/')
