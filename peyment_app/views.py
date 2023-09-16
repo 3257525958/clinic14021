@@ -221,13 +221,13 @@ def callbackzibal(request):
         for user in users:
             if user.melicode == m[0]:
                 phonnumber[0] = user.phonnumber
-        print("pppppppppppppppppppppppppppppp")
-        print(m[0])
-        print("pppppppppppppppppppppppppppppp")
-        endresult.append(user.melicode)
-        endresult.append(str(user.phonnumber))
-        endresult.append(user.firstname)
-        endresult.append(user.lastname)
+                print("pppppppppppppppppppppppppppppp")
+                print(m[0])
+                print("pppppppppppppppppppppppppppppp")
+                endresult.append(user.melicode)
+                endresult.append(str(user.phonnumber))
+                endresult.append(user.firstname)
+                endresult.append(user.lastname)
     if endresult[0] == "success":
         reserve = reservemodeltest.objects.all()
         for r in reserve :
@@ -269,7 +269,7 @@ def callbackzibal(request):
                 a = neursetestmodel.objects.filter(mellicode=m[0])
                 a.delete()
 
-    return redirect('http://127.0.0.1:8000/zib/end/')
+    # return redirect('http://127.0.0.1:8000/zib/end/')
     return redirect('https://drmahdiasadpour.ir/zib/end/')
 
 def end(request):
