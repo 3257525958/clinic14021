@@ -217,58 +217,58 @@ def callbackzibal(request):
         endresult.append(r['cardNumber'])
         endresult.append(trac)
         users = accuntmodel.objects.all()
-        # for user in users:
-        #     if user.melicode == m[0]:
-        #         phonnumber[0] = user.phonnumber
+        for user in users:
+            if user.melicode == m[0]:
+                phonnumber[0] = user.phonnumber
         print("pppppppppppppppppppppppppppppp")
         print(m[0])
         print("pppppppppppppppppppppppppppppp")
-        # result.append(user.melicode)
-        # result.append(str(user.phonnumber))
-        # result.append(user.firstname)
-        # result.append(user.lastname)
-    # if result[0] == "success":
-    #     reserve = reservemodeltest.objects.all()
-    #     for r in reserve :
-    #         if r.mellicode == m[0]:
-    #             result.append(r.jobreserv+" "+r.detalereserv)
-    #             result.append(r.dateshamsireserv)
-    #             result.append(r.hourreserv)
-    #             reservemodel.objects.create(melicod =str(request.user.username),
-    #                                         jobreserv=r.jobreserv,
-    #                                         detalereserv=r.detalereserv,
-    #                                         personreserv=r.personreserv,
-    #                                         timereserv=r.timereserv,
-    #                                         castreserv=r.castreserv,
-    #                                         hourreserv=r.hourreserv,
-    #                                         dateshamsireserv=r.dateshamsireserv,
-    #                                         datemiladireserv=r.datemiladireserv,
-    #                                         yearshamsi=r.yearshamsi,
-    #                                         cardnumber="result[1]",
-    #                                         pyment=peyment,
-    #                                         trakingcod = str(result[2]),
-    #                                         bank= "zibal"
-    #                                         )
-    #             a = reservemodeltest.objects.filter(mellicode=m[0])
-    #             a.delete()
-    #     neurse = neursetestmodel.objects.all()
-    #     for r in neurse :
-    #         if r.mellicode == m[0]:
-    #             neursemodel.objects.create(
-    #                 mellicode=m[0],
-    #                 inject_botax=r.inject_botax,
-    #                 illnes=r.illnes,
-    #                 drug=r.drug,
-    #                 sensivety=r.sensivety,
-    #                 pregnancy=r.pregnancy,
-    #                 date_finaly=r.date_finaly,
-    #                 image_show=r.image_show,
-    #                 satisfact=r.satisfact,
-    #             )
-    #             a = neursetestmodel.objects.filter(mellicode=m[0])
-    #             a.delete()
-    #
-    # return redirect('http://127.0.0.1:8000/zib/end/')
+        endresult.append(user.melicode)
+        endresult.append(str(user.phonnumber))
+        endresult.append(user.firstname)
+        endresult.append(user.lastname)
+    if endresult[0] == "success":
+        reserve = reservemodeltest.objects.all()
+        for r in reserve :
+            if r.mellicode == m[0]:
+                endresult.append(r.jobreserv+" "+r.detalereserv)
+                endresult.append(r.dateshamsireserv)
+                endresult.append(r.hourreserv)
+                reservemodel.objects.create(melicod =str(request.user.username),
+                                            jobreserv=r.jobreserv,
+                                            detalereserv=r.detalereserv,
+                                            personreserv=r.personreserv,
+                                            timereserv=r.timereserv,
+                                            castreserv=r.castreserv,
+                                            hourreserv=r.hourreserv,
+                                            dateshamsireserv=r.dateshamsireserv,
+                                            datemiladireserv=r.datemiladireserv,
+                                            yearshamsi=r.yearshamsi,
+                                            cardnumber="result[1]",
+                                            pyment=peyment,
+                                            trakingcod = str(endresult[2]),
+                                            bank= "zibal"
+                                            )
+                a = reservemodeltest.objects.filter(mellicode=m[0])
+                a.delete()
+        neurse = neursetestmodel.objects.all()
+        for r in neurse :
+            if r.mellicode == m[0]:
+                neursemodel.objects.create(
+                    mellicode=m[0],
+                    inject_botax=r.inject_botax,
+                    illnes=r.illnes,
+                    drug=r.drug,
+                    sensivety=r.sensivety,
+                    pregnancy=r.pregnancy,
+                    date_finaly=r.date_finaly,
+                    image_show=r.image_show,
+                    satisfact=r.satisfact,
+                )
+                a = neursetestmodel.objects.filter(mellicode=m[0])
+                a.delete()
+
+    return redirect('http://127.0.0.1:8000/zib/end/')
     return redirect('https://drmahdiasadpour.ir/zib/end/')
 
 def end(request):
@@ -283,25 +283,25 @@ def end(request):
     if backbutton == "accept":
         # return redirect('http://127.0.0.1:8000/')
         return redirect('/')
-    message = f"{result[5]}_{result[6]}پرداخت_موفقیت_آمیز_کدرهگیری_{result[2]}دکتر_اسدپور_"
+    message = f"{endresult[5]}_{endresult[6]}پرداخت_موفقیت_آمیز_کدرهگیری_{endresult[2]}دکتر_اسدپور_"
 
     try:
         api = KavenegarAPI(
             '527064632B7931304866497A5376334B6B506734634E65422F627346514F59596C767475564D32656E61553D')
         params = {
-            'receptor': result[4],
+            'receptor': endresult[4],
             'template': 'test',
             'token': message,
             'type': 'sms',
         }
         response = api.verify_lookup(params)
-        return render(request, 'end.html', context={"result": result, })
+        return render(request, 'end.html', context={"result": endresult, })
     except APIException as e:
         m = 'tellerror'
         # messages.error(request,'در سیستم ارسال پیامک مشکلی پیش آمده لطفا شماره خود را به درستی وارد کنید و دوباره امتحان کنید در صورتی که مشکل برطرف نشد در اینستاگرام پیام دهید ')
-        return render(request, 'end.html', context={"result": result, })
+        return render(request, 'end.html', context={"result": endresult, })
     except HTTPException as e:
         m = 'neterror'
         # messages.error(request,'در سیستم ارسال پیامک مشکلی پیش آمده لطفا شماره خود را به درستی وارد کنید و دوباره امتحان کنید در صورتی که مشکل برطرف نشد در اینستاگرام پیام دهید ')
         # return render(request, 'add_cantact.html')
-        return render(request, 'end.html', context={"result": result, })
+        return render(request, 'end.html', context={"result": endresult, })
