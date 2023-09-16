@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href= "{%  static "/css/calandar.css" %}">
+    <link rel="stylesheet" type="text/css" href= "{%  static "/css/calandarr.css" %}">
     <title>Document</title>
 </head>
 <body dir="rtl">
@@ -13,11 +13,11 @@
     <div class="maine">
         <!-- <img class="imgmaine" src="css/img/massage.jpg" alt="addcantact"> -->
         <p class="textobject">
-            تقویم
+            سال تولد خود را وارد کنید
         </p>
 
         <div class="calanderheadyear">
-            <input class="yeartabel" placeholder={{ year }} type="number" maxlength="2" name="input_year">
+            <input id="yeartabel"  type="number" maxlength="2" name="input_year"value={{ year }} oninput="yearselect(this.value)">
 {#            <select name="" class="yeartabel">#}
 {#                <option value="">1402</option>#}
 {#            </select>#}
@@ -97,6 +97,12 @@
 
     </div>
 
+            <button id="face" name="facebutton" value="accept" hidden >
+                اینتر
+            </button>
+
 </form>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{% static "/js/calandarr.js" %}">    </script>
 </body>
 </html>

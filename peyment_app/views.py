@@ -219,13 +219,6 @@ def callbackzibal(request):
         result.append(str(user.phonnumber))
         result.append(user.firstname)
         result.append(user.lastname)
-        # print(r['message'])
-        # print(r['result'])
-        # print(r['status'])
-        # print(r['refNumber'])
-        # print(r['description'])
-        # print(r['cardNumber'])
-        # print(r['orderId'])
     if result[0] == "success":
         reserve = reservemodeltest.objects.all()
         for r in reserve :
@@ -243,7 +236,7 @@ def callbackzibal(request):
                                             dateshamsireserv=r.dateshamsireserv,
                                             datemiladireserv=r.datemiladireserv,
                                             yearshamsi=r.yearshamsi,
-                                            cardnumber="result[1]",
+                                            cardnumber=result[1],
                                             pyment=peyment,
                                             trakingcod = str(result[2]),
                                             bank= "zibal"
