@@ -12,7 +12,6 @@ from reserv_app.models import reservemodeltest,reservemodel,neursemodel,neursete
 from cantact_app.models import accuntmodel
 
 
-result = ["t"]
 
 class OrderPageView(View):
     def get(self, request):
@@ -199,9 +198,10 @@ def orderzibal(request):
                 return HttpResponse({'Status': response['Status'],'RefID':response['RefID']})
         else:
             return HttpResponse('پرداخت ناموفق')
+endresult = ["t"]
 
 def callbackzibal(request):
-    result.clear()
+    endresult.clear()
     trac = request.GET['trackId']
     data = {
         "merchant": merchanzibal,
@@ -212,11 +212,11 @@ def callbackzibal(request):
     res = requests.post(ZIB_API_VERIFY, data=data, headers=headers)
     if res.status_code == 200:
         r = res.json()
-        print(r['message'])
-        # result[0] =r['message']
-        # result.append(r['cardNumber'])
-        # result.append(trac)
-        # users = accuntmodel.objects.all()
+        print(r)
+        endresult[0] = r['message']
+        endresult.append(r['cardNumber'])
+        endresult.append(trac)
+        users = accuntmodel.objects.all()
         # for user in users:
         #     if user.melicode == m[0]:
         #         phonnumber[0] = user.phonnumber
