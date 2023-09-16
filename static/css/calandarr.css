@@ -313,7 +313,7 @@
 }
 #w {
     position: relative;
-    top: -175px;
+    top: 5px;
     width: 380px;
     right: calc(50% - 182px);
 
