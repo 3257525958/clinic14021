@@ -157,7 +157,6 @@ def reservdef(request):
             for f in works :
                 if int(c) == int(inputwork) :
                     selectprocedure.clear()
-                    print(selectprocedure)
                     selectprocedure.append(f.work)
                     selectprocedure.append(f.detalework)
                     selectprocedure.append(f.person)

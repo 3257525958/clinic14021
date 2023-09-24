@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href= "{% static "/css/reserr.css" %}">
+    <link rel="stylesheet" type="text/css" href= "{% static "/css/reser.css" %}">
     <title>Document</title>
 </head>
 <body>
@@ -15,10 +15,6 @@
         <p id="titr">
             رزرو آنلاین
         </p>
-            <button class="regesterbuttoncancel" name="backbuttonfianal" value="accept">
-                بازگشت
-            </button>
-
     </div>
 
     {% for w in job %}
@@ -43,8 +39,7 @@
         </div>
         <br>
     {% endfor %}
-
+    <button type="submit" class="regesterbuttoncancel" name="backbuttonfianal" value="accept">بازگشت</button>
 </form>
-
 </body>
 </html>
