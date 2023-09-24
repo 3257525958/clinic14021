@@ -287,7 +287,9 @@ def end(request):
                                           username=u.username,
                                           password=u.password,
                                           )
+                print("okokokokokokokokokokok")
                 if user_login is not None:
+                    print("مممممممممممممممممممممممممممممم")
                     login(request, user_login)
                     return redirect('/')
     message = f"{endresult[5]}_{endresult[6]}پرداخت_موفقیت_آمیز_کدرهگیری_{endresult[2]}دکتر_اسدپور_"
