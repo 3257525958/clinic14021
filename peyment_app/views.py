@@ -7,6 +7,8 @@ import requests
 import json
 from django.http import HttpResponse
 from kavenegar import KavenegarAPI, APIException, HTTPException
+from django.contrib.auth import authenticate,login, logout
+from django.contrib.auth.models import User
 
 from reserv_app.models import reservemodeltest,reservemodel,neursemodel,neursetestmodel
 from cantact_app.models import accuntmodel
@@ -274,9 +276,17 @@ def end(request):
     # print(result[5])
     # print(result[6])
     backbutton = request.GET.get("backbutton")
-    print("pppppppppppppppppppppppppppppppppppppppppppp",backbutton)
     if backbutton == "accept":
-        return redirect('https://drmahdiasadpour.ir/')
+        us = User.objects.all()
+        for u in us :
+            if u.username == m[0]:
+                user_login = authenticate(request,
+                                          username=u.username,
+                                          password=u.password,
+                                          )
+                if user_login is not None:
+                    login(request, user_login)
+                    return redirect('/')
     message = f"{endresult[5]}_{endresult[6]}پرداخت_موفقیت_آمیز_کدرهگیری_{endresult[2]}دکتر_اسدپور_"
 
     try:
