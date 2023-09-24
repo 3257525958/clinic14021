@@ -233,6 +233,7 @@ def callbackzibal(request):
                                             personreserv=r.personreserv,
                                             timereserv=r.timereserv,
                                             castreserv=r.castreserv,
+                                            numbertime=r.numbertime,
                                             hourreserv=r.hourreserv,
                                             dateshamsireserv=r.dateshamsireserv,
                                             datemiladireserv=r.datemiladireserv,
