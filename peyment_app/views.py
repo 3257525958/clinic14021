@@ -273,6 +273,7 @@ def end(request):
     # print(result[5])
     # print(result[6])
     backbutton = request.POST.get("backbutton")
+    print("pppppppppppppppppppppppppppppppppppppppppppp",backbutton)
     if backbutton == "accept":
         print("ppppppppppppppppppppppppppppppppppmmmmmmmmmmmmmmmmmmmmmm")
         # return redirect('http://127.0.0.1:8000/')
