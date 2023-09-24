@@ -276,6 +276,7 @@ def end(request):
     # print(result[5])
     # print(result[6])
     print(endresult)
+    logout(request)
 
     backbutton = request.GET.get("backbutton")
     if backbutton == "accept":
