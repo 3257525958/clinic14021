@@ -12,6 +12,7 @@ def home(request):
         us = accuntmodel.objects.all()
         for u in us:
             if u.melicode == request.user.username:
+                print("llllllllllllllllllllllllllll",request)
                 profilestatus[0] = f"{u.firstname} {u.lastname} عزیز خوش آمدید "
                 loglevel[0] = u.level
                 break;
@@ -26,4 +27,6 @@ def home(request):
 
 def logute(request):
     logout(request)
+    print("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",request)
+
     return redirect('/')
