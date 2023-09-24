@@ -276,9 +276,7 @@ def end(request):
     backbutton = request.GET.get("backbutton")
     print("pppppppppppppppppppppppppppppppppppppppppppp",backbutton)
     if backbutton == "accept":
-        print("ppppppppppppppppppppppppppppppppppmmmmmmmmmmmmmmmmmmmmmm")
-        # return redirect('http://127.0.0.1:8000/')
-        return redirect('/')
+        return redirect('https://drmahdiasadpour.ir/')
     message = f"{endresult[5]}_{endresult[6]}پرداخت_موفقیت_آمیز_کدرهگیری_{endresult[2]}دکتر_اسدپور_"
 
     try:
