@@ -25,6 +25,7 @@
             </div>
             <div class="effects">
                 {% for t in day %}
+                    {% if t.0 != "false" %}
                     <div  class="effects__item ">
                         <p class="textboxxx">{{ t.0 }}</p>
                         <br>
@@ -129,6 +130,7 @@
                             <button class="boxxx"  name="timeselect" value="20,{{ forloop.counter}}" >19.5 تا 20</button>
                         {% endif %}
                     </div>
+                    {% endif %}
                 {% endfor %}
             </div>
         </div>
