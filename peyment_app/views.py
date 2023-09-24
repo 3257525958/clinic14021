@@ -282,7 +282,7 @@ def end(request):
         us = User.objects.all()
         for u in us :
             print(u.username,endresult[3])
-            if u.username == endresult[3]:
+            if int(u.username) == int(endresult[3]):
                 user_login = authenticate(request,
                                           username=u.username,
                                           password=u.password,
