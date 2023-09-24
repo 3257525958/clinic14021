@@ -291,7 +291,6 @@ def reservdef(request):
                 day.append(dayarr)
             day.pop(0)
             day.pop(0)
-            print("oooooooo",selectprocedure)
 
             return render(request,'timereserv.html',context={'day':day,
                                                              'person':" رزرو وقت برای " + selectprocedure[0] +" "+ selectprocedure[1] + "(" + selectprocedure[2] + ")",
@@ -304,7 +303,6 @@ def reservdef(request):
             selectprocedure.append(shamsiarray[int(stime[1])+1])
             selectprocedure.append(miladiarray[int(stime[1])+1])
             selectprocedure.append(stry(datetime.datetime.now()))
-            selectprocedure.append(stime[0])
             if stime[0] == "1"  :
                 selectprocedure.append("10")
             if stime[0] == "2"  :
@@ -345,7 +343,6 @@ def reservdef(request):
                 selectprocedure.append("19")
             if stime[0] == "20"  :
                 selectprocedure.append("19.5")
-            print("hhhhhhhhhhhh",selectprocedure)
             reservs = reservemodel.objects.all()
             reservetebar[0] = 'succes'
             if selectprocedure[3] == "1" :
