@@ -273,7 +273,7 @@ def end(request):
     # print(result[4])
     # print(result[5])
     # print(result[6])
-    backbutton = request.POST.get("backbutton")
+    backbutton = request.GET.get("backbutton")
     print("pppppppppppppppppppppppppppppppppppppppppppp",backbutton)
     if backbutton == "accept":
         print("ppppppppppppppppppppppppppppppppppmmmmmmmmmmmmmmmmmmmmmm")

@@ -346,7 +346,6 @@ def reservdef(request):
                 selectprocedure.append("19")
             if stime[0] == "20"  :
                 selectprocedure.append("19.5")
-            print("hhhhhhhhhhhgggggggggggggggggggggggggggggnumbertimeh",selectprocedure)
             reservs = reservemodel.objects.all()
             reservetebar[0] = 'succes'
             if selectprocedure[3] == "1" :
