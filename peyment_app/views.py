@@ -276,10 +276,12 @@ def end(request):
     # print(result[5])
     # print(result[6])
     print(endresult)
+
     backbutton = request.GET.get("backbutton")
     if backbutton == "accept":
         us = User.objects.all()
         for u in us :
+            print(u.username,endresult[3])
             if u.username == endresult[3]:
                 user_login = authenticate(request,
                                           username=u.username,
