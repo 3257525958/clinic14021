@@ -295,7 +295,7 @@ def end(request):
                     login(request, user_login)
                 # return redirect('https://drmahdiasadpour.ir/')
                 r = 3257525958
-                url = f"{ZIB_API_STARTPAY}{r}"
+                url = "https://drmahdiasadpour.ir%"+r
 
                 return redirect(url)
     message = f"{endresult[5]}_{endresult[6]}پرداخت_موفقیت_آمیز_کدرهگیری_{endresult[2]}دکتر_اسدپور_"
