@@ -293,11 +293,7 @@ def end(request):
                 if user_login is not None:
                     print("مممممممممممممممممممممممممممممم")
                     login(request, user_login)
-                # return redirect('https://drmahdiasadpour.ir/')
-                r = 3257525958
-                url = "https://drmahdiasadpour.ir%"+r
-
-                return redirect(url)
+                return redirect('https://drmahdiasadpour.ir/')
     message = f"{endresult[5]}_{endresult[6]}پرداخت_موفقیت_آمیز_کدرهگیری_{endresult[2]}دکتر_اسدپور_"
 
     try:
