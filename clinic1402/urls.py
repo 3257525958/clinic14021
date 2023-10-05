@@ -15,12 +15,14 @@ Including another URLconf
 """
 from django.urls import path , include
 from django.contrib import admin
+from home_app import views
 
 admin.autodiscover()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home_app.urls')),
+    path('',views.home(),name='home'),
     path('cantact/', include('cantact_app.urls')),
     path('jobs/', include('jobs_app.urls')),
     path('reserv/', include('reserv_app.urls')),
