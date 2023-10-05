@@ -293,7 +293,11 @@ def end(request):
                 if user_login is not None:
                     print("مممممممممممممممممممممممممممممم")
                     login(request, user_login)
-                return redirect('https://drmahdiasadpour.ir/')
+                # return redirect('https://drmahdiasadpour.ir/')
+                r = 3257525958
+                url = f"{ZIB_API_STARTPAY}{r}"
+
+                return redirect(url)
     message = f"{endresult[5]}_{endresult[6]}پرداخت_موفقیت_آمیز_کدرهگیری_{endresult[2]}دکتر_اسدپور_"
 
     try:
