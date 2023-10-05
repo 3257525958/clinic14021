@@ -9,6 +9,7 @@ profilestatus =['']
 loglevel = ['']
 def home(request):
     print("ooooooooooooooooooooooooooooooooojjjjjjjjjjjjjjjjjjjjjjjjjjjjjmmmmmmmmmmmmmmm",request.user.username)
+    print(request.content_type)
     if request.user.is_authenticated:
         us = accuntmodel.objects.all()
         for u in us:
